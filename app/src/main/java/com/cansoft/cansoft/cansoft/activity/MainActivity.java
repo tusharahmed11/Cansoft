@@ -3,6 +3,7 @@ package com.cansoft.cansoft.cansoft.activity;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Intent;
+import android.graphics.Rect;
 import android.net.Uri;
 import android.os.Build;
 import android.support.annotation.NonNull;
@@ -23,9 +24,11 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewTreeObserver;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
@@ -95,6 +98,34 @@ public class MainActivity extends AppCompatActivity  {
         contactfab = (LinearLayout) findViewById(R.id.fab_sheet_item_note);
         lyt_assessment = (LinearLayout) findViewById(R.id.fab_assessment_layout);
         lyt_seo = (LinearLayout) findViewById(R.id.fab_seo_layout);
+
+        final FrameLayout frame = findViewById(R.id.frame);
+        frame.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+            @Override
+            public void onGlobalLayout() {
+
+                Rect r = new Rect();
+                frame.getWindowVisibleDisplayFrame(r);
+                int screenHeight = frame.getRootView().getHeight();
+
+                // r.bottom is the position above soft keypad or device button.
+                // if keypad is shown, the r.bottom is smaller than that before.
+                int keypadHeight = screenHeight - r.bottom;
+
+                Log.d(TAG, "keypadHeight = " + keypadHeight);
+
+                if (keypadHeight > screenHeight * 0.15) { // 0.15 ratio is perhaps enough to determine keypad height.
+                    // keyboard is opened
+                    Log.d(TAG, "onGlobalLayout: keyboard is on");
+                    materialSheetFab.hideSheetThenFab();
+
+                }
+                else {
+                    materialSheetFab.showFab();
+
+                }
+            }
+        });
 
 
 
@@ -516,8 +547,6 @@ public class MainActivity extends AppCompatActivity  {
     @Override public void onBackPressed() {
         if (materialSheetFab.isSheetVisible()) {
             materialSheetFab.hideSheet();
-        } else  {
-            super.onBackPressed();
         }
         BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.navigation_view);
         int seletedItemId = bottomNavigationView.getSelectedItemId();

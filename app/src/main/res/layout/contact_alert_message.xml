@@ -7,7 +7,7 @@
         android:layout_gravity="center"
         android:gravity="center_horizontal"
         android:textSize="18sp"
-        android:textColor="@color/grey_900"
+        android:textColor="@color/grey_600"
         android:textStyle="normal"
         android:text="Please fill all the field correctly!"
         android:layout_width="match_parent"

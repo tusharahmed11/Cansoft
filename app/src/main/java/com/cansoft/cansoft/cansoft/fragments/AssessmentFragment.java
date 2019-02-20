@@ -1,10 +1,12 @@
 package com.cansoft.cansoft.cansoft.fragments;
 
 
+import android.content.DialogInterface;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.RequiresApi;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.AppCompatButton;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,6 +17,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import com.cansoft.cansoft.cansoft.R;
 import com.cansoft.cansoft.cansoft.activity.MainActivity;
@@ -151,15 +154,54 @@ public class AssessmentFragment extends Fragment {
                 String pages = pageCount.getText().toString();
                 String url = existingWebsite.getText().toString();
                 String domainUrl1 = domainUrl.getText().toString();
+                if (name1.isEmpty() || phone1.isEmpty() || email1.isEmpty()|| pages.isEmpty() || url.isEmpty()){
+                    if (name1.isEmpty()){
+                        open(view, "Name");
+                    }else if (phone1.isEmpty()){
+                        open(view,"Phone");
+                    }else if (email1.isEmpty()){
+                        open(view,"Email");
+                    }else if (pages.isEmpty()){
+                        open(view,"Page Count");
+                    }else if (url.isEmpty()){
+                        open(view,"Domain Url");
+                    }
+
+                }else {
+                    AssessmentMail assessmentMail = new AssessmentMail(view.getContext(),name1,phone1,email1,pages,design[0],interestRank[0],url,domain[0],hosting[0],domainUrl1);
+                    assessmentMail.execute();
+                }
 
 
-                AssessmentMail assessmentMail = new AssessmentMail(view.getContext(),name1,phone1,email1,pages,design[0],interestRank[0],url,domain[0],hosting[0],domainUrl1);
-                assessmentMail.execute();
             }
         });
         showBackButtonStatus(false);
 
         return view;
+    }
+
+    public void open(final View view, String field){
+        final AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(view.getContext());
+        View titleView = getLayoutInflater().inflate(R.layout.contact_alert_title,null);
+        TextView textView = titleView.findViewById(R.id.popTitle);
+        String titletext = field+ " is empty!";
+        textView.setText(titletext);
+
+        View messageView = getLayoutInflater().inflate(R.layout.contact_alert_message,null);
+
+        alertDialogBuilder.setCustomTitle(titleView);
+        alertDialogBuilder.setView(messageView);
+        /* alertDialogBuilder.setMessage("\nPlease fill all the field!");*/
+        alertDialogBuilder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                AlertDialog alertDialog = alertDialogBuilder.create();
+                alertDialog.dismiss();
+            }
+        });
+
+        AlertDialog alertDialog = alertDialogBuilder.create();
+        alertDialog.show();
     }
     private void showBackButtonStatus(Boolean status){
         ((MainActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(status);

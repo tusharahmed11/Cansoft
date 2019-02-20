@@ -124,7 +124,16 @@ public class ContactFragment extends Fragment {
 
                 if (firstName.isEmpty() ||  phoneNumber.isEmpty() || emailAddress.isEmpty() || message.isEmpty()){
                     Log.d(TAG, "onClick: " + firstName + phoneNumber +emailAddress+ message);
-                    open(view);
+                    if (firstName.isEmpty()){
+                        open(view,"Name");
+                    }else if (phoneNumber.isEmpty()){
+                        open(view,"Phone");
+                    }else if (emailAddress.isEmpty()){
+                        open(view,"Email");
+                    }else if (message.isEmpty()){
+                        open(view,"Message");
+                    }
+
                 }else{
                     if (finalCost > 0) {
                         String message1 = "Cost: "+finalCost+"\n" +contactMessage.getText().toString();
@@ -144,9 +153,13 @@ public class ContactFragment extends Fragment {
     }
 
 
-    public void open(final View view){
+    public void open(final View view, String field){
         final AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(view.getContext());
         View titleView = getLayoutInflater().inflate(R.layout.contact_alert_title,null);
+        TextView textView = titleView.findViewById(R.id.popTitle);
+        String titletext = field+ " is empty!";
+        textView.setText(titletext);
+
         View messageView = getLayoutInflater().inflate(R.layout.contact_alert_message,null);
 
         alertDialogBuilder.setCustomTitle(titleView);
@@ -163,48 +176,7 @@ public class ContactFragment extends Fragment {
         AlertDialog alertDialog = alertDialogBuilder.create();
         alertDialog.show();
     }
-/*    private void mailSend(final View view, final String firstName, final String phoneNumber, final String emailAddress, final String message){
 
-        mail mail = new mail(view.getContext(),firstName,phoneNumber,message,emailAddress);
-        mail.execute();
-       *//* new Thread(new Runnable() {
-
-            public void run() {
-
-                try {
-
-                    GMailSender sender = new GMailSender(
-
-                            "ahmedorno11@gmail.com",
-
-                            "");
-
-                    sender.sendMail("Test mail", firstName+ "\n" + lastName + "\n" + phoneNumber +  "\n" +message,
-
-                            emailAddress,
-
-                            "ahmedorno11@gmail.com");
-
-
-                } catch (Exception e) {
-
-                    Toast.makeText(view.getContext(),"Error",Toast.LENGTH_LONG).show();
-
-                }
-
-            }
-
-        }).start();
-
-        Toast.makeText(view.getContext(),"Mail send successfully",Toast.LENGTH_LONG).show();
-        contactFirstName.setText("");
-        contactLastName .setText("");
-        contactPhoneNumber.setText("");
-        contactEmailAddress.setText("");
-        contactMessage.setText("");
-*//*
-
-    }*/
 
     protected void makeTransperantStatusBar(boolean isTransperant) {
         if (isTransperant) {

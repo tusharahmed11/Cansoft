@@ -3,11 +3,15 @@ package com.cansoft.cansoft.cansoft.fragments;
 
 import android.annotation.SuppressLint;
 import android.content.ActivityNotFoundException;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Rect;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -17,6 +21,7 @@ import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
 import android.view.WindowManager;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
@@ -109,38 +114,43 @@ public class HomeFragment extends Fragment {
         RestClient.getInstance().callRetrofit(view.getContext()).getVideo().enqueue(new Callback<List<Video>>() {
             @Override
             public void onResponse(Call<List<Video>> call, Response<List<Video>> response) {
-                List<Video> videos = response.body();
-                int length = videos.size();
-                Random rnd = new Random();
-                int n = rnd.nextInt(length);
-                String you = getYoutubeId(videos.get(n).getExcerpt().getRendered());
-                youtubeId = android.text.Html.fromHtml(you).toString();
+                if (response.body() == null){
+                    showAlertDialog(view);
+                }else{
+                    List<Video> videos = response.body();
+                    int length = videos.size();
+                    Random rnd = new Random();
+                    int n = rnd.nextInt(length);
+                    String you = getYoutubeId(videos.get(n).getExcerpt().getRendered());
+                    youtubeId = android.text.Html.fromHtml(you).toString();
 
-                Picasso.get().load("https://img.youtube.com/vi/"+youtubeId+"/mqdefault.jpg" ).into(youtubeImage);
-                Log.d(TAG, "onResponse: "+youtubeId);
-                testimoniaLayout.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        String videoId = youtubeId;
-                        if (isAppInstalled("com.google.android.youtube")){
-                            watchYoutubeVideo(videoId);
-                        }else {
-                            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.youtube.com/watch?v=" + videoId)));
+                    Picasso.get().load("https://img.youtube.com/vi/"+youtubeId+"/mqdefault.jpg" ).into(youtubeImage);
+                    Log.d(TAG, "onResponse: "+youtubeId);
+                    testimoniaLayout.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            String videoId = youtubeId;
+                            if (isAppInstalled("com.google.android.youtube")){
+                                watchYoutubeVideo(videoId);
+                            }else {
+                                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.youtube.com/watch?v=" + videoId)));
+                            }
                         }
-                    }
-                });
+                    });
 
-                youtubeBtn.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        String videoId = youtubeId;
-                        if (isAppInstalled("com.google.android.youtube")){
-                            watchYoutubeVideo(videoId);
-                        }else {
-                            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.youtube.com/watch?v=" + videoId)));
+                    youtubeBtn.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            String videoId = youtubeId;
+                            if (isAppInstalled("com.google.android.youtube")){
+                                watchYoutubeVideo(videoId);
+                            }else {
+                                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.youtube.com/watch?v=" + videoId)));
+                            }
                         }
-                    }
-                });
+                    });
+                }
+
 
             }
 
@@ -222,6 +232,29 @@ public class HomeFragment extends Fragment {
         manager = new LinearLayoutManager(view.getContext());
         updateView(view);
        /* initializeYoutubePlayer();*/
+        view.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+            @Override
+            public void onGlobalLayout() {
+
+                Rect r = new Rect();
+                view.getWindowVisibleDisplayFrame(r);
+                int screenHeight = view.getRootView().getHeight();
+
+                // r.bottom is the position above soft keypad or device button.
+                // if keypad is shown, the r.bottom is smaller than that before.
+                int keypadHeight = screenHeight - r.bottom;
+
+                Log.d(TAG, "keypadHeight = " + keypadHeight);
+
+                if (keypadHeight > screenHeight * 0.15) { // 0.15 ratio is perhaps enough to determine keypad height.
+                    // keyboard is opened
+                    Log.d(TAG, "onGlobalLayout: keyboard is on");
+                }
+                else {
+                    // keyboard is closed
+                }
+            }
+        });
         return view;
     }
 
@@ -262,6 +295,7 @@ public class HomeFragment extends Fragment {
 
             }
         });
+
 
 
 
@@ -331,6 +365,23 @@ public class HomeFragment extends Fragment {
             }
         });
     }
+    private void showAlertDialog(View v) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(v.getContext());
+        builder.setCancelable(false);
+        builder.setTitle("NO Internet!");
+        builder.setMessage("Please connect to the internet for the first time");
+        builder.setPositiveButton("BACK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                FragmentManager fm = getFragmentManager();
+                FragmentTransaction ft = fm.beginTransaction();
+                HomeFragment homeFragment = new HomeFragment();
+                ft.replace(R.id.frame, homeFragment).addToBackStack(null);
+                ft.commit();
+            }
+        });
 
+        builder.show();
+    }
 
 }

@@ -32,6 +32,7 @@ public class AboutFragment extends Fragment {
 
         Toolbar toolbar = (Toolbar)getActivity().findViewById(R.id.app_bar);
         toolbar.setTitle("");
+
         showDrawerButton();
         return view;
     }

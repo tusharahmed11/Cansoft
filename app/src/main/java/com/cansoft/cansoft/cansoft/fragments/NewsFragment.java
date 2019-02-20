@@ -1,10 +1,14 @@
 package com.cansoft.cansoft.cansoft.fragments;
 
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -129,21 +133,27 @@ public class NewsFragment extends Fragment {
         RestClient.getInstance().callRetrofit(view.getContext()).getPagePosts(currentPage).enqueue(new Callback<List<Post>>() {
             @Override
             public void onResponse(Call<List<Post>> call, Response<List<Post>> response) {
-                String totalPages = response.headers().get("X-WP-TotalPages");
-                Log.d(TAG, "onResponse: " +totalPages);
-                if (totalPages == null){
-                    totalPages = "1";
-                }
-                setPages( Integer.parseInt(totalPages));
-                List<Post> posts = response.body();
-                adapter.clear();
-                adapter.addAll(posts);
-                adapter.notifyDataSetChanged();
-                progressBar.setVisibility(View.GONE);
+                if (response.body() == null){
+                    showAlertDialog(view);
+                }else {
+                    String totalPages = response.headers().get("X-WP-TotalPages");
+                    Log.d(TAG, "onResponse: " +totalPages);
+                    if (totalPages == null){
+                        totalPages = "1";
+                    }
+                    setPages( Integer.parseInt(totalPages));
+                    List<Post> posts = response.body();
 
-                if (currentPage <= TOTAL_PAGES) adapter.addLoadingFooter();
-                else isLastPage = true;
-                swipeRefresh.setRefreshing(false);
+                    adapter.clear();
+                    adapter.addAll(posts);
+                    adapter.notifyDataSetChanged();
+                    progressBar.setVisibility(View.GONE);
+
+                    if (currentPage <= TOTAL_PAGES) adapter.addLoadingFooter();
+                    else isLastPage = true;
+                    swipeRefresh.setRefreshing(false);
+                }
+
 
             }
 
@@ -158,18 +168,23 @@ public class NewsFragment extends Fragment {
         RestClient.getInstance().callRetrofit(view.getContext()).getPagePosts(pagenumber).enqueue(new Callback<List<Post>>() {
             @Override
             public void onResponse(Call<List<Post>> call, Response<List<Post>> response) {
-                adapter.removeLoadingFooter();
-                isLoading = false;
-                List<Post> posts = response.body();
-                progressBar.setVisibility(View.GONE);
+                if (response.body() == null){
+                    showAlertDialog(view);
+                }else{
+                    adapter.removeLoadingFooter();
+                    isLoading = false;
+                    List<Post> posts = response.body();
+                    progressBar.setVisibility(View.GONE);
 
-                adapter.addAll(posts);
-                adapter.notifyDataSetChanged();
+                    adapter.addAll(posts);
+                    adapter.notifyDataSetChanged();
 
 
-                if (currentPage != getPages()) adapter.addLoadingFooter();
-                else isLastPage = true;
-                swipeRefresh.setRefreshing(false);
+                    if (currentPage != getPages()) adapter.addLoadingFooter();
+                    else isLastPage = true;
+                    swipeRefresh.setRefreshing(false);
+                }
+
 
             }
 
@@ -284,6 +299,24 @@ public class NewsFragment extends Fragment {
     private void showBackButtonStatus(Boolean status){
         ((MainActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(status);
         ((MainActivity) getActivity()).getSupportActionBar().setDisplayShowHomeEnabled(status);
+    }
+    private void showAlertDialog(View v) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(v.getContext());
+        builder.setCancelable(false);
+        builder.setTitle("NO Internet!");
+        builder.setMessage("Please connect to the internet");
+        builder.setPositiveButton("BACK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                FragmentManager fm = getFragmentManager();
+                FragmentTransaction ft = fm.beginTransaction();
+                HomeFragment homeFragment = new HomeFragment();
+                ft.replace(R.id.frame, homeFragment).addToBackStack(null);
+                ft.commit();
+            }
+        });
+
+        builder.show();
     }
 
 }

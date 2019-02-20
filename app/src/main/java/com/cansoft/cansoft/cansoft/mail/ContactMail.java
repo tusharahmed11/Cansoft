@@ -3,7 +3,13 @@ package com.cansoft.cansoft.cansoft.mail;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.AsyncTask;
+import android.view.Gravity;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import com.cansoft.cansoft.cansoft.R;
 
 import javax.mail.Session;
 
@@ -41,8 +47,20 @@ public class ContactMail  extends AsyncTask<Void,Void,Void> {
 
 
         } catch (Exception e) {
+            Toast.makeText(context, "Something wrong", Toast.LENGTH_SHORT).show();
 
-            Toast.makeText(context, "Error", Toast.LENGTH_LONG).show();
+            /*LayoutInflater inflater = LayoutInflater.from(context);
+            View toastView = inflater.inflate(R.layout.toast_custom_error_view, null);
+            TextView toastTitle = toastView.findViewById(R.id.customToastText);
+            toastTitle.setText("Something wrong! please try again");
+            // Initiate the Toast instance.
+            Toast toast = new Toast(context);
+            // Set custom view in toast.
+            toast.setView(toastView);
+            toast.setDuration(Toast.LENGTH_SHORT);
+            toast.setGravity(Gravity.CENTER, 0,0);
+            toast.show();
+            Toast.makeText(context, "Error", Toast.LENGTH_LONG).show();*/
 
         }
 
@@ -53,7 +71,18 @@ public class ContactMail  extends AsyncTask<Void,Void,Void> {
     protected void onPostExecute(Void aVoid) {
         super.onPostExecute(aVoid);
         progressDialog.dismiss();
-        Toast.makeText(context, "Email Sent", Toast.LENGTH_SHORT).show();
+        LayoutInflater inflater = LayoutInflater.from(context);
+        View toastView = inflater.inflate(R.layout.toast_custom_view, null);
+        TextView toastTitle = toastView.findViewById(R.id.customToastText);
+        toastTitle.setText("Email Sent Successfully");
+        // Initiate the Toast instance.
+        Toast toast = new Toast(context);
+        // Set custom view in toast.
+        toast.setView(toastView);
+        toast.setDuration(Toast.LENGTH_SHORT);
+        toast.setGravity(Gravity.CENTER, 0,0);
+        toast.show();
+       /* Toast.makeText(context, "Email Sent", Toast.LENGTH_SHORT).show();*/
     }
 
     @Override
