@@ -1,0 +1,123 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="app_name">Cansoft</string>
+    <string name="cost_estimation">Cost</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="home">Home</string>
+    <string-array name="planets_array" tools:ignore="ExtraTranslation">
+        <item>Do you have a website?</item>
+        <item>Yes</item>
+        <item>No</item>
+    </string-array>
+
+    <string-array name="design_array" tools:ignore="ExtraTranslation">
+        <item>Do you have design in mind?</item>
+        <item>Yes</item>
+        <item>No</item>
+    </string-array>
+    <string-array name="rank_array" tools:ignore="ExtraTranslation">
+        <item>Interested to rank your website on Google search?</item>
+        <item>Yes</item>
+        <item>No</item>
+    </string-array>
+    <string-array name="domain_array" tools:ignore="ExtraTranslation">
+        <item>Do you have a domain?</item>
+        <item>Yes</item>
+        <item>No</item>
+    </string-array>
+    <string-array name="hosting_array" tools:ignore="ExtraTranslation">
+        <item>Do you need hosting?</item>
+        <item>Yes</item>
+        <item>No</item>
+    </string-array>
+
+
+    <integer-array name="social_images">
+        <item>@drawable/user</item>
+        <item>@drawable/sumon</item>
+        <item>@drawable/meagan</item>
+        <item>@drawable/john</item>
+        <item>@drawable/chloe</item>
+
+        <item>@drawable/milani</item>
+        <item>@drawable/sabbir</item>
+        <item>@drawable/tushar</item>
+        <item>@drawable/shahriar</item>
+
+    </integer-array>
+    <integer-array name="full_images">
+        <item>@drawable/user</item>
+        <item>@drawable/sumon</item>
+        <item>@drawable/meagan</item>
+        <item>@drawable/john</item>
+        <item>@drawable/chloe</item>
+
+        <item>@drawable/milani</item>
+        <item>@drawable/sabbir</item>
+        <item>@drawable/tushar</item>
+        <item>@drawable/shahriar</item>
+
+    </integer-array>
+
+    <string-array name="social_names">
+        <item>KAZI MAMUN</item>
+        <item>FAKHRUL HASAN SUMON</item>
+        <item>Meagan O\'Flanagan</item>
+        <item>John Kessler</item>
+        <item>Chloe Chen</item>
+
+        <item>Kimberly Milani</item>
+        <item>Mustafa Kamal Hossain</item>
+        <item>TUSHAR AHMED</item>
+        <item>Shahriar Hossain</item>
+    </string-array>
+    <string-array name="designation">
+        <item>Chief Technology Officer</item>
+        <item>Chief Project Office</item>
+        <item>Marketing Director</item>
+        <item>Business Development Manager</item>
+        <item>marketing &amp; communications coordinator</item>
+
+        <item>Marketing Coordinator</item>
+        <item>Programmer</item>
+        <item>Junior Programmer</item>
+        <item>Junior Programmer</item>
+    </string-array>
+    <string-array name="email_address">
+        <item>kazi@cansoft.com</item>
+        <item>sumon@cansoft.com</item>
+        <item>maegan@cansoft.com</item>
+        <item>john@cansoft.com</item>
+        <item>support@cansoft.com</item>
+
+        <item>kimberly@cansoft.com</item>
+        <item>mustafa@cansoft.com</item>
+        <item>tushar@cansoft.com</item>
+        <item>shahriar@cansoft.com</item>
+    </string-array>
+    <string-array name="phone">
+        <item>00000000</item>
+        <item>00000000</item>
+        <item>00000000</item>
+        <item>00000000</item>
+        <item>00000000</item>
+
+        <item>00000000</item>
+        <item>00000000</item>
+        <item>00000000</item>
+        <item>00000000</item>
+    </string-array>
+
+    <string name="lorem_ipsum">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam efficitur ipsum in placerat molestie.  Fusce quis mauris a enim sollicitudin
+        \n\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam efficitur ipsum in placerat molestie.  Fusce quis mauris a enim sollicitudin
+    </string>
+    <string name="news_title"><font color='#000000' size='23'><b>N</b></font>ews</string>
+    <string name="about_us_title"><font color='#000000' size='23'><b>A</b></font>bout us</string>
+    <string name="testimonial_title"><font color='#000000' size='23'><b>T</b></font>estimonial</string>
+    <string name="clients_title"><font color='#000000' size='23'><b>C</b></font>lients</string>
+    <string name="about_us">Cansoft Technologies Corporation started out as an IT company in Regina, Saskatchewan known for our unbeatable search engine optimization techniques and outstanding web design. Today, our team continues to expand globally, with partners in Canada, the United Kingdom, New Zealand, Sweden, and the US! We have also expanded our services from our industry leading web design to digital marketing, web applications, software development, website design, mobile applications development, search engine optimization (SEO), search engine marketing (SEM), social media marketing (SMM), and social media services. We take pride in our reputation of excellent customer service and strive to provide to our business partners with the best IT solutions and digital marketing strategies, helping them achieve their business goals. Our talented group of programmers, marketing experts, and customer service agents are dedicated to providing the best online and digital marketing services at an affordable cost. We believe in the art of technology. Let’s work on the big picture together.</string>
+
+</resources>

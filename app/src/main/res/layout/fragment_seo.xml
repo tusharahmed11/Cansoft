@@ -1,0 +1,381 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragments.SeoFragment">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_gravity="center"
+        android:fitsSystemWindows="true"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <LinearLayout
+            android:layout_margin="16dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:orientation="horizontal">
+                        <com.cansoft.cansoft.cansoft.widget.IconTextView
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:scaleType="fitXY"
+                            android:layout_gravity="center"
+                            android:tint="@color/grey_60"
+                            android:text="@string/icon_user"
+                            android:textSize="28sp"
+                            tools:ignore="VectorDrawableCompat" />
+
+
+                        <View
+                            android:layout_width="@dimen/spacing_large"
+                            android:layout_height="match_parent" />
+
+                        <EditText
+                            android:id="@+id/seo_audit_name"
+                            android:padding="14dp"
+                            android:hint="Full Name"
+                            android:textColorHint="@color/grey_500"
+                            android:inputType="text"
+                            android:background="@drawable/txt_area_dark_yellow"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent" />
+
+                    </LinearLayout>
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/spacing_middle" />
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:orientation="horizontal">
+                        <com.cansoft.cansoft.cansoft.widget.IconTextView
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:scaleType="fitXY"
+                            android:layout_gravity="center"
+                            android:background="@android:color/transparent"
+                            android:text="@string/icon_phone"
+                            android:textSize="28sp"
+                            android:tint="@color/grey_60" />
+
+                        <View
+                            android:layout_width="@dimen/spacing_large"
+                            android:layout_height="match_parent" />
+
+                        <EditText
+                            android:textColorHint="@color/grey_500"
+                            android:id="@+id/seo_audit_phone"
+                            android:padding="14dp"
+                            android:hint="Phone Number"
+                            android:inputType="phone"
+                            android:background="@drawable/txt_area_dark_yellow"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent" />
+                    </LinearLayout>
+
+                   <!-- <android.support.design.widget.TextInputLayout
+                        android:padding="@dimen/spacing_large"
+                        android:background="@drawable/txt_area_dark_yellow"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColorHint="@color/grey_40">
+
+                        <android.support.v7.widget.AppCompatEditText
+                            android:background="@android:color/transparent"
+                            android:theme="@style/EditText.Yellow"
+                            android:id="@+id/seo_audit_phone"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="Phone number"
+                            android:inputType="phone"
+                            android:textColor="@android:color/white"
+                            />
+
+                    </android.support.design.widget.TextInputLayout>-->
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/spacing_middle" />
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:orientation="horizontal">
+                        <com.cansoft.cansoft.cansoft.widget.IconTextView
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:scaleType="fitXY"
+                            android:layout_gravity="center"
+                            android:background="@android:color/transparent"
+                            android:tint="@color/grey_60"
+                            android:text="@string/icon_email"
+                            android:textSize="28sp"
+                            tools:ignore="VectorDrawableCompat" />
+
+
+                        <View
+                            android:layout_width="@dimen/spacing_large"
+                            android:layout_height="match_parent" />
+
+                        <EditText
+                            android:id="@+id/seo_audit_email"
+                            android:padding="14dp"
+                            android:textColorHint="@color/grey_500"
+                            android:hint="Email Address"
+                            android:inputType="textEmailAddress"
+                            android:background="@drawable/txt_area_dark_yellow"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent" />
+
+                    </LinearLayout>
+
+            <!--        <android.support.design.widget.TextInputLayout
+                        android:padding="@dimen/spacing_large"
+                        android:background="@drawable/txt_area_dark_yellow"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColorHint="@color/grey_40">
+
+                        <android.support.v7.widget.AppCompatEditText
+                            android:background="@android:color/transparent"
+                            android:theme="@style/EditText.Yellow"
+                            android:id="@+id/seo_audit_email"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="Email address"
+                            android:inputType="textEmailAddress"
+                            android:textColor="@android:color/white"
+                            />
+
+                    </android.support.design.widget.TextInputLayout-->
+
+
+
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/spacing_middle" />
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:orientation="horizontal">
+                        <com.cansoft.cansoft.cansoft.widget.IconTextView
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:scaleType="fitXY"
+                            android:layout_gravity="center"
+                            android:background="@android:color/transparent"
+                            android:text="@string/icon_mind"
+                            android:textSize="28sp"
+                            android:tint="@color/grey_60" />
+
+                        <View
+                            android:layout_width="@dimen/spacing_large"
+                            android:layout_height="match_parent" />
+                        <Spinner
+                            android:background="@drawable/spinner_background"
+                            android:id="@+id/planets_spinner"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent" />
+
+                    </LinearLayout>
+
+         <!--           <Spinner
+                        style="@style/Base.Widget.AppCompat.Spinner.Underlined"
+                        android:id="@+id/planets_spinner"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />-->
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/spacing_middle" />
+                    <LinearLayout
+
+                        android:id="@+id/seo_website_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:orientation="horizontal">
+                        <com.cansoft.cansoft.cansoft.widget.IconTextView
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:scaleType="fitXY"
+                            android:layout_gravity="center"
+                            android:background="@android:color/transparent"
+                            android:text="@string/icon_website"
+                            android:textSize="28sp"
+                            android:tint="@color/grey_60" />
+
+                        <View
+                            android:layout_width="@dimen/spacing_large"
+                            android:layout_height="match_parent" />
+
+                        <EditText
+                            android:textColorHint="@color/grey_500"
+                            android:id="@+id/seo_audit_website"
+                            android:padding="14dp"
+                            android:hint="Your website URL"
+                            android:inputType="textWebEditText"
+                            android:background="@drawable/txt_area_dark_yellow"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent" />
+
+                    </LinearLayout>
+
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/spacing_middle" />
+                    <LinearLayout
+                        android:id="@+id/city_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:orientation="horizontal">
+                        <com.cansoft.cansoft.cansoft.widget.IconTextView
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:scaleType="fitXY"
+                            android:layout_gravity="center"
+                            android:background="@android:color/transparent"
+                            android:text="@string/icon_city"
+                            android:textSize="28sp"
+                            android:tint="@color/grey_60" />
+
+                        <View
+                            android:layout_width="@dimen/spacing_large"
+                            android:layout_height="match_parent" />
+
+                        <EditText
+                            android:textColorHint="@color/grey_500"
+                            android:id="@+id/seo_audit_city"
+                            android:padding="14dp"
+                            android:hint="Which City/Cities you want to rank higher?"
+                            android:inputType="text"
+                            android:background="@drawable/txt_area_dark_yellow"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent" />
+
+                    </LinearLayout>
+
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/spacing_middle" />
+                    <LinearLayout
+                        android:id="@+id/rank_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:orientation="horizontal">
+                        <com.cansoft.cansoft.cansoft.widget.IconTextView
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:scaleType="fitXY"
+                            android:layout_gravity="center"
+                            android:background="@android:color/transparent"
+                            android:text="@string/icon_globe"
+                            android:textSize="28sp"
+                            android:tint="@color/grey_60" />
+
+                        <View
+                            android:layout_width="@dimen/spacing_large"
+                            android:layout_height="match_parent" />
+
+                        <EditText
+                            android:textColorHint="@color/grey_500"
+                            android:id="@+id/seo_audit_current_city"
+                            android:padding="14dp"
+                            android:hint="Where do you rank now?"
+                            android:inputType="text"
+                            android:background="@drawable/txt_area_dark_yellow"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent" />
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/spacing_middle" />
+                    <LinearLayout
+                        android:id="@+id/term_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:orientation="horizontal">
+                        <com.cansoft.cansoft.cansoft.widget.IconTextView
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:scaleType="fitXY"
+                            android:layout_gravity="center"
+                            android:background="@android:color/transparent"
+                            android:text="@string/icon_search"
+                            android:textSize="28sp"
+                            android:tint="@color/grey_60" />
+
+                        <View
+                            android:layout_width="@dimen/spacing_large"
+                            android:layout_height="match_parent" />
+
+                        <EditText
+                            android:textColorHint="@color/grey_500"
+                            android:id="@+id/seo_audit_search_term"
+                            android:padding="14dp"
+                            android:hint="What are your key search terms?"
+                            android:inputType="text"
+                            android:background="@drawable/txt_area_dark_yellow"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent" />
+
+                    </LinearLayout>
+                    <android.support.v7.widget.AppCompatButton
+                        android:id="@+id/seo_audit_submit_btn"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginStart="16dp"
+                        android:layout_gravity="center"
+
+                        android:backgroundTint="@color/white"
+                        android:textColor="@color/text_black_87"
+                        android:text="Submit"
+                        android:shadowRadius="6"
+                        android:padding="16dp"
+                        android:textSize="18sp"
+                        android:layout_width="140dp"
+                        android:layout_height="wrap_content"
+                        tools:targetApi="lollipop" />
+
+                    <!--<Button
+                        android:layout_gravity="center"
+                        android:textColor="@color/white"
+                        android:background="@drawable/shadow"
+                        android:id="@+id/seo_audit_submit_btn"
+                        android:layout_width="120dp"
+                        android:layout_height="60dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginStart="16dp"
+
+                        android:elevation="6dp"
+                        android:text="Submit"
+                        tools:targetApi="lollipop" />-->
+                </LinearLayout>
+            </ScrollView>
+
+        </LinearLayout>
+
+
+
+
+    </LinearLayout>
+
+</FrameLayout>

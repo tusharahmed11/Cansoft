@@ -1,0 +1,1484 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".fragments.TeamFragment">
+
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_margin="12dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="vertical"
+        android:scrollingCache="true" />
+    <!--<ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <LinearLayout
+                android:layout_marginTop="10dp"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:text="KAZI MAMUN"
+                        android:layout_marginLeft="10dp"
+                        android:textSize="17sp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp" />
+                    <android.support.v7.widget.CardView
+                        app:cardElevation="2dp"
+                        android:background="@color/white"
+                        android:layout_margin="10dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="190dp">
+
+                        <LinearLayout
+                            android:orientation="horizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <ImageView
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:scaleType="fitXY"
+                                android:layout_weight="1"
+                                android:src="@drawable/user" />
+                            <LinearLayout
+                                android:orientation="vertical"
+                                android:layout_weight="1"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent">
+                                <TextView
+                                    android:layout_margin="8dp"
+                                    android:text="Chief Technology Officer"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content" />
+                                <RelativeLayout
+                                    android:id="@+id/kazi_phone"
+
+                                    android:layout_margin="8dp"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content">
+
+                                    <ImageView
+                                        android:layout_centerVertical="true"
+                                        android:id="@+id/team_phone_icon"
+                                        android:layout_width="25dp"
+                                        android:layout_height="30dp"
+                                        android:scaleType="centerInside"
+                                        android:src="@drawable/phone_icon" />
+
+                                    <TextView
+                                        android:layout_centerVertical="true"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginStart="10dp"
+                                        android:layout_marginLeft="10dp"
+                                        android:layout_toEndOf="@+id/team_phone_icon"
+                                        android:layout_toRightOf="@+id/team_phone_icon"
+                                        android:gravity="center"
+                                        android:text="+1 (778) 251-6525" />
+                                </RelativeLayout>
+                                <RelativeLayout
+                                    android:id="@+id/kazi_mail"
+                                    android:layout_margin="8dp"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content">
+
+                                    <ImageView
+                                        android:layout_centerVertical="true"
+                                        android:id="@+id/mail_icon"
+                                        android:layout_width="25dp"
+                                        android:layout_height="30dp"
+                                        android:scaleType="centerInside"
+                                        android:src="@drawable/mail_icon" />
+
+                                    <TextView
+                                        android:layout_centerVertical="true"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginStart="10dp"
+                                        android:layout_marginLeft="10dp"
+                                        android:layout_toEndOf="@+id/mail_icon"
+                                        android:layout_toRightOf="@+id/mail_icon"
+                                        android:gravity="center"
+                                        android:text="kazi@cansoft.com" />
+                                </RelativeLayout>
+                                <RelativeLayout
+
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content">
+                                    <RelativeLayout
+                                        android:id="@+id/twitter_layout"
+                                        android:layout_margin="6dp"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content">
+
+                                        <ImageView
+                                            android:layout_centerVertical="true"
+                                            android:id="@+id/twitter_icon"
+                                            android:layout_width="25dp"
+                                            android:layout_height="30dp"
+                                            android:scaleType="centerInside"
+                                            android:src="@drawable/twitter_icon" />
+
+                                        <TextView
+                                            android:layout_centerVertical="true"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginStart="5dp"
+                                            android:layout_marginLeft="5dp"
+                                            android:layout_toEndOf="@+id/twitter_icon"
+                                            android:layout_toRightOf="@+id/twitter_icon"
+                                            android:gravity="center"
+                                            android:text="twitter" />
+                                    </RelativeLayout>
+                                    <RelativeLayout
+                                        android:id="@+id/kazi_facebook"
+                                        android:layout_toEndOf="@+id/twitter_layout"
+                                        android:layout_toRightOf="@+id/twitter_layout"
+                                        android:layout_margin="6dp"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content">
+
+                                        <ImageView
+                                            android:layout_centerVertical="true"
+                                            android:id="@+id/facebook_icon"
+                                            android:layout_width="25dp"
+                                            android:layout_height="30dp"
+                                            android:scaleType="centerInside"
+                                            android:src="@drawable/facebook_icon" />
+
+                                        <TextView
+                                            android:layout_centerVertical="true"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginStart="5dp"
+                                            android:layout_marginLeft="5dp"
+                                            android:layout_toEndOf="@+id/facebook_icon"
+                                            android:layout_toRightOf="@+id/facebook_icon"
+                                            android:gravity="center"
+                                            android:text="facebook" />
+                                    </RelativeLayout>
+                                </RelativeLayout>
+                            </LinearLayout>
+                        </LinearLayout>
+
+                    </android.support.v7.widget.CardView>
+
+                </LinearLayout>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_marginTop="10dp"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:text="FAKHRUL HASAN SUMON"
+                        android:textSize="17sp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp" />
+                    <android.support.v7.widget.CardView
+                        app:cardElevation="2dp"
+                        android:background="@color/white"
+                        android:layout_margin="10dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="190dp">
+
+                        <LinearLayout
+                            android:orientation="horizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+
+                            <LinearLayout
+                                android:orientation="vertical"
+                                android:layout_weight="1"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent">
+                                <TextView
+                                    android:layout_margin="8dp"
+                                    android:text=" Chief Project Officer"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content" />
+                                <RelativeLayout
+                                    android:id="@+id/sumon_phone"
+                                    android:layout_margin="8dp"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content">
+
+                                    <ImageView
+                                        android:layout_centerVertical="true"
+                                        android:id="@+id/team_phone_icon1"
+                                        android:layout_width="25dp"
+                                        android:layout_height="30dp"
+                                        android:scaleType="centerInside"
+                                        android:src="@drawable/phone_icon" />
+
+                                    <TextView
+                                        android:layout_centerVertical="true"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginStart="10dp"
+                                        android:layout_marginLeft="10dp"
+                                        android:layout_toEndOf="@+id/team_phone_icon1"
+                                        android:layout_toRightOf="@+id/team_phone_icon1"
+                                        android:gravity="center"
+                                        android:text="000000000000" />
+                                </RelativeLayout>
+                                <RelativeLayout
+                                    android:id="@+id/sumon_mail"
+                                    android:layout_margin="8dp"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content">
+
+                                    <ImageView
+                                        android:layout_centerVertical="true"
+                                        android:id="@+id/mail_icon1"
+                                        android:layout_width="25dp"
+                                        android:layout_height="30dp"
+                                        android:scaleType="centerInside"
+                                        android:src="@drawable/mail_icon" />
+
+                                    <TextView
+                                        android:layout_centerVertical="true"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginStart="10dp"
+                                        android:layout_marginLeft="10dp"
+                                        android:layout_toEndOf="@+id/mail_icon1"
+                                        android:layout_toRightOf="@+id/mail_icon1"
+                                        android:gravity="center"
+                                        android:text="sumon@cansoft.com" />
+                                </RelativeLayout>
+                                <RelativeLayout
+
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content">
+                                    <RelativeLayout
+                                        android:id="@+id/twitter_layout1"
+                                        android:layout_margin="6dp"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content">
+
+                                        <ImageView
+                                            android:layout_centerVertical="true"
+                                            android:id="@+id/twitter_icon1"
+                                            android:layout_width="25dp"
+                                            android:layout_height="30dp"
+                                            android:scaleType="centerInside"
+                                            android:src="@drawable/twitter_icon" />
+
+                                        <TextView
+                                            android:layout_centerVertical="true"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginStart="5dp"
+                                            android:layout_marginLeft="5dp"
+                                            android:layout_toEndOf="@+id/twitter_icon1"
+                                            android:layout_toRightOf="@+id/twitter_icon1"
+                                            android:gravity="center"
+                                            android:text="twitter" />
+                                    </RelativeLayout>
+                                    <RelativeLayout
+                                        android:id="@+id/sumon_facebook"
+                                        android:layout_toEndOf="@+id/twitter_layout1"
+                                        android:layout_toRightOf="@+id/twitter_layout1"
+                                        android:layout_margin="6dp"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content">
+
+                                        <ImageView
+                                            android:layout_centerVertical="true"
+                                            android:id="@+id/facebook_icon1"
+                                            android:layout_width="25dp"
+                                            android:layout_height="30dp"
+                                            android:scaleType="centerInside"
+                                            android:src="@drawable/facebook_icon" />
+
+                                        <TextView
+                                            android:layout_centerVertical="true"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginStart="5dp"
+                                            android:layout_marginLeft="5dp"
+                                            android:layout_toEndOf="@+id/facebook_icon1"
+                                            android:layout_toRightOf="@+id/facebook_icon1"
+                                            android:gravity="center"
+                                            android:text="facebook" />
+                                    </RelativeLayout>
+                                </RelativeLayout>
+
+                            </LinearLayout>
+                            <ImageView
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:scaleType="fitXY"
+                                android:layout_weight="1"
+                                android:src="@drawable/sumon" />
+                        </LinearLayout>
+
+                    </android.support.v7.widget.CardView>
+
+                </LinearLayout>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_marginTop="10dp"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:text="Meagan O'Flanagan"
+                        android:textSize="17sp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp" />
+                    <android.support.v7.widget.CardView
+                        app:cardElevation="2dp"
+                        android:background="@color/white"
+                        android:layout_margin="10dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="190dp">
+
+                        <LinearLayout
+                            android:orientation="horizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+                            <ImageView
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:scaleType="fitXY"
+                                android:layout_weight="1"
+                                android:src="@drawable/meagan" />
+                            <LinearLayout
+                                android:orientation="vertical"
+                                android:layout_weight="1"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent">
+                                <TextView
+                                    android:layout_margin="8dp"
+                                    android:text="Marketing Director"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content" />
+                                <RelativeLayout
+                                    android:id="@+id/megan_phone"
+                                    android:layout_margin="8dp"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content">
+
+                                    <ImageView
+                                        android:layout_centerVertical="true"
+                                        android:id="@+id/team_phone_icon2"
+                                        android:layout_width="25dp"
+                                        android:layout_height="30dp"
+                                        android:scaleType="centerInside"
+                                        android:src="@drawable/phone_icon" />
+
+                                    <TextView
+                                        android:layout_centerVertical="true"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginStart="10dp"
+                                        android:layout_marginLeft="10dp"
+                                        android:layout_toEndOf="@+id/team_phone_icon2"
+                                        android:layout_toRightOf="@+id/team_phone_icon2"
+                                        android:gravity="center"
+                                        android:text="000000000000" />
+                                </RelativeLayout>
+                                <RelativeLayout
+                                    android:id="@+id/megan_email"
+                                    android:layout_margin="8dp"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content">
+
+                                    <ImageView
+                                        android:layout_centerVertical="true"
+                                        android:id="@+id/mail_icon2"
+                                        android:layout_width="25dp"
+                                        android:layout_height="30dp"
+                                        android:scaleType="centerInside"
+                                        android:src="@drawable/mail_icon" />
+
+                                    <TextView
+                                        android:layout_centerVertical="true"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginStart="10dp"
+                                        android:layout_marginLeft="10dp"
+                                        android:layout_toEndOf="@+id/mail_icon2"
+                                        android:layout_toRightOf="@+id/mail_icon2"
+                                        android:gravity="center"
+                                        android:text="maegan@cansoft.com" />
+                                </RelativeLayout>
+                                <RelativeLayout
+
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content">
+                                    <RelativeLayout
+                                        android:id="@+id/twitter_layout2"
+                                        android:layout_margin="6dp"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content">
+
+                                        <ImageView
+                                            android:layout_centerVertical="true"
+                                            android:id="@+id/twitter_icon2"
+                                            android:layout_width="25dp"
+                                            android:layout_height="30dp"
+                                            android:scaleType="centerInside"
+                                            android:src="@drawable/twitter_icon" />
+
+                                        <TextView
+                                            android:layout_centerVertical="true"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginStart="5dp"
+                                            android:layout_marginLeft="5dp"
+                                            android:layout_toEndOf="@+id/twitter_icon2"
+                                            android:layout_toRightOf="@+id/twitter_icon2"
+                                            android:gravity="center"
+                                            android:text="twitter" />
+                                    </RelativeLayout>
+                                    <RelativeLayout
+                                        android:id="@+id/megan_facebook"
+                                        android:layout_toEndOf="@+id/twitter_layout2"
+                                        android:layout_toRightOf="@+id/twitter_layout2"
+                                        android:layout_margin="6dp"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content">
+
+                                        <ImageView
+                                            android:layout_centerVertical="true"
+                                            android:id="@+id/facebook_icon2"
+                                            android:layout_width="25dp"
+                                            android:layout_height="30dp"
+                                            android:scaleType="centerInside"
+                                            android:src="@drawable/facebook_icon" />
+
+                                        <TextView
+                                            android:layout_centerVertical="true"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginStart="5dp"
+                                            android:layout_marginLeft="5dp"
+                                            android:layout_toEndOf="@+id/facebook_icon2"
+                                            android:layout_toRightOf="@+id/facebook_icon2"
+                                            android:gravity="center"
+                                            android:text="facebook" />
+                                    </RelativeLayout>
+                                </RelativeLayout>
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                    </android.support.v7.widget.CardView>
+
+                </LinearLayout>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_marginTop="10dp"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:text="John Kessler"
+                        android:textSize="17sp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp" />
+                    <android.support.v7.widget.CardView
+                        app:cardElevation="2dp"
+                        android:background="@color/white"
+                        android:layout_margin="10dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="190dp">
+
+                        <LinearLayout
+                            android:orientation="horizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <LinearLayout
+                                android:orientation="vertical"
+                                android:layout_weight="1"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent">
+                                <TextView
+                                    android:layout_margin="8dp"
+                                    android:text="Marketing Director"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content" />
+                                <RelativeLayout
+                                    android:id="@+id/john_phone"
+                                    android:layout_margin="8dp"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content">
+
+                                    <ImageView
+                                        android:layout_centerVertical="true"
+                                        android:id="@+id/team_phone_icon3"
+                                        android:layout_width="25dp"
+                                        android:layout_height="30dp"
+                                        android:scaleType="centerInside"
+                                        android:src="@drawable/phone_icon" />
+
+                                    <TextView
+                                        android:layout_centerVertical="true"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginStart="10dp"
+                                        android:layout_marginLeft="10dp"
+                                        android:layout_toEndOf="@+id/team_phone_icon3"
+                                        android:layout_toRightOf="@+id/team_phone_icon3"
+                                        android:gravity="center"
+                                        android:text="000000000000" />
+                                </RelativeLayout>
+                                <RelativeLayout
+                                    android:id="@+id/john_email"
+                                    android:layout_margin="8dp"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content">
+
+                                    <ImageView
+                                        android:layout_centerVertical="true"
+                                        android:id="@+id/mail_icon3"
+                                        android:layout_width="25dp"
+                                        android:layout_height="30dp"
+                                        android:scaleType="centerInside"
+                                        android:src="@drawable/mail_icon" />
+
+                                    <TextView
+                                        android:layout_centerVertical="true"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginStart="10dp"
+                                        android:layout_marginLeft="10dp"
+                                        android:layout_toEndOf="@+id/mail_icon3"
+                                        android:layout_toRightOf="@+id/mail_icon3"
+                                        android:gravity="center"
+                                        android:text="maegan@cansoft.com" />
+                                </RelativeLayout>
+                                <RelativeLayout
+
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content">
+                                    <RelativeLayout
+                                        android:id="@+id/twitter_layout3"
+                                        android:layout_margin="6dp"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content">
+
+                                        <ImageView
+                                            android:layout_centerVertical="true"
+                                            android:id="@+id/twitter_icon3"
+                                            android:layout_width="25dp"
+                                            android:layout_height="30dp"
+                                            android:scaleType="centerInside"
+                                            android:src="@drawable/twitter_icon" />
+
+                                        <TextView
+                                            android:layout_centerVertical="true"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginStart="5dp"
+                                            android:layout_marginLeft="5dp"
+                                            android:layout_toEndOf="@+id/twitter_icon3"
+                                            android:layout_toRightOf="@+id/twitter_icon3"
+                                            android:gravity="center"
+                                            android:text="twitter" />
+                                    </RelativeLayout>
+                                    <RelativeLayout
+                                        android:id="@+id/john_facebook"
+                                        android:layout_toEndOf="@+id/twitter_layout3"
+                                        android:layout_toRightOf="@+id/twitter_layout3"
+                                        android:layout_margin="6dp"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content">
+
+                                        <ImageView
+                                            android:layout_centerVertical="true"
+                                            android:id="@+id/facebook_icon3"
+                                            android:layout_width="25dp"
+                                            android:layout_height="30dp"
+                                            android:scaleType="centerInside"
+                                            android:src="@drawable/facebook_icon" />
+
+                                        <TextView
+                                            android:layout_centerVertical="true"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginStart="5dp"
+                                            android:layout_marginLeft="5dp"
+                                            android:layout_toEndOf="@+id/facebook_icon3"
+                                            android:layout_toRightOf="@+id/facebook_icon3"
+                                            android:gravity="center"
+                                            android:text="facebook" />
+                                    </RelativeLayout>
+                                </RelativeLayout>
+
+                            </LinearLayout>
+                            <ImageView
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:scaleType="fitXY"
+                                android:layout_weight="1"
+                                android:src="@drawable/john" />
+
+                        </LinearLayout>
+
+                    </android.support.v7.widget.CardView>
+
+                </LinearLayout>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_marginTop="10dp"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:text="Chloe Chen"
+                        android:textSize="17sp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp" />
+                    <android.support.v7.widget.CardView
+                        app:cardElevation="2dp"
+                        android:background="@color/white"
+                        android:layout_margin="10dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="190dp">
+
+                        <LinearLayout
+                            android:orientation="horizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+                            <ImageView
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:scaleType="fitXY"
+                                android:layout_weight="1"
+                                android:src="@drawable/chloe" />
+                            <LinearLayout
+                                android:orientation="vertical"
+                                android:layout_weight="1"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent">
+                                <TextView
+                                    android:layout_margin="8dp"
+                                    android:text=" marketing &amp; communications coordinator"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content" />
+                                <RelativeLayout
+                                    android:id="@+id/chloe_phone"
+                                    android:layout_margin="8dp"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content">
+
+                                    <ImageView
+                                        android:layout_centerVertical="true"
+                                        android:id="@+id/team_phone_icon4"
+                                        android:layout_width="25dp"
+                                        android:layout_height="30dp"
+                                        android:scaleType="centerInside"
+                                        android:src="@drawable/phone_icon" />
+
+                                    <TextView
+                                        android:layout_centerVertical="true"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginStart="10dp"
+                                        android:layout_marginLeft="10dp"
+                                        android:layout_toEndOf="@+id/team_phone_icon4"
+                                        android:layout_toRightOf="@+id/team_phone_icon4"
+                                        android:gravity="center"
+                                        android:text="000000000000" />
+                                </RelativeLayout>
+                                <RelativeLayout
+                                    android:id="@+id/chloe_email"
+                                    android:layout_margin="8dp"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content">
+
+                                    <ImageView
+                                        android:layout_centerVertical="true"
+                                        android:id="@+id/mail_icon4"
+                                        android:layout_width="25dp"
+                                        android:layout_height="30dp"
+                                        android:scaleType="centerInside"
+                                        android:src="@drawable/mail_icon" />
+
+                                    <TextView
+                                        android:layout_centerVertical="true"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginStart="10dp"
+                                        android:layout_marginLeft="10dp"
+                                        android:layout_toEndOf="@+id/mail_icon4"
+                                        android:layout_toRightOf="@+id/mail_icon4"
+                                        android:gravity="center"
+                                        android:text="support@cansoft.com" />
+                                </RelativeLayout>
+                                <RelativeLayout
+
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content">
+                                    <RelativeLayout
+                                        android:id="@+id/twitter_layout4"
+                                        android:layout_margin="6dp"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content">
+
+                                        <ImageView
+                                            android:layout_centerVertical="true"
+                                            android:id="@+id/twitter_icon4"
+                                            android:layout_width="25dp"
+                                            android:layout_height="30dp"
+                                            android:scaleType="centerInside"
+                                            android:src="@drawable/twitter_icon" />
+
+                                        <TextView
+                                            android:layout_centerVertical="true"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginStart="5dp"
+                                            android:layout_marginLeft="5dp"
+                                            android:layout_toEndOf="@+id/twitter_icon4"
+                                            android:layout_toRightOf="@+id/twitter_icon4"
+                                            android:gravity="center"
+                                            android:text="twitter" />
+                                    </RelativeLayout>
+                                    <RelativeLayout
+                                        android:id="@+id/chloe_facebook"
+                                        android:layout_toEndOf="@+id/twitter_layout4"
+                                        android:layout_toRightOf="@+id/twitter_layout4"
+                                        android:layout_margin="6dp"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content">
+
+                                        <ImageView
+                                            android:layout_centerVertical="true"
+                                            android:id="@+id/facebook_icon4"
+                                            android:layout_width="25dp"
+                                            android:layout_height="30dp"
+                                            android:scaleType="centerInside"
+                                            android:src="@drawable/facebook_icon" />
+
+                                        <TextView
+                                            android:layout_centerVertical="true"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginStart="5dp"
+                                            android:layout_marginLeft="5dp"
+                                            android:layout_toEndOf="@+id/facebook_icon4"
+                                            android:layout_toRightOf="@+id/facebook_icon4"
+                                            android:gravity="center"
+                                            android:text="facebook" />
+                                    </RelativeLayout>
+                                </RelativeLayout>
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                    </android.support.v7.widget.CardView>
+
+                </LinearLayout>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_marginTop="10dp"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:text="Kimberly Milani"
+                        android:textSize="17sp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp" />
+                    <android.support.v7.widget.CardView
+                        app:cardElevation="2dp"
+                        android:background="@color/white"
+                        android:layout_margin="10dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="190dp">
+
+                        <LinearLayout
+                            android:orientation="horizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <LinearLayout
+                                android:orientation="vertical"
+                                android:layout_weight="1"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent">
+                                <TextView
+                                    android:layout_margin="8dp"
+                                    android:text=" Marketing Coordinator"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content" />
+                                <RelativeLayout
+                                    android:id="@+id/milani_phone"
+                                    android:layout_margin="8dp"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content">
+
+                                    <ImageView
+                                        android:layout_centerVertical="true"
+                                        android:id="@+id/team_phone_icon5"
+                                        android:layout_width="25dp"
+                                        android:layout_height="30dp"
+                                        android:scaleType="centerInside"
+                                        android:src="@drawable/phone_icon" />
+
+                                    <TextView
+                                        android:layout_centerVertical="true"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginStart="10dp"
+                                        android:layout_marginLeft="10dp"
+                                        android:layout_toEndOf="@+id/team_phone_icon5"
+                                        android:layout_toRightOf="@+id/team_phone_icon5"
+                                        android:gravity="center"
+                                        android:text="000000000000" />
+                                </RelativeLayout>
+                                <RelativeLayout
+                                    android:id="@+id/milani_email"
+                                    android:layout_margin="8dp"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content">
+
+                                    <ImageView
+                                        android:layout_centerVertical="true"
+                                        android:id="@+id/mail_icon5"
+                                        android:layout_width="25dp"
+                                        android:layout_height="30dp"
+                                        android:scaleType="centerInside"
+                                        android:src="@drawable/mail_icon" />
+
+                                    <TextView
+                                        android:layout_centerVertical="true"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginStart="10dp"
+                                        android:layout_marginLeft="10dp"
+                                        android:layout_toEndOf="@+id/mail_icon5"
+                                        android:layout_toRightOf="@+id/mail_icon5"
+                                        android:gravity="center"
+                                        android:text="kimberly@cansoft.com" />
+                                </RelativeLayout>
+                                <RelativeLayout
+
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content">
+                                    <RelativeLayout
+                                        android:id="@+id/twitter_layout5"
+                                        android:layout_margin="6dp"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content">
+
+                                        <ImageView
+                                            android:layout_centerVertical="true"
+                                            android:id="@+id/twitter_icon5"
+                                            android:layout_width="25dp"
+                                            android:layout_height="30dp"
+                                            android:scaleType="centerInside"
+                                            android:src="@drawable/twitter_icon" />
+
+                                        <TextView
+                                            android:layout_centerVertical="true"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginStart="5dp"
+                                            android:layout_marginLeft="5dp"
+                                            android:layout_toEndOf="@+id/twitter_icon5"
+                                            android:layout_toRightOf="@+id/twitter_icon5"
+                                            android:gravity="center"
+                                            android:text="twitter" />
+                                    </RelativeLayout>
+                                    <RelativeLayout
+                                        android:id="@+id/milani_facebook"
+                                        android:layout_toEndOf="@+id/twitter_layout5"
+                                        android:layout_toRightOf="@+id/twitter_layout5"
+                                        android:layout_margin="6dp"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content">
+
+                                        <ImageView
+                                            android:layout_centerVertical="true"
+                                            android:id="@+id/facebook_icon5"
+                                            android:layout_width="25dp"
+                                            android:layout_height="30dp"
+                                            android:scaleType="centerInside"
+                                            android:src="@drawable/facebook_icon" />
+
+                                        <TextView
+                                            android:layout_centerVertical="true"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginStart="5dp"
+                                            android:layout_marginLeft="5dp"
+                                            android:layout_toEndOf="@+id/facebook_icon5"
+                                            android:layout_toRightOf="@+id/facebook_icon5"
+                                            android:gravity="center"
+                                            android:text="facebook" />
+                                    </RelativeLayout>
+                                </RelativeLayout>
+
+                            </LinearLayout>
+                            <ImageView
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:scaleType="fitXY"
+                                android:layout_weight="1"
+                                android:src="@drawable/milani" />
+
+                        </LinearLayout>
+
+                    </android.support.v7.widget.CardView>
+
+                </LinearLayout>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_marginTop="10dp"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:text="Mustafa Kamal Hossain"
+                        android:textSize="17sp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp" />
+                    <android.support.v7.widget.CardView
+                        app:cardElevation="2dp"
+                        android:background="@color/white"
+                        android:layout_margin="10dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="190dp">
+
+                        <LinearLayout
+                            android:orientation="horizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+                            <ImageView
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:scaleType="fitXY"
+                                android:layout_weight="1"
+                                android:src="@drawable/sabbir" />
+                            <LinearLayout
+                                android:orientation="vertical"
+                                android:layout_weight="1"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent">
+                                <TextView
+                                    android:layout_margin="8dp"
+                                    android:text="Programmer"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content" />
+                                <RelativeLayout
+                                    android:id="@+id/sabbir_phone"
+                                    android:layout_margin="8dp"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content">
+
+                                    <ImageView
+                                        android:layout_centerVertical="true"
+                                        android:id="@+id/team_phone_icon6"
+                                        android:layout_width="25dp"
+                                        android:layout_height="30dp"
+                                        android:scaleType="centerInside"
+                                        android:src="@drawable/phone_icon" />
+
+                                    <TextView
+                                        android:layout_centerVertical="true"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginStart="10dp"
+                                        android:layout_marginLeft="10dp"
+                                        android:layout_toEndOf="@+id/team_phone_icon6"
+                                        android:layout_toRightOf="@+id/team_phone_icon6"
+                                        android:gravity="center"
+                                        android:text="000000000000" />
+                                </RelativeLayout>
+                                <RelativeLayout
+                                    android:id="@+id/sabbir_email"
+                                    android:layout_margin="8dp"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content">
+
+                                    <ImageView
+                                        android:layout_centerVertical="true"
+                                        android:id="@+id/mail_icon6"
+                                        android:layout_width="25dp"
+                                        android:layout_height="30dp"
+                                        android:scaleType="centerInside"
+                                        android:src="@drawable/mail_icon" />
+
+                                    <TextView
+                                        android:layout_centerVertical="true"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginStart="10dp"
+                                        android:layout_marginLeft="10dp"
+                                        android:layout_toEndOf="@+id/mail_icon6"
+                                        android:layout_toRightOf="@+id/mail_icon6"
+                                        android:gravity="center"
+                                        android:text="mustafa@cansoft.com" />
+                                </RelativeLayout>
+                                <RelativeLayout
+
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content">
+                                    <RelativeLayout
+                                        android:id="@+id/twitter_layout6"
+                                        android:layout_margin="6dp"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content">
+
+                                        <ImageView
+                                            android:layout_centerVertical="true"
+                                            android:id="@+id/twitter_icon6"
+                                            android:layout_width="25dp"
+                                            android:layout_height="30dp"
+                                            android:scaleType="centerInside"
+                                            android:src="@drawable/twitter_icon" />
+
+                                        <TextView
+                                            android:layout_centerVertical="true"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginStart="5dp"
+                                            android:layout_marginLeft="5dp"
+                                            android:layout_toEndOf="@+id/twitter_icon6"
+                                            android:layout_toRightOf="@+id/twitter_icon6"
+                                            android:gravity="center"
+                                            android:text="twitter" />
+                                    </RelativeLayout>
+                                    <RelativeLayout
+                                        android:id="@+id/sabbir_facebook"
+                                        android:layout_toEndOf="@+id/twitter_layout6"
+                                        android:layout_toRightOf="@+id/twitter_layout6"
+                                        android:layout_margin="6dp"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content">
+
+                                        <ImageView
+                                            android:layout_centerVertical="true"
+                                            android:id="@+id/facebook_icon6"
+                                            android:layout_width="25dp"
+                                            android:layout_height="30dp"
+                                            android:scaleType="centerInside"
+                                            android:src="@drawable/facebook_icon" />
+
+                                        <TextView
+                                            android:layout_centerVertical="true"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginStart="5dp"
+                                            android:layout_marginLeft="5dp"
+                                            android:layout_toEndOf="@+id/facebook_icon6"
+                                            android:layout_toRightOf="@+id/facebook_icon6"
+                                            android:gravity="center"
+                                            android:text="facebook" />
+                                    </RelativeLayout>
+                                </RelativeLayout>
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                    </android.support.v7.widget.CardView>
+
+                </LinearLayout>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_marginTop="10dp"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:text="TUSHAR AHMED"
+                        android:textSize="17sp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp" />
+                    <android.support.v7.widget.CardView
+                        app:cardElevation="2dp"
+                        android:background="@color/white"
+                        android:layout_margin="10dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="190dp">
+
+                        <LinearLayout
+                            android:orientation="horizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <LinearLayout
+                                android:orientation="vertical"
+                                android:layout_weight="1"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent">
+                                <TextView
+                                    android:layout_margin="8dp"
+                                    android:text="Junior Programmer"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content" />
+                                <RelativeLayout
+                                    android:id="@+id/tushar_phone"
+                                    android:layout_margin="8dp"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content">
+
+                                    <ImageView
+                                        android:layout_centerVertical="true"
+                                        android:id="@+id/team_phone_icon7"
+                                        android:layout_width="25dp"
+                                        android:layout_height="30dp"
+                                        android:scaleType="centerInside"
+                                        android:src="@drawable/phone_icon" />
+
+                                    <TextView
+                                        android:layout_centerVertical="true"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginStart="10dp"
+                                        android:layout_marginLeft="10dp"
+                                        android:layout_toEndOf="@+id/team_phone_icon7"
+                                        android:layout_toRightOf="@+id/team_phone_icon7"
+                                        android:gravity="center"
+                                        android:text="000000000000" />
+                                </RelativeLayout>
+                                <RelativeLayout
+                                    android:id="@+id/tushar_email"
+                                    android:layout_margin="8dp"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content">
+
+                                    <ImageView
+                                        android:layout_centerVertical="true"
+                                        android:id="@+id/mail_icon7"
+                                        android:layout_width="25dp"
+                                        android:layout_height="30dp"
+                                        android:scaleType="centerInside"
+                                        android:src="@drawable/mail_icon" />
+
+                                    <TextView
+                                        android:layout_centerVertical="true"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginStart="10dp"
+                                        android:layout_marginLeft="10dp"
+                                        android:layout_toEndOf="@+id/mail_icon7"
+                                        android:layout_toRightOf="@+id/mail_icon7"
+                                        android:gravity="center"
+                                        android:text="tushar@cansoft.com" />
+                                </RelativeLayout>
+                                <RelativeLayout
+
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content">
+                                    <RelativeLayout
+                                        android:id="@+id/twitter_layout7"
+                                        android:layout_margin="6dp"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content">
+
+                                        <ImageView
+                                            android:layout_centerVertical="true"
+                                            android:id="@+id/twitter_icon7"
+                                            android:layout_width="25dp"
+                                            android:layout_height="30dp"
+                                            android:scaleType="centerInside"
+                                            android:src="@drawable/twitter_icon" />
+
+                                        <TextView
+                                            android:layout_centerVertical="true"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginStart="5dp"
+                                            android:layout_marginLeft="5dp"
+                                            android:layout_toEndOf="@+id/twitter_icon7"
+                                            android:layout_toRightOf="@+id/twitter_icon7"
+                                            android:gravity="center"
+                                            android:text="twitter" />
+                                    </RelativeLayout>
+                                    <RelativeLayout
+                                        android:id="@+id/tushar_facebook"
+                                        android:layout_toEndOf="@+id/twitter_layout7"
+                                        android:layout_toRightOf="@+id/twitter_layout7"
+                                        android:layout_margin="6dp"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content">
+
+                                        <ImageView
+                                            android:layout_centerVertical="true"
+                                            android:id="@+id/facebook_icon7"
+                                            android:layout_width="25dp"
+                                            android:layout_height="30dp"
+                                            android:scaleType="centerInside"
+                                            android:src="@drawable/facebook_icon" />
+
+                                        <TextView
+                                            android:layout_centerVertical="true"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginStart="5dp"
+                                            android:layout_marginLeft="5dp"
+                                            android:layout_toEndOf="@+id/facebook_icon7"
+                                            android:layout_toRightOf="@+id/facebook_icon7"
+                                            android:gravity="center"
+                                            android:text="facebook" />
+                                    </RelativeLayout>
+                                </RelativeLayout>
+
+                            </LinearLayout>
+                            <ImageView
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:scaleType="fitXY"
+                                android:layout_weight="1"
+                                android:src="@drawable/tushar" />
+
+                        </LinearLayout>
+
+                    </android.support.v7.widget.CardView>
+
+                </LinearLayout>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_marginTop="10dp"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:text="Shahriar Hossain"
+                        android:textSize="17sp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp" />
+                    <android.support.v7.widget.CardView
+                        app:cardElevation="2dp"
+                        android:background="@color/white"
+                        android:layout_margin="10dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="190dp">
+
+                        <LinearLayout
+                            android:orientation="horizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+                            <ImageView
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:scaleType="fitXY"
+                                android:layout_weight="1"
+                                android:src="@drawable/shahriar" />
+                            <LinearLayout
+                                android:orientation="vertical"
+                                android:layout_weight="1"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent">
+                                <TextView
+                                    android:layout_margin="8dp"
+                                    android:text="Junior Programmer"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content" />
+                                <RelativeLayout
+                                    android:id="@+id/shishir_phone"
+                                    android:layout_margin="8dp"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content">
+
+                                    <ImageView
+                                        android:layout_centerVertical="true"
+                                        android:id="@+id/team_phone_icon8"
+                                        android:layout_width="25dp"
+                                        android:layout_height="30dp"
+                                        android:scaleType="centerInside"
+                                        android:src="@drawable/phone_icon" />
+
+                                    <TextView
+                                        android:layout_centerVertical="true"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginStart="10dp"
+                                        android:layout_marginLeft="10dp"
+                                        android:layout_toEndOf="@+id/team_phone_icon8"
+                                        android:layout_toRightOf="@+id/team_phone_icon8"
+                                        android:gravity="center"
+                                        android:text="000000000000" />
+                                </RelativeLayout>
+                                <RelativeLayout
+                                    android:id="@+id/shishir_email"
+                                    android:layout_margin="8dp"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content">
+
+                                    <ImageView
+                                        android:layout_centerVertical="true"
+                                        android:id="@+id/mail_icon8"
+                                        android:layout_width="25dp"
+                                        android:layout_height="30dp"
+                                        android:scaleType="centerInside"
+                                        android:src="@drawable/mail_icon" />
+
+                                    <TextView
+                                        android:layout_centerVertical="true"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginStart="10dp"
+                                        android:layout_marginLeft="10dp"
+                                        android:layout_toEndOf="@+id/mail_icon8"
+                                        android:layout_toRightOf="@+id/mail_icon8"
+                                        android:gravity="center"
+                                        android:text="shahriar@cansoft.com" />
+                                </RelativeLayout>
+                                <RelativeLayout
+
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content">
+                                    <RelativeLayout
+                                        android:id="@+id/twitter_layout8"
+                                        android:layout_margin="6dp"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content">
+
+                                        <ImageView
+                                            android:layout_centerVertical="true"
+                                            android:id="@+id/twitter_icon8"
+                                            android:layout_width="25dp"
+                                            android:layout_height="30dp"
+                                            android:scaleType="centerInside"
+                                            android:src="@drawable/twitter_icon" />
+
+                                        <TextView
+                                            android:layout_centerVertical="true"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginStart="5dp"
+                                            android:layout_marginLeft="5dp"
+                                            android:layout_toEndOf="@+id/twitter_icon8"
+                                            android:layout_toRightOf="@+id/twitter_icon8"
+                                            android:gravity="center"
+                                            android:text="twitter" />
+                                    </RelativeLayout>
+                                    <RelativeLayout
+                                        android:id="@+id/shishir_facebook"
+                                        android:layout_toEndOf="@+id/twitter_layout8"
+                                        android:layout_toRightOf="@+id/twitter_layout8"
+                                        android:layout_margin="6dp"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content">
+
+                                        <ImageView
+                                            android:layout_centerVertical="true"
+                                            android:id="@+id/facebook_icon8"
+                                            android:layout_width="25dp"
+                                            android:layout_height="30dp"
+                                            android:scaleType="centerInside"
+                                            android:src="@drawable/facebook_icon" />
+
+                                        <TextView
+                                            android:layout_centerVertical="true"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginStart="5dp"
+                                            android:layout_marginLeft="5dp"
+                                            android:layout_toEndOf="@+id/facebook_icon8"
+                                            android:layout_toRightOf="@+id/facebook_icon8"
+                                            android:gravity="center"
+                                            android:text="facebook" />
+                                    </RelativeLayout>
+                                </RelativeLayout>
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                    </android.support.v7.widget.CardView>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+
+    </ScrollView>-->
+
+</FrameLayout>

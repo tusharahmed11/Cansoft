@@ -1,0 +1,411 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragments.CostFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <android.support.v7.widget.CardView
+                    android:layout_margin="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    >
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <LinearLayout
+                            android:id="@+id/seo_cost_layout"
+                            android:padding="2dp"
+                            android:orientation="horizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="35dp"
+                            android:background="@drawable/border_bottom"
+                            >
+                            <TextView
+                                android:padding="2dp"
+                                android:text="SEO"
+                                android:gravity="center"
+                                android:layout_gravity="start"
+                                android:layout_height="match_parent"
+                                android:layout_width="wrap_content"/>
+                            <View
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"/>
+
+                            <CheckBox
+                                android:id="@+id/check_seo"
+                                android:text="200 $"
+                                android:padding="2dp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="right|end"
+                                android:foregroundGravity="right"
+                                android:gravity="center" />
+
+                        </LinearLayout>
+                        <LinearLayout
+                            android:padding="2dp"
+                            android:orientation="horizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="35dp"
+                            android:background="@drawable/border_bottom"
+                            >
+                            <TextView
+                                android:padding="2dp"
+                                android:text="WEB DESIGN"
+                                android:gravity="center"
+                                android:layout_gravity="start"
+                                android:layout_height="match_parent"
+                                android:layout_width="wrap_content"/>
+                            <View
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"/>
+
+                            <CheckBox
+                                android:id="@+id/check_web"
+                                android:text="500 $"
+                                android:padding="2dp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="right|end"
+                                android:foregroundGravity="right"
+                                android:gravity="center" />
+
+                        </LinearLayout>
+                        <LinearLayout
+                            android:padding="2dp"
+                            android:orientation="horizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="35dp"
+                            android:background="@drawable/border_bottom"
+                            >
+                            <TextView
+                                android:padding="2dp"
+                                android:text="WEB DESIGN"
+                                android:gravity="center"
+                                android:layout_gravity="start"
+                                android:layout_height="match_parent"
+                                android:layout_width="wrap_content"/>
+                            <View
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"/>
+
+                            <CheckBox
+                                android:id="@+id/checkbox4"
+                                android:text="200 $"
+                                android:padding="2dp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="right|end"
+                                android:foregroundGravity="right"
+                                android:gravity="center" />
+
+                        </LinearLayout>
+                        <LinearLayout
+                            android:padding="2dp"
+                            android:orientation="horizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="35dp"
+                            android:background="@drawable/border_bottom"
+                            >
+                            <TextView
+                                android:padding="2dp"
+                                android:text="WEB DESIGN"
+                                android:gravity="center"
+                                android:layout_gravity="start"
+                                android:layout_height="match_parent"
+                                android:layout_width="wrap_content"/>
+                            <View
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"/>
+
+                            <CheckBox
+                                android:id="@+id/checkbox5"
+                                android:text="200 $"
+                                android:padding="2dp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="right|end"
+                                android:foregroundGravity="right"
+                                android:gravity="center" />
+
+                        </LinearLayout>
+                        <LinearLayout
+                            android:padding="2dp"
+                            android:orientation="horizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="35dp"
+                            android:background="@drawable/border_bottom"
+                            >
+                            <TextView
+                                android:padding="2dp"
+                                android:text="WEB DESIGN"
+                                android:gravity="center"
+                                android:layout_gravity="start"
+                                android:layout_height="match_parent"
+                                android:layout_width="wrap_content"/>
+                            <View
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"/>
+
+                            <CheckBox
+                                android:id="@+id/checkbox6"
+                                android:text="200 $"
+                                android:padding="2dp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="right|end"
+                                android:foregroundGravity="right"
+                                android:gravity="center" />
+
+                        </LinearLayout>
+                        <LinearLayout
+                            android:padding="2dp"
+                            android:orientation="horizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="35dp"
+                            android:background="@drawable/border_bottom"
+                            >
+                            <TextView
+                                android:padding="2dp"
+                                android:text="WEB DESIGN"
+                                android:gravity="center"
+                                android:layout_gravity="start"
+                                android:layout_height="match_parent"
+                                android:layout_width="wrap_content"/>
+                            <View
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"/>
+
+                            <CheckBox
+                                android:id="@+id/checkbox2"
+                                android:text="200 $"
+                                android:padding="2dp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="right|end"
+                                android:foregroundGravity="right"
+                                android:gravity="center" />
+
+                        </LinearLayout>
+
+
+                    </LinearLayout>
+
+                </android.support.v7.widget.CardView>
+             <!--   <android.support.v7.widget.CardView
+                    android:layout_margin="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    >
+                    <LinearLayout
+                        android:padding="2dp"
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        >
+                        <TextView
+                            android:padding="2dp"
+                            android:text="SEO"
+                            android:gravity="center"
+                            android:layout_gravity="start"
+                            android:layout_height="match_parent"
+                            android:layout_width="wrap_content"/>
+                        <View
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"/>
+
+                        <CheckBox
+                            android:id="@+id/checkbox2"
+                            android:text="300 $"
+                            android:padding="2dp"
+
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="right|end"
+                            android:foregroundGravity="right"
+                            android:gravity="center" />
+
+                    </LinearLayout>
+                </android.support.v7.widget.CardView>
+                <android.support.v7.widget.CardView
+                    android:layout_margin="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    >
+                    <LinearLayout
+                        android:padding="2dp"
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        >
+                        <TextView
+                            android:padding="2dp"
+                            android:text="BRANDING"
+                            android:gravity="center"
+                            android:layout_gravity="start"
+                            android:layout_height="match_parent"
+                            android:layout_width="wrap_content"/>
+                        <View
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"/>
+
+                        <CheckBox
+                            android:id="@+id/checkbox3"
+                            android:text="400 $"
+                            android:padding="2dp"
+
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="right|end"
+                            android:foregroundGravity="right"
+                            android:gravity="center" />
+
+                    </LinearLayout>
+                </android.support.v7.widget.CardView>
+                <android.support.v7.widget.CardView
+                    android:layout_margin="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    >
+                    <LinearLayout
+                        android:padding="2dp"
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        >
+                        <TextView
+                            android:padding="2dp"
+                            android:text="SEM"
+                            android:gravity="center"
+                            android:layout_gravity="start"
+                            android:layout_height="match_parent"
+                            android:layout_width="wrap_content"/>
+                        <View
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"/>
+
+                        <CheckBox
+                            android:id="@+id/checkbox4"
+                            android:text="500 $"
+                            android:padding="2dp"
+
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="right|end"
+                            android:foregroundGravity="right"
+                            android:gravity="center" />
+
+                    </LinearLayout>
+                </android.support.v7.widget.CardView>
+                <android.support.v7.widget.CardView
+                    android:layout_margin="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    >
+                    <LinearLayout
+                        android:padding="2dp"
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        >
+                        <TextView
+                            android:padding="2dp"
+                            android:text="ORM"
+                            android:gravity="center"
+                            android:layout_gravity="start"
+                            android:layout_height="match_parent"
+                            android:layout_width="wrap_content"/>
+                        <View
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"/>
+
+                        <CheckBox
+                            android:id="@+id/checkbox5"
+                            android:text="800 $"
+                            android:padding="2dp"
+
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="right|end"
+                            android:foregroundGravity="right"
+                            android:gravity="center" />
+
+                    </LinearLayout>
+                </android.support.v7.widget.CardView>-->
+
+            </LinearLayout>
+
+
+
+        </ScrollView>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:textColor="@color/white"
+                android:background="@drawable/shadow"
+                android:id="@+id/cost_contact_btn"
+                android:layout_width="120dp"
+                android:layout_height="60dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginStart="16dp"
+                android:elevation="6dp"
+                android:text="CONTACT US"
+                tools:targetApi="lollipop" />
+
+            <Button
+                android:textColor="@color/white"
+                android:background="@drawable/shadow"
+                android:id="@+id/cost_btn"
+                android:layout_alignParentTop="true"
+                android:layout_width="120dp"
+                android:layout_height="60dp"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginRight="16dp"
+                android:elevation="6dp"
+                android:text="0 $"
+                tools:targetApi="lollipop" />
+        </RelativeLayout>
+
+
+
+    </LinearLayout>
+
+
+</FrameLayout>

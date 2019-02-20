@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/news_layout"
+    android:layout_margin="7dp"
+    android:layout_width="match_parent"
+    app:cardElevation="2dp"
+    android:layout_height="wrap_content">
+    
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/all_news_image"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/emptyimage" />
+
+        <TextView
+            android:id="@+id/all_news_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/border_bottom"
+            android:padding="20dp"
+            android:fontFamily="@font/nexa_regular"
+            android:text="Best Home Renovation Company Does Kitchen and Bathroom in Burnaby, BC"
+            android:textColor="@color/grey_700"
+            android:textSize="22sp"
+            tools:ignore="UnusedAttribute" />
+        <LinearLayout
+            android:padding="20dp"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:fontFamily="@font/nexa_regular"
+                android:id="@+id/all_news_date"
+                android:text="June 2, 2017"
+                android:textSize="18sp"
+                android:textColor="@color/grey_500"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:ignore="UnusedAttribute" />
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
+            <TextView
+                android:fontFamily="@font/nexa_regular"
+                android:id="@+id/all_news_more"
+                android:text="Read More"
+                android:textColor="@color/grey_500"
+                android:textSize="18sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:ignore="UnusedAttribute" />
+        </LinearLayout>
+    </LinearLayout>
+
+</android.support.v7.widget.CardView>

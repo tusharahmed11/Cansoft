@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+    android:title="Home"
+    android:id="@+id/action_home"
+    android:icon="@drawable/ic_home"
+    />
+    <item
+        android:title="Services"
+        android:id="@+id/action_service"
+        android:icon="@drawable/ic_service"
+        />
+    <item
+        android:title="Team"
+        android:id="@+id/action_team"
+        android:icon="@drawable/ic_team"
+        />
+    <item
+        android:title="@string/cost_estimation"
+        android:id="@+id/action_cost"
+        android:icon="@drawable/ic_cost"
+        />
+    <item
+        android:title="Contact"
+        android:id="@+id/action_contact"
+        android:icon="@drawable/ic_contact"
+        />
+
+</menu>

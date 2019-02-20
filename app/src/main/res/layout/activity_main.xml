@@ -1,0 +1,402 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F3F3F3"
+    tools:context=".activity.MainActivity">
+   <!-- <include
+        layout="@layout/app_bar"
+        android:id="@+id/app_bar"
+        />-->
+    <android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+        android:gravity="center"
+        android:id="@+id/app_bar"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        app:theme = "@style/CustomToolbarStyle"
+        android:contentInsetStart="0dp"
+        android:contentInsetLeft="0dp"
+        app:contentInsetLeft="0dp"
+        app:contentInsetRight="0dp"
+        app:contentInsetStart="0dp"
+        app:contentInsetEnd="0dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+            <ImageView
+                android:foregroundGravity="center"
+                android:id="@+id/app_bar_logo"
+                android:layout_width="150dp"
+                android:layout_height="26dp"
+                android:layout_centerInParent="true"
+                android:layout_gravity="center"
+                android:scaleType="fitXY"
+                android:src="@drawable/cansoft_white" />
+            <!--<TextView
+                android:foregroundGravity="center"
+                android:visibility="gone"
+                android:id="@+id/app_bar_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="title"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                android:textStyle="bold" />-->
+
+
+    </android.support.v7.widget.Toolbar>
+
+    <FrameLayout
+        android:id="@+id/frame"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/navigation_view"
+        android:layout_below="@+id/app_bar"
+        android:layout_marginTop="-2dp"
+        android:layout_marginBottom="2dp" />
+<!--    <android.support.v4.view.ViewPager
+        android:id="@+id/viewpager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/navigation_view"
+        android:layout_alignParentTop="true"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior" />-->
+  <!--  <View
+        android:id="@+id/back_drop"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/overlay_dark_30"
+        android:clickable="true"
+        android:fitsSystemWindows="true" />-->
+
+
+    <com.cansoft.cansoft.cansoft.widget.Fab
+        android:id="@+id/fab"
+        android:layout_above="@+id/navigation_view"
+        style="@style/Widget.MaterialSheetFab.Fab"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true" />
+
+    <!-- Overlay that dims the screen -->
+    <com.gordonwong.materialsheetfab.DimOverlayFrameLayout
+
+        android:id="@+id/overlay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <!-- Circular reveal container for the sheet -->
+    <io.codetail.widget.RevealLinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/navigation_view"
+        android:layout_marginBottom="0dp"
+        android:gravity="end|bottom"
+        android:orientation="vertical">
+
+        <!-- Sheet that contains your items -->
+        <android.support.v7.widget.CardView
+            android:id="@+id/fab_sheet"
+            style="@style/Widget.MaterialSheetFab.Sheet">
+
+            <!-- Sheet items -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <!-- Recording -->
+
+                <!-- Assessment -->
+                <!--<TextView
+                    android:id="@+id/fab_sheet_item_reminder"
+                    style="@style/TextAppearance.MaterialSheetFab.Sheet.Item"
+                    android:drawableLeft="@drawable/spider_web"
+                    android:drawableStart="@drawable/spider_web"
+                    android:drawableTint="@color/grey_900"
+                    android:text="Free Seo Audit"
+                    tools:targetApi="m" />-->
+
+                <LinearLayout
+                    android:foreground="?android:attr/selectableItemBackgroundBorderless"
+
+                    android:id="@+id/fab_assessment_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    tools:targetApi="lollipop"
+                    tools:ignore="UnusedAttribute">
+
+                    <com.cansoft.cansoft.cansoft.widget.IconTextView
+                        android:id="@+id/fab_star_icon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginLeft="15dp"
+                        android:text="@string/icon_star"
+                        android:textColor="@color/grey_900"
+                        android:textSize="28sp" />
+
+                    <TextView
+                        android:id="@+id/fab_sheet_item_reminder"
+                        style="@style/TextAppearance.MaterialSheetFab.Sheet.Item"
+                        android:text="Free Assessment" />
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/fab_seo_layout"
+                    android:foreground="?android:attr/selectableItemBackgroundBorderless"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    tools:targetApi="m"
+                    tools:ignore="UnusedAttribute">
+
+                    <com.cansoft.cansoft.cansoft.widget.IconTextView
+                        android:id="@+id/fab_seo_icon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginLeft="15dp"
+                        android:text="@string/icon_spider"
+                        android:textColor="@color/grey_900"
+                        android:textSize="28sp" />
+
+                    <TextView
+                        android:id="@+id/fab_sheet_item_photo"
+                        style="@style/TextAppearance.MaterialSheetFab.Sheet.Item"
+                        android:text="Free Seo Audit" />
+                </LinearLayout>
+
+                <!-- Contact -->
+                <LinearLayout
+                    android:id="@+id/fab_sheet_item_note"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?android:attr/selectableItemBackgroundBorderless"
+                    android:orientation="horizontal"
+                    tools:targetApi="m">
+                    <!-- <ImageButton
+                        android:layout_width="35dp"
+                        android:layout_height="30dp"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginLeft="15dp"
+                        android:background="@color/white"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/ic_contact"
+                        android:tint="@color/grey_900"
+                        android:tintMode="src_in"
+                        tools:targetApi="lollipop" />-->
+                    <com.cansoft.cansoft.cansoft.widget.IconTextView
+                        android:id="@+id/fab_contact_icon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginLeft="15dp"
+                        android:text="@string/icon_email"
+                        android:textColor="@color/grey_900"
+                        android:textSize="28sp" />
+
+                    <TextView
+                        style="@style/TextAppearance.MaterialSheetFab.Sheet.Item"
+                        android:text="Contact Us" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </android.support.v7.widget.CardView>
+
+    </io.codetail.widget.RevealLinearLayout>
+
+
+  <!--  <LinearLayout
+        android:layout_above="@+id/navigation_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:gravity="end|right"
+        android:orientation="vertical"
+        android:layout_alignParentEnd="true">
+        <LinearLayout
+            android:id="@+id/lyt_assessment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical|end|right"
+                android:layout_margin="@dimen/spacing_middle"
+                app:cardBackgroundColor="@color/colorPrimary"
+                app:cardCornerRadius="3dp"
+                app:cardElevation="2dp"
+                app:contentPadding="@dimen/spacing_medium">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:textColor="@color/white"
+                    android:gravity="center"
+                    android:text="Free Assessment"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
+
+            </android.support.v7.widget.CardView>
+
+            <android.support.design.widget.FloatingActionButton
+                android:id="@+id/fab_assessment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/spacing_smlarge"
+                android:layout_marginTop="@dimen/spacing_middle"
+                android:layout_marginRight="@dimen/spacing_smlarge"
+                android:layout_marginBottom="@dimen/spacing_middle"
+                android:clickable="true"
+                android:tint="@color/white"
+                app:backgroundTint="@color/colorPrimary"
+                app:fabSize="mini"
+                app:rippleColor="@android:color/black"
+                app:srcCompat="@drawable/star_of_life"
+                tools:ignore="VectorDrawableCompat" />
+
+            <View
+                android:layout_width="@dimen/spacing_xmedium"
+                android:layout_height="0dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/lyt_seo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical|end|right"
+                android:layout_margin="@dimen/spacing_middle"
+                app:cardBackgroundColor="@color/colorPrimary"
+                app:cardCornerRadius="3dp"
+                app:cardElevation="2dp"
+                app:contentPadding="@dimen/spacing_medium">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:textColor="@color/white"
+                    android:gravity="center"
+                    android:text="Free Seo Audit"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
+
+            </android.support.v7.widget.CardView>
+
+            <android.support.design.widget.FloatingActionButton
+                android:id="@+id/fab_seo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/spacing_smlarge"
+                android:layout_marginTop="@dimen/spacing_middle"
+                android:layout_marginRight="@dimen/spacing_smlarge"
+                android:layout_marginBottom="@dimen/spacing_middle"
+                android:clickable="true"
+                android:tint="@color/white"
+                app:backgroundTint="@color/colorPrimary"
+                app:fabSize="mini"
+                app:rippleColor="@android:color/black"
+                app:srcCompat="@drawable/spider_web"
+                tools:ignore="VectorDrawableCompat" />
+
+            <View
+                android:layout_width="@dimen/spacing_xmedium"
+                android:layout_height="0dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/lyt_call"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical|end|right"
+                android:layout_margin="@dimen/spacing_middle"
+                app:cardBackgroundColor="@color/colorPrimary"
+                app:cardCornerRadius="3dp"
+                app:cardElevation="2dp"
+                app:contentPadding="@dimen/spacing_medium">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:textColor="@color/white"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:text="Contact Us"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
+
+            </android.support.v7.widget.CardView>
+
+            <android.support.design.widget.FloatingActionButton
+                android:id="@+id/fab_call"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/spacing_middle"
+                android:layout_marginLeft="@dimen/spacing_smlarge"
+                android:layout_marginRight="@dimen/spacing_smlarge"
+                android:layout_marginTop="@dimen/spacing_middle"
+                android:clickable="true"
+                android:tint="@color/white"
+                app:backgroundTint="@color/colorPrimary"
+                app:fabSize="mini"
+                app:rippleColor="@android:color/black"
+                app:srcCompat="@drawable/envelope_open"
+                tools:ignore="VectorDrawableCompat" />
+
+            <View
+                android:layout_width="@dimen/spacing_xmedium"
+                android:layout_height="0dp" />
+
+        </LinearLayout>
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/fab_add"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/spacing_middle"
+            android:layout_marginLeft="@dimen/spacing_smlarge"
+            android:layout_marginRight="@dimen/spacing_smlarge"
+            android:layout_marginTop="@dimen/spacing_middle"
+            android:clickable="true"
+            android:tint="@android:color/white"
+            app:backgroundTint="@color/colorPrimary"
+            app:fabSize="normal"
+            app:rippleColor="@android:color/white"
+            app:srcCompat="@drawable/paper_plane" />
+
+    </LinearLayout>-->
+
+    <android.support.design.widget.BottomNavigationView
+        android:background="@color/white"
+        android:id="@+id/navigation_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        app:itemIconTint="@drawable/nav_item_background"
+        app:itemTextColor="@drawable/nav_item_background"
+        app:labelVisibilityMode="labeled"
+        app:menu="@menu/navigation_menu"/>
+</RelativeLayout>
