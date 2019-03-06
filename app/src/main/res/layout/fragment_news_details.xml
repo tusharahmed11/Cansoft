@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".fragments.NewsDetailsFragment">
+    tools:context="com.cansoft.app.fragments.NewsDetailsFragment">
     <!--<ProgressBar
         android:id="@+id/details_loadmore_progress"
         android:indeterminate="true"

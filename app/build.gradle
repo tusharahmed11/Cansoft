@@ -3,7 +3,7 @@ apply plugin: 'com.android.application'
 android {
     compileSdkVersion 28
     defaultConfig {
-        applicationId "com.cansoft.cansoft.cansoft"
+        applicationId "com.cansoft.app"
         minSdkVersion 23
         targetSdkVersion 28
         versionCode 1
@@ -50,7 +50,9 @@ dependencies {
     annotationProcessor 'com.github.bumptech.glide:compiler:4.8.0'
     implementation 'com.gordonwong:material-sheet-fab:1.2.1'
     implementation 'com.github.dimitrovskif:SmartCache:0.2'
-    implementation 'com.google.firebase:firebase-core:16.0.7'
+
+
+    implementation 'com.google.firebase:firebase-core:16.0.1'
     implementation 'com.google.firebase:firebase-messaging:17.3.4'
     implementation 'com.github.matthiasrobbers:shortbread:1.0.2'
     annotationProcessor 'com.github.matthiasrobbers:shortbread-compiler:1.0.2'

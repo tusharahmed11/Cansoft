@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="#F3F3F3"
-    tools:context=".fragments.ContactFragment">
+    tools:context="com.cansoft.app.fragments.ContactFragment">
 
     <!-- TODO: Update blank fragment layout for shadow dialog_holo_dark_frame -->
 
@@ -117,7 +117,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
                     android:orientation="horizontal">
-                    <com.cansoft.cansoft.cansoft.widget.IconTextView
+                    <com.cansoft.app.widget.IconTextView
 
                         android:layout_width="30dp"
                         android:layout_height="30dp"
@@ -151,7 +151,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
                     android:orientation="horizontal">
-                    <com.cansoft.cansoft.cansoft.widget.IconTextView
+                    <com.cansoft.app.widget.IconTextView
                         android:layout_width="30dp"
                         android:layout_height="30dp"
                         android:scaleType="fitXY"
@@ -184,7 +184,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
                     android:orientation="horizontal">
-                    <com.cansoft.cansoft.cansoft.widget.IconTextView
+                    <com.cansoft.app.widget.IconTextView
                         android:layout_width="30dp"
                         android:layout_height="30dp"
                         android:scaleType="fitXY"
@@ -215,7 +215,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="200dp"
                     android:orientation="horizontal">
-                    <com.cansoft.cansoft.cansoft.widget.IconTextView
+                    <com.cansoft.app.widget.IconTextView
                         android:layout_width="30dp"
                         android:layout_height="30dp"
                         android:scaleType="fitXY"

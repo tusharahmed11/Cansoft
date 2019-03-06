@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#F3F3F3"
-    tools:context=".activity.MainActivity">
+    tools:context="com.cansoft.app.activity.MainActivity">
    <!-- <include
         layout="@layout/app_bar"
         android:id="@+id/app_bar"
@@ -28,7 +28,7 @@
                 android:foregroundGravity="center"
                 android:id="@+id/app_bar_logo"
                 android:layout_width="150dp"
-                android:layout_height="26dp"
+                android:layout_height="24dp"
                 android:layout_centerInParent="true"
                 android:layout_gravity="center"
                 android:scaleType="fitXY"
@@ -74,7 +74,7 @@
         android:fitsSystemWindows="true" />-->
 
 
-    <com.cansoft.cansoft.cansoft.widget.Fab
+    <com.cansoft.app.widget.Fab
         android:id="@+id/fab"
         android:layout_above="@+id/navigation_view"
         style="@style/Widget.MaterialSheetFab.Fab"
@@ -129,7 +129,7 @@
                     tools:targetApi="lollipop"
                     tools:ignore="UnusedAttribute">
 
-                    <com.cansoft.cansoft.cansoft.widget.IconTextView
+                    <com.cansoft.app.widget.IconTextView
                         android:id="@+id/fab_star_icon"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -154,7 +154,7 @@
                     tools:targetApi="m"
                     tools:ignore="UnusedAttribute">
 
-                    <com.cansoft.cansoft.cansoft.widget.IconTextView
+                    <com.cansoft.app.widget.IconTextView
                         android:id="@+id/fab_seo_icon"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -193,7 +193,7 @@
                         android:tint="@color/grey_900"
                         android:tintMode="src_in"
                         tools:targetApi="lollipop" />-->
-                    <com.cansoft.cansoft.cansoft.widget.IconTextView
+                    <com.cansoft.app.widget.IconTextView
                         android:id="@+id/fab_contact_icon"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"

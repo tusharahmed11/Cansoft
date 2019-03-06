@@ -1,35 +1,35 @@
 {
   "project_info": {
-    "project_number": "370448734006",
-    "firebase_url": "https://cansoft-5d252.firebaseio.com",
-    "project_id": "cansoft-5d252",
-    "storage_bucket": "cansoft-5d252.appspot.com"
+    "project_number": "800583644256",
+    "firebase_url": "https://cansoft-fa615.firebaseio.com",
+    "project_id": "cansoft-fa615",
+    "storage_bucket": "cansoft-fa615.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:370448734006:android:767d577de60ce95d",
+        "mobilesdk_app_id": "1:800583644256:android:25883c3a2d2f9e49",
         "android_client_info": {
-          "package_name": "com.cansoft.cansoft.cansoft"
+          "package_name": "com.cansoft.app"
         }
       },
       "oauth_client": [
         {
-          "client_id": "370448734006-j9lgs3n1kk6rsmgb1mov80p9c9d61ffp.apps.googleusercontent.com",
+          "client_id": "800583644256-vf8liedhn1ne5iafhimd3n58tlant159.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.cansoft.cansoft.cansoft",
+            "package_name": "com.cansoft.app",
             "certificate_hash": "7a7c5548992433e701e5b9595ea8d222b0e3f426"
           }
         },
         {
-          "client_id": "370448734006-jj3q0fr7qc9r7oj710ego4njs7thn8e4.apps.googleusercontent.com",
+          "client_id": "800583644256-p5dkujb8ksfvijrnois1563lggi9edrs.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyC2gtzQFatFtxBVbmVINDCD4X-JBTdPDlA"
+          "current_key": "AIzaSyAD6VLfqOIEz-rMZ7LvtYOz6VlSPlm3NwI"
         }
       ],
       "services": {
@@ -40,7 +40,51 @@
           "status": 2,
           "other_platform_oauth_client": [
             {
-              "client_id": "370448734006-jj3q0fr7qc9r7oj710ego4njs7thn8e4.apps.googleusercontent.com",
+              "client_id": "800583644256-p5dkujb8ksfvijrnois1563lggi9edrs.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:800583644256:android:3b67f08fb3b61169",
+        "android_client_info": {
+          "package_name": "com.cansoft.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "800583644256-j90jr1net1nebshg8met2sdnkavoood9.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.cansoft.app",
+            "certificate_hash": "7a7c5548992433e701e5b9595ea8d222b0e3f426"
+          }
+        },
+        {
+          "client_id": "800583644256-p5dkujb8ksfvijrnois1563lggi9edrs.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAD6VLfqOIEz-rMZ7LvtYOz6VlSPlm3NwI"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "800583644256-p5dkujb8ksfvijrnois1563lggi9edrs.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

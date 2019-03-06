@@ -7,7 +7,7 @@
     android:layout_marginTop="16dp"
     android:layout_marginLeft="16dp"
     android:layout_marginRight="16dp"
-    tools:context=".fragments.HomeFragment">
+    tools:context="com.cansoft.app.fragments.HomeFragment">
 
    <android.support.v4.widget.NestedScrollView
        android:layout_width="match_parent"

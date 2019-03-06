@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragments.SeoFragment">
+    tools:context="com.cansoft.app.fragments.SeoFragment">
 
     <LinearLayout
         android:orientation="vertical"
@@ -29,7 +29,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="60dp"
                         android:orientation="horizontal">
-                        <com.cansoft.cansoft.cansoft.widget.IconTextView
+                        <com.cansoft.app.widget.IconTextView
                             android:layout_width="30dp"
                             android:layout_height="30dp"
                             android:scaleType="fitXY"
@@ -62,7 +62,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="60dp"
                         android:orientation="horizontal">
-                        <com.cansoft.cansoft.cansoft.widget.IconTextView
+                        <com.cansoft.app.widget.IconTextView
                             android:layout_width="30dp"
                             android:layout_height="30dp"
                             android:scaleType="fitXY"
@@ -114,7 +114,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="60dp"
                         android:orientation="horizontal">
-                        <com.cansoft.cansoft.cansoft.widget.IconTextView
+                        <com.cansoft.app.widget.IconTextView
                             android:layout_width="30dp"
                             android:layout_height="30dp"
                             android:scaleType="fitXY"
@@ -172,7 +172,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="60dp"
                         android:orientation="horizontal">
-                        <com.cansoft.cansoft.cansoft.widget.IconTextView
+                        <com.cansoft.app.widget.IconTextView
                             android:layout_width="30dp"
                             android:layout_height="30dp"
                             android:scaleType="fitXY"
@@ -208,7 +208,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="60dp"
                         android:orientation="horizontal">
-                        <com.cansoft.cansoft.cansoft.widget.IconTextView
+                        <com.cansoft.app.widget.IconTextView
                             android:layout_width="30dp"
                             android:layout_height="30dp"
                             android:scaleType="fitXY"
@@ -243,7 +243,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="60dp"
                         android:orientation="horizontal">
-                        <com.cansoft.cansoft.cansoft.widget.IconTextView
+                        <com.cansoft.app.widget.IconTextView
                             android:layout_width="30dp"
                             android:layout_height="30dp"
                             android:scaleType="fitXY"
@@ -278,7 +278,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="60dp"
                         android:orientation="horizontal">
-                        <com.cansoft.cansoft.cansoft.widget.IconTextView
+                        <com.cansoft.app.widget.IconTextView
                             android:layout_width="30dp"
                             android:layout_height="30dp"
                             android:scaleType="fitXY"
@@ -312,7 +312,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="60dp"
                         android:orientation="horizontal">
-                        <com.cansoft.cansoft.cansoft.widget.IconTextView
+                        <com.cansoft.app.widget.IconTextView
                             android:layout_width="30dp"
                             android:layout_height="30dp"
                             android:scaleType="fitXY"
