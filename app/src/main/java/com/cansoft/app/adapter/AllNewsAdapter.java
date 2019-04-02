@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.cansoft.app.R;
@@ -60,6 +61,8 @@ public class AllNewsAdapter extends RecyclerView.Adapter<AllNewsAdapter.MyViewHo
         TextView title;
         TextView date;
         TextView more;
+        private LinearLayout newsLayout;
+
 
 
         public MyViewHolder(@NonNull View itemView) {
@@ -68,6 +71,7 @@ public class AllNewsAdapter extends RecyclerView.Adapter<AllNewsAdapter.MyViewHo
             title = (TextView) itemView.findViewById(R.id.all_news_title);
             date = (TextView) itemView.findViewById(R.id.all_news_date);
             more = (TextView) itemView.findViewById(R.id.all_news_more);
+            newsLayout = (LinearLayout) itemView.findViewById(R.id.all_news_layout);
 
 /*
             ButterKnife.bind(this.itemView);

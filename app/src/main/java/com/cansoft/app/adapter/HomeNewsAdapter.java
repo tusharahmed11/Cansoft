@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.cansoft.app.R;
@@ -46,7 +47,7 @@ public class HomeNewsAdapter extends RecyclerView.Adapter<HomeNewsAdapter.MyView
 
         }
         holder.postTitle.setText(posts.get(position).getTitle().getRendered());
-        holder.postTitle.setOnClickListener(new View.OnClickListener() {
+        holder.newsLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 NewsDetailsFragment detailsFragment = new NewsDetailsFragment();
@@ -65,6 +66,7 @@ public class HomeNewsAdapter extends RecyclerView.Adapter<HomeNewsAdapter.MyView
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
+        private LinearLayout newsLayout;
         private ImageView postImage;
         private TextView postTitle;
 
@@ -72,6 +74,7 @@ public class HomeNewsAdapter extends RecyclerView.Adapter<HomeNewsAdapter.MyView
             super(itemView);
             postImage = (ImageView) itemView.findViewById(R.id.home_news_image);
             postTitle = (TextView) itemView.findViewById(R.id.home_news_title);
+            newsLayout = (LinearLayout) itemView.findViewById(R.id.home_news_layout);
         }
     }
 }

@@ -1,6 +1,9 @@
 package com.cansoft.app.adapter;
 
 import android.content.Context;
+import android.os.Bundle;
+import android.support.v4.app.FragmentManager;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -13,6 +16,7 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.cansoft.app.R;
+import com.cansoft.app.fragments.ServicePageFragment;
 
 import java.util.ArrayList;
 
@@ -23,6 +27,7 @@ import java.util.ArrayList;
 public class StaggeredRecyclerViewAdapter extends RecyclerView.Adapter<StaggeredRecyclerViewAdapter.ViewHolder> {
 
     private static final String TAG = "StaggeredRecyclerViewAd";
+    private static final String BACK_STACK_ROOT_TAG = "root_fragment";
 
     private ArrayList<String> mNames = new ArrayList<>();
     private ArrayList<String> mImageUrls = new ArrayList<>();
@@ -57,8 +62,15 @@ public class StaggeredRecyclerViewAdapter extends RecyclerView.Adapter<Staggered
         holder.image.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Log.d(TAG, "onClick: clicked on: " + mNames.get(position));
-                Toast.makeText(mContext, mNames.get(position), Toast.LENGTH_SHORT).show();
+
+                ServicePageFragment detailsFragment = new ServicePageFragment();
+                Bundle bundle = new Bundle();
+                bundle.putString("header",mNames.get(position));
+                detailsFragment.setArguments(bundle);
+                AppCompatActivity activity =(AppCompatActivity) view.getContext();
+                FragmentManager fragmentManager = activity.getSupportFragmentManager();
+                fragmentManager.popBackStack(BACK_STACK_ROOT_TAG, FragmentManager.POP_BACK_STACK_INCLUSIVE);
+                fragmentManager.beginTransaction().replace(R.id.frame,detailsFragment,"detail").addToBackStack("detail").commit();
             }
         });
 

@@ -19,8 +19,16 @@ import android.widget.ProgressBar;
 import com.cansoft.app.activity.MainActivity;
 import com.cansoft.app.R;
 import com.cansoft.app.adapter.StaggeredRecyclerViewAdapter;
+import com.cansoft.app.model.Service;
+import com.cansoft.app.model.ServiceD;
+import com.cansoft.app.network.RestClient2;
 
 import java.util.ArrayList;
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -91,6 +99,18 @@ public class ServiceFragment extends Fragment {
 
             }
         }.start();*/
+
+        RestClient2.getInstance().callRetrofit(view.getContext()).getService().enqueue(new Callback<ServiceD>() {
+            @Override
+            public void onResponse(Call<ServiceD> call, Response<ServiceD> response) {
+                List<Service> services = response.body().getData();
+            }
+
+            @Override
+            public void onFailure(Call<ServiceD> call, Throwable t) {
+
+            }
+        });
 
         makeTransperantStatusBar(false);
         Toolbar toolbar = (Toolbar)getActivity().findViewById(R.id.app_bar);

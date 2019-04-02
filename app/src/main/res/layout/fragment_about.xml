@@ -7,18 +7,25 @@
     tools:context="com.cansoft.app.fragments.AboutFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-        <TextView
-            android:layout_margin="16dp"
-            android:fontFamily="@font/nexa_regular"
-            android:textSize="16sp"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="@string/about_us"
-            tools:ignore="UnusedAttribute" />
-    </LinearLayout>
+            android:layout_height="match_parent">
+            <TextView
+                android:id="@+id/about_details"
+                android:lineSpacingExtra="6dp"
+                android:layout_margin="16dp"
+                android:fontFamily="@font/nexa_regular"
+                android:textSize="16sp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="@string/about_us"
+                tools:ignore="UnusedAttribute" />
+        </LinearLayout>
+    </ScrollView>
+
 
 
 </FrameLayout>

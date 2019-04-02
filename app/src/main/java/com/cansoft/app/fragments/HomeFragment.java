@@ -33,10 +33,13 @@ import com.cansoft.app.R;
 import com.cansoft.app.activity.MainActivity;
 import com.cansoft.app.adapter.ClientListAdapter;
 import com.cansoft.app.adapter.HomeNewsAdapter;
+import com.cansoft.app.model.About;
+import com.cansoft.app.model.AboutD;
 import com.cansoft.app.model.Client;
 import com.cansoft.app.model.Post;
 import com.cansoft.app.model.Video;
 import com.cansoft.app.network.RestClient;
+import com.cansoft.app.network.RestClient2;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -52,7 +55,6 @@ import retrofit2.Response;
  * A simple {@link Fragment} subclass.
  */
 public class HomeFragment extends Fragment {
-
 
     private static final String TAG = "";
     private static final String API_KEY = "AIzaSyBzXkD1FD42ZqOwi_BMhhgN27j2WNYt9X4";
@@ -89,7 +91,6 @@ public class HomeFragment extends Fragment {
 
         progressBar = (ProgressBar) view.findViewById(R.id.home_loadmore_progress);
         progressBar.setVisibility(View.VISIBLE);
-
         showBackButtonStatus(false);
 
         youtubeBtn=(ImageButton) view.findViewById(R.id.youtubeBtn);
@@ -150,7 +151,21 @@ public class HomeFragment extends Fragment {
             }
         });
 
+        RestClient2.getInstance().callRetrofit(view.getContext()).getAbout().enqueue(new Callback<AboutD>() {
+            @Override
+            public void onResponse(Call<AboutD> call, Response<AboutD> response) {
+                List<About> about = response.body().getData();
+                aboutUsView.setText(about.get(0).getExcerpt());
+            }
+
+            @Override
+            public void onFailure(Call<AboutD> call, Throwable t) {
+
+            }
+        });
+
         aboutUsView.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View v) {
                 AboutFragment aboutFragment = new AboutFragment();
@@ -253,13 +268,16 @@ public class HomeFragment extends Fragment {
             @Override
             public void onResponse(Call<List<Post>> call, Response<List<Post>> response) {
                 Log.d(TAG, "onResponse: " + response.body());
+                if (response.body() == null){
+                    showAlertDialog(view);
+                }else{
                 List<Post> posts = response.body();
                 adapter = new HomeNewsAdapter(view.getContext(),posts);
                 manager = new LinearLayoutManager(view.getContext(),LinearLayoutManager.HORIZONTAL,false);
                 recentRecycler.setLayoutManager(manager);
                 recentRecycler.setItemAnimator(new DefaultItemAnimator());
                 recentRecycler.setAdapter(adapter);
-                progressBar.setVisibility(View.GONE);
+                progressBar.setVisibility(View.GONE);}
 
             }
 
@@ -272,12 +290,15 @@ public class HomeFragment extends Fragment {
         RestClient.getInstance().callRetrofit(view.getContext()).getClients().enqueue(new Callback<List<Client>>() {
             @Override
             public void onResponse(Call<List<Client>> call, Response<List<Client>> response) {
+                if (response.body() == null){
+                    showAlertDialog(view);
+                }else{
                 List<Client> clients = response.body();
                 clientListAdapter = new ClientListAdapter(view.getContext(),clients);
                 clientManager = new LinearLayoutManager(view.getContext(),LinearLayoutManager.HORIZONTAL,false);
                 clientsRecycler.setLayoutManager(clientManager);
                 clientsRecycler.setItemAnimator(new DefaultItemAnimator());
-                clientsRecycler.setAdapter(clientListAdapter);
+                clientsRecycler.setAdapter(clientListAdapter);}
             }
 
             @Override
@@ -363,11 +384,7 @@ public class HomeFragment extends Fragment {
         builder.setPositiveButton("BACK", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                FragmentManager fm = getFragmentManager();
-                FragmentTransaction ft = fm.beginTransaction();
-                HomeFragment homeFragment = new HomeFragment();
-                ft.replace(R.id.frame, homeFragment).addToBackStack(null);
-                ft.commit();
+                getActivity().finish();
             }
         });
 

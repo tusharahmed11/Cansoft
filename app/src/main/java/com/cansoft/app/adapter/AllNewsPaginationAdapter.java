@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.cansoft.app.R;
@@ -92,6 +93,17 @@ public class AllNewsPaginationAdapter extends RecyclerView.Adapter<RecyclerView.
                         activity.getSupportFragmentManager().beginTransaction().replace(R.id.frame,detailsFragment,"").addToBackStack(null).commit();
                     }
                 });
+                myVH.newsLayout.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        NewsDetailsFragment detailsFragment = new NewsDetailsFragment();
+                        Bundle bundle = new Bundle();
+                        bundle.putInt("id", result.getId());
+                        detailsFragment.setArguments(bundle);
+                        AppCompatActivity activity =(AppCompatActivity) v.getContext();
+                        activity.getSupportFragmentManager().beginTransaction().replace(R.id.frame,detailsFragment,"").addToBackStack(null).commit();
+                    }
+                });
                 break;
 
             case LOADING:
@@ -158,6 +170,7 @@ public class AllNewsPaginationAdapter extends RecyclerView.Adapter<RecyclerView.
         TextView title;
         TextView date;
         TextView more;
+        private LinearLayout newsLayout;
 
         public MyViewHolder(View itemView) {
             super(itemView);
@@ -165,6 +178,7 @@ public class AllNewsPaginationAdapter extends RecyclerView.Adapter<RecyclerView.
             title = (TextView) itemView.findViewById(R.id.all_news_title);
             date = (TextView) itemView.findViewById(R.id.all_news_date);
             more = (TextView) itemView.findViewById(R.id.all_news_more);
+            newsLayout = (LinearLayout) itemView.findViewById(R.id.all_news_layout);
         }
     }
 

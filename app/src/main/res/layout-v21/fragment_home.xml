@@ -64,8 +64,7 @@
                    android:id="@+id/home_about_view"
                    android:layout_margin="7dp"
                    android:padding="10dp"
-                   android:text="The best IT company for website design, digital (PPC, online) marketing (SEO, SMM, SEM), branding, advertising and software development in Regina, Saskatchewan, Canada"
-                   android:layout_below="@+id/about_title"
+                   android:lineSpacingExtra="6dp"
                    android:background="@drawable/rounded_shape"
                    android:elevation="2dp"
                    android:fontFamily="@font/nexa_regular"
@@ -93,7 +92,7 @@
                android:layout_width="match_parent"
                app:cardElevation="2dp"
                app:cardCornerRadius="0dp"
-               android:layout_height="180dp">
+               android:layout_height="220dp">
                <RelativeLayout
                    android:id="@+id/testimonial_layout"
                    android:layout_width="match_parent"

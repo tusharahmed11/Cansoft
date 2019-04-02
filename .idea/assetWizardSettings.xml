@@ -73,7 +73,8 @@
                                           <PersistentState>
                                             <option name="values">
                                               <map>
-                                                <entry key="color" value="000000" />
+                                                <entry key="color" value="656565" />
+                                                <entry key="scalingPercent" value="44" />
                                               </map>
                                             </option>
                                           </PersistentState>
@@ -84,7 +85,7 @@
                                           <PersistentState>
                                             <option name="values">
                                               <map>
-                                                <entry key="url" value="jar:file:/C:/Program%20Files/Android/Android%20Studio/plugins/android/lib/android.jar!/images/material_design_icons/image/ic_image_black_24dp.xml" />
+                                                <entry key="url" value="jar:file:/C:/Program%20Files/Android/Android%20Studio/plugins/android/lib/android.jar!/images/material_design_icons/communication/ic_mail_outline_black_24dp.xml" />
                                               </map>
                                             </option>
                                           </PersistentState>
@@ -96,7 +97,7 @@
                                             <option name="values">
                                               <map>
                                                 <entry key="color" value="000000" />
-                                                <entry key="scalingPercent" value="53" />
+                                                <entry key="scalingPercent" value="55" />
                                               </map>
                                             </option>
                                           </PersistentState>
@@ -107,8 +108,11 @@
                                   <option name="values">
                                     <map>
                                       <entry key="backgroundAssetType" value="COLOR" />
-                                      <entry key="backgroundColor" value="f8423f" />
-                                      <entry key="foregroundImage" value="C:\Users\CansoftPC2\Downloads\logo.png" />
+                                      <entry key="backgroundColor" value="f3f3f3" />
+                                      <entry key="backgroundLayerName" value="ic_shortcutsp_background" />
+                                      <entry key="foregroundImage" value="C:\Users\CansoftPC2\Desktop\android\spider1.png" />
+                                      <entry key="foregroundLayerName" value="ic_shortcutsp_foreground" />
+                                      <entry key="outputName" value="ic_ln_spider" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -191,8 +195,12 @@
                         </option>
                         <option name="values">
                           <map>
-                            <entry key="outputName" value="ic_chevron_left" />
-                            <entry key="sourceFile" value="C:\Users\CansoftPC2\Downloads\Compressed\fontawesome-pro-5.5.0-desktop\fontawesome-pro-5.5.0-desktop\svgs\light\ticket-alt.svg" />
+                            <entry key="assetSourceType" value="FILE" />
+                            <entry key="height" value="512" />
+                            <entry key="outputName" value="ic_shortcut_star" />
+                            <entry key="overrideSize" value="true" />
+                            <entry key="sourceFile" value="C:\Users\CansoftPC2\Downloads\Compressed\fontawesome-pro-5.5.0-desktop\fontawesome-pro-5.5.0-desktop\svgs\light\star-of-life.svg" />
+                            <entry key="width" value="480" />
                           </map>
                         </option>
                       </PersistentState>

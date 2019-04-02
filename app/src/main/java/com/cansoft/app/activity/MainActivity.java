@@ -1,9 +1,16 @@
 package com.cansoft.app.activity;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.Dialog;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Rect;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Build;
 import android.support.annotation.NonNull;
@@ -22,6 +29,7 @@ import android.view.ViewTreeObserver;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import com.cansoft.app.adapter.ViewPagerAdapter;
 import com.cansoft.app.R;
@@ -33,6 +41,9 @@ import com.cansoft.app.fragments.SeoFragment;
 import com.cansoft.app.fragments.ServiceFragment;
 import com.cansoft.app.fragments.TeamFragment;
 import com.cansoft.app.widget.Fab;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.messaging.FirebaseMessaging;
 import com.gordonwong.materialsheetfab.MaterialSheetFab;
 import com.gordonwong.materialsheetfab.MaterialSheetFabEventListener;
 
@@ -126,6 +137,7 @@ public class MainActivity extends AppCompatActivity  {
 
 
         setupFab();
+        notificationSetup();
 
         ImageView titleImage = (ImageView) findViewById(R.id.app_bar_logo);
         titleImage.setVisibility(View.VISIBLE);
@@ -512,17 +524,17 @@ public class MainActivity extends AppCompatActivity  {
         adapter.addFragment(contactFragment);
         viewPager.setAdapter(adapter);
     }
-    @Shortcut(id = "favorite_books", icon = R.drawable.ic_contact, shortLabel = "Contact Us")
+    @Shortcut(id = "favorite_books", icon = R.mipmap.ic_ln_mail, shortLabel = "Contact Us" ,rank = 1)
     public void showFavoriteBooks() {
         ContactFragment contactFragment = new ContactFragment();
         changeFragment(contactFragment);
     }
-    @Shortcut(id = "favorite_seo", icon = R.drawable.ic_spider_web, shortLabel = "Free Seo Audit")
+    @Shortcut(id = "favorite_seo", icon = R.mipmap.ic_ln_spider, shortLabel = "Free Seo Audit",rank = 2)
     public void showFavoriteSeo() {
         SeoFragment seoFragment = new SeoFragment();
         changeFragment(seoFragment);
     }
-    @Shortcut(id = "favorite_assessment", icon = R.drawable.ic_star_of_life, shortLabel = "Free Assessment")
+    @Shortcut(id = "favorite_assessment", icon = R.mipmap.ic_ln_star, shortLabel = "Free Assessment",rank = 3)
     public void showFavoriteAssessment() {
         AssessmentFragment assessmentFragment = new AssessmentFragment();
         changeFragment(assessmentFragment);
@@ -545,6 +557,61 @@ public class MainActivity extends AppCompatActivity  {
                 activity.findViewById(R.id.navigation_view);
         bottomNavigationView.setSelectedItemId(R.id.action_home);
     }
+
+    private void notificationSetup(){
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
+            NotificationChannel channel = new NotificationChannel("999","Default", NotificationManager.IMPORTANCE_DEFAULT);
+            NotificationChannel channel1 = new NotificationChannel("111","News", NotificationManager.IMPORTANCE_DEFAULT);
+            NotificationManager manager = getSystemService(NotificationManager.class);
+            manager.createNotificationChannel(channel);
+            manager.createNotificationChannel(channel1);
+        }
+        FirebaseMessaging.getInstance().subscribeToTopic("general")
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        String msg = "Successful";
+                        if (!task.isSuccessful()) {
+                            msg = "Failed";
+                        }
+
+                        /*Toast.makeText(MainActivity.this, msg, Toast.LENGTH_SHORT).show();*/
+                    }
+                });
+    }
+
+   /* public boolean isConnected(Context context) {
+
+        ConnectivityManager cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo netinfo = cm.getActiveNetworkInfo();
+
+        if (netinfo != null && netinfo.isConnectedOrConnecting()) {
+            android.net.NetworkInfo wifi = cm.getNetworkInfo(ConnectivityManager.TYPE_WIFI);
+            android.net.NetworkInfo mobile = cm.getNetworkInfo(ConnectivityManager.TYPE_MOBILE);
+
+            if((mobile != null && mobile.isConnectedOrConnecting()) || (wifi != null && wifi.isConnectedOrConnecting())) return true;
+        else return false;
+        } else
+        return false;
+    }
+
+    public AlertDialog.Builder buildDialog(Context c) {
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(c);
+        builder.setTitle("No Internet Connection");
+        builder.setMessage("You need to have Mobile Data or wifi to access this. Press ok to Exit");
+
+        builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+                finish();
+            }
+        });
+
+        return builder;
+    }*/
 
 
 

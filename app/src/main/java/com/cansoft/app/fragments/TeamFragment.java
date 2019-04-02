@@ -14,17 +14,25 @@ import android.view.WindowManager;
 import com.cansoft.app.activity.MainActivity;
 import com.cansoft.app.R;
 import com.cansoft.app.adapter.AdapterListExpand;
+import com.cansoft.app.model.Data;
+import com.cansoft.app.model.Member;
 import com.cansoft.app.model.Social;
+import com.cansoft.app.network.RestClient;
+import com.cansoft.app.network.RestClient2;
 import com.cansoft.app.util.DataGenerator;
 
 import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public class TeamFragment extends Fragment {
     private View parent_view;
-
+    LinearLayoutManager manager;
     private RecyclerView recyclerView;
     private AdapterListExpand mAdapter;
 
@@ -46,7 +54,7 @@ public class TeamFragment extends Fragment {
 
 
         recyclerView = (RecyclerView) view.findViewById(R.id.recyclerView);
-        recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
+        /*recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
 
         recyclerView.setHasFixedSize(true);
 
@@ -54,7 +62,7 @@ public class TeamFragment extends Fragment {
 
         //set data and list adapter
         mAdapter = new AdapterListExpand(view.getContext(), items);
-        recyclerView.setAdapter(mAdapter);
+        recyclerView.setAdapter(mAdapter);*/
 
         // on item list clicked
     /*    mAdapter.setOnItemClickListener(new AdapterListExpand.OnItemClickListener() {
@@ -65,6 +73,7 @@ public class TeamFragment extends Fragment {
         });
 */
         showBackButtonStatus(false);
+        updateUI(view);
 
         return view;
     }
@@ -80,6 +89,34 @@ public class TeamFragment extends Fragment {
     private void showBackButtonStatus(Boolean status){
         ((MainActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(status);
         ((MainActivity) getActivity()).getSupportActionBar().setDisplayShowHomeEnabled(status);
+    }
+    private void updateUI(final View view){
+        RestClient2.getInstance().callRetrofit(view.getContext()).getMembers().enqueue(new Callback<Data>() {
+            @Override
+            public void onResponse(Call<Data> call, Response<Data> response) {
+                List<Member> posts = response.body().getData();
+                mAdapter = new AdapterListExpand(view.getContext(), posts);
+                manager = new LinearLayoutManager(view.getContext());
+                recyclerView.setLayoutManager(manager);
+                recyclerView.setHasFixedSize(true);
+                recyclerView.setAdapter(mAdapter);
+
+
+
+                /*adapter = new HomeNewsAdapter(view.getContext(),posts);
+                manager = new LinearLayoutManager(view.getContext(),LinearLayoutManager.HORIZONTAL,false);
+                recentRecycler.setLayoutManager(manager);
+                recentRecycler.setItemAnimator(new DefaultItemAnimator());
+                recentRecycler.setAdapter(adapter);
+                progressBar.setVisibility(View.GONE);}*/
+
+            }
+
+            @Override
+            public void onFailure(Call<Data> call, Throwable t) {
+
+            }
+        });
     }
 
 

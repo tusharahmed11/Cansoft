@@ -1,7 +1,10 @@
 package com.cansoft.app.network;
 
+import com.cansoft.app.model.AboutD;
 import com.cansoft.app.model.Client;
+import com.cansoft.app.model.Data;
 import com.cansoft.app.model.Post;
+import com.cansoft.app.model.ServiceD;
 import com.cansoft.app.model.Video;
 
 import java.util.List;
@@ -32,4 +35,12 @@ public interface ApiService {
 
     @GET("tvideo")
     SmartCall<List<Video>> getVideo();
+    @GET("items/member?fields=*,photo.data")
+    SmartCall<Data> getMembers();
+
+    @GET("items/About?fields=*")
+    SmartCall<AboutD> getAbout();
+
+    @GET("items/Service?fields=*,image.data")
+    SmartCall<ServiceD> getService();
 }

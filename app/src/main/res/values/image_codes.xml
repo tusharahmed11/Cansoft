@@ -9,12 +9,16 @@
     <string name="icon_paper">&#xf15b;</string>
     <string name="icon_website">&#xf37e;</string>
     <string name="icon_domain">&#xf269;</string>
-    <string name="icon_mind">&#xf677;</string>
+    <string name="icon_mind">&#xf618;</string>
     <string name="icon_google">&#xf201;</string>
     <string name="icon_have_domain">&#xf558;</string>
     <string name="icon_hosting">&#xf5d3;</string>
     <string name="icon_city">&#xf64f;</string>
     <string name="icon_globe">&#xf57c;</string>
     <string name="icon_search">&#xf688;</string>
+    <string name="icon_facebook">&#xf082;</string>
+    <string name="icon_twitter">&#xf081;</string>
+    <string name="icon_solid_mail">&#xf0e0;</string>
+    <string name="icon_solid_phone">&#xf098;</string>
 
 </resources>

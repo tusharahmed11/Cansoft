@@ -163,7 +163,8 @@
                         android:layout_marginLeft="15dp"
                         android:text="@string/icon_spider"
                         android:textColor="@color/grey_900"
-                        android:textSize="28sp" />
+                        android:textSize="28sp"
+                        tools:ignore="RtlHardcoded" />
 
                     <TextView
                         android:id="@+id/fab_sheet_item_photo"

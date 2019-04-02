@@ -10,30 +10,32 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.cansoft.app.R;
+import com.cansoft.app.model.Member;
 import com.cansoft.app.model.Social;
 import com.cansoft.app.util.Tools;
 import com.cansoft.app.util.ViewAnimation;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class AdapterListExpand extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
-    private List<Social> items = new ArrayList<>();
+    private List<Member> items = new ArrayList<>();
 
 
     private Context ctx;
     private OnItemClickListener mOnItemClickListener;
 
     public interface OnItemClickListener {
-        void onItemClick(View view, Social obj, int position);
+        void onItemClick(View view, Member obj, int position);
     }
 
     public void setOnItemClickListener(final OnItemClickListener mItemClickListener) {
         this.mOnItemClickListener = mItemClickListener;
     }
 
-    public AdapterListExpand(Context context, List<Social> items) {
+    public AdapterListExpand(Context context, List<Member> items) {
         this.items = items;
         ctx = context;
     }
@@ -77,13 +79,14 @@ public class AdapterListExpand extends RecyclerView.Adapter<RecyclerView.ViewHol
         if (holder instanceof OriginalViewHolder) {
             final OriginalViewHolder view = (OriginalViewHolder) holder;
 
-            final Social p = items.get(position);
-            view.name.setText(p.name);
-            view.designation.setText(p.designation);
-            view.phone.setText(p.phone);
-            view.emailAddress.setText(p.emailAddress);
-            Tools.displayImageOriginal(ctx, view.image, p.image);
-            Tools.displayImageOriginal(ctx, view.fullImage, p.fullImage);
+            final Member p = items.get(position);
+            view.name.setText(p.getName());
+            view.designation.setText(p.getDesignation());
+            view.phone.setText(p.getPhoneNumber());
+            view.emailAddress.setText(p.getEmail());
+            Picasso.get().load(p.getPhoto().getData().getFullUrl()).into(view.fullImage);
+            /*Tools.displayImageOriginal(ctx, view.image, p.getPhoto().getFullUrl());
+            Tools.displayImageOriginal(ctx, view.fullImage, p.getPhoto().getFullUrl());*/
             view.lyt_parent.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
