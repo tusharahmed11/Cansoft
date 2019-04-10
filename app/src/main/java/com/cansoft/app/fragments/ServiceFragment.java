@@ -59,13 +59,13 @@ public class ServiceFragment extends Fragment {
         serviceLayout = (LinearLayout) view.findViewById(R.id.service_section);
         progressBar.setVisibility(View.VISIBLE);
         recyclerView  = view.findViewById(R.id.serviceRecycler);
-        serviceLayout.setVisibility(View.GONE);
-
-        initImageBitmaps(view);
 
 
+        /*initImageBitmaps(view);*/
 
-       new Handler().postDelayed(new Runnable() {
+
+
+      /* new Handler().postDelayed(new Runnable() {
 
             @Override
             public void run() {
@@ -74,7 +74,7 @@ public class ServiceFragment extends Fragment {
             }
 
         }, 2000);
-
+*/
         /*  initImageBitmaps(view);*/
 
 
@@ -104,6 +104,12 @@ public class ServiceFragment extends Fragment {
             @Override
             public void onResponse(Call<ServiceD> call, Response<ServiceD> response) {
                 List<Service> services = response.body().getData();
+                StaggeredRecyclerViewAdapter staggeredRecyclerViewAdapter =
+                        new StaggeredRecyclerViewAdapter(view.getContext(),services);
+                StaggeredGridLayoutManager staggeredGridLayoutManager = new StaggeredGridLayoutManager(NUM_COLUMNS, LinearLayoutManager.VERTICAL);
+                recyclerView.setLayoutManager(staggeredGridLayoutManager);
+                recyclerView.setAdapter(staggeredRecyclerViewAdapter);
+                progressBar.setVisibility(View.GONE);
             }
 
             @Override
@@ -150,12 +156,12 @@ public class ServiceFragment extends Fragment {
 
         mImageUrls.add("https://cansoft.com/files/2018/08/john-unwin-604601-unsplash.jpeg?id=4867");
         mNames.add("BUSINESS CONSULTANCY");
-        initRecyclerView(v);
+
 
 
     }
 
-    private void initRecyclerView(View v) {
+   /* private void initRecyclerView(View v) {
         Log.d(TAG, "initRecyclerView: initializing staggered recyclerview.");
         StaggeredRecyclerViewAdapter staggeredRecyclerViewAdapter =
                 new StaggeredRecyclerViewAdapter(v.getContext(), mNames, mImageUrls);
@@ -166,7 +172,7 @@ public class ServiceFragment extends Fragment {
 
 
 
-       /* new Thread(new Runnable() {
+       *//* new Thread(new Runnable() {
             @Override
             public void run() {
                 Handler handler = new Handler();
@@ -177,8 +183,8 @@ public class ServiceFragment extends Fragment {
                     }
                 }, 2000);
             }
-        });*/
-    }
+        });*//*
+    }*/
     protected void makeTransperantStatusBar(boolean isTransperant) {
         if (isTransperant) {
             getActivity().getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);

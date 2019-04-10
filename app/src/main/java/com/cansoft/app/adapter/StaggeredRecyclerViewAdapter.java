@@ -17,8 +17,11 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.cansoft.app.R;
 import com.cansoft.app.fragments.ServicePageFragment;
+import com.cansoft.app.model.Service;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by User on 1/17/2018.
@@ -28,14 +31,16 @@ public class StaggeredRecyclerViewAdapter extends RecyclerView.Adapter<Staggered
 
     private static final String TAG = "StaggeredRecyclerViewAd";
     private static final String BACK_STACK_ROOT_TAG = "root_fragment";
+    private List<Service> services;
 
-    private ArrayList<String> mNames = new ArrayList<>();
-    private ArrayList<String> mImageUrls = new ArrayList<>();
+    /*private ArrayList<String> mNames = new ArrayList<>();
+    private ArrayList<String> mImageUrls = new ArrayList<>();*/
     private Context mContext;
 
-    public StaggeredRecyclerViewAdapter(Context context, ArrayList<String> names, ArrayList<String> imageUrls) {
-        mNames = names;
-        mImageUrls = imageUrls;
+    public StaggeredRecyclerViewAdapter(Context context, List<Service> services) {
+        /*mNames = names;
+        mImageUrls = imageUrls;*/
+        this.services = services;
         mContext = context;
     }
 
@@ -48,16 +53,16 @@ public class StaggeredRecyclerViewAdapter extends RecyclerView.Adapter<Staggered
     @Override
     public void onBindViewHolder(ViewHolder holder, final int position) {
         Log.d(TAG, "onBindViewHolder: called.");
+        final Service service = services.get(position);
+        Picasso.get().load(service.getImage().getData().getFullUrl()).into(holder.image);
+        holder.name.setText(service.getName());
 
-        RequestOptions requestOptions = new RequestOptions()
-                .placeholder(R.drawable.ic_launcher_background);
-
-        Glide.with(mContext)
+        /*Glide.with(mContext)
                 .load(mImageUrls.get(position))
                 .apply(requestOptions)
-                .into(holder.image);
+                .into(holder.image);*/
 
-        holder.name.setText(mNames.get(position));
+        /*holder.name.setText(mNames.get(position));*/
 
         holder.image.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -65,7 +70,8 @@ public class StaggeredRecyclerViewAdapter extends RecyclerView.Adapter<Staggered
 
                 ServicePageFragment detailsFragment = new ServicePageFragment();
                 Bundle bundle = new Bundle();
-                bundle.putString("header",mNames.get(position));
+                bundle.putString("header",service.getName());
+                bundle.putString("details",service.getServiceDetails());
                 detailsFragment.setArguments(bundle);
                 AppCompatActivity activity =(AppCompatActivity) view.getContext();
                 FragmentManager fragmentManager = activity.getSupportFragmentManager();
@@ -78,8 +84,9 @@ public class StaggeredRecyclerViewAdapter extends RecyclerView.Adapter<Staggered
 
     @Override
     public int getItemCount() {
-        return mImageUrls.size();
+        return services.size();
     }
+
 
     public class ViewHolder extends RecyclerView.ViewHolder{
 

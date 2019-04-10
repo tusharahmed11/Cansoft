@@ -7,11 +7,31 @@ public class Video {
     @SerializedName("id")
     @Expose
     private Integer id;
-    @SerializedName("date")
+    @SerializedName("video_link")
     @Expose
-    private String date;
+    private String link;
 
-    @SerializedName("modified")
+    public Video(Integer id, String link) {
+        this.id = id;
+        this.link = link;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getLink() {
+        return link;
+    }
+
+    public void setLink(String link) {
+        this.link = link;
+    }
+    /* @SerializedName("modified")
     @Expose
     private String modified;
     @SerializedName("slug")
@@ -104,5 +124,5 @@ public class Video {
 
     public void setExcerpt(Excerpt excerpt) {
         this.excerpt = excerpt;
-    }
+    }*/
 }

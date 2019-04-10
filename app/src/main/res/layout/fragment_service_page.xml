@@ -18,8 +18,24 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:fontFamily="@font/nexa_bold"
+            android:textColor="@color/grey_900"
             android:text="Service title"
             android:textSize="24sp" />
+        <ScrollView
+            android:layout_marginTop="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+                android:id="@+id/service_page_details"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:fontFamily="@font/nexa_regular"
+                android:text="Service title"
+                android:textSize="16sp" />
+        </ScrollView>
+
+
     </LinearLayout>
 
 </FrameLayout>

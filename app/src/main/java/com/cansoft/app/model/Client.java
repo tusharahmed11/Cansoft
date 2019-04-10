@@ -7,6 +7,46 @@ public class Client {
     @SerializedName("id")
     @Expose
     private Integer id;
+    @SerializedName("name")
+    @Expose
+    private String name;
+    @SerializedName("logo")
+    @Expose
+    private ImageD image;
+
+    public Client(Integer id, String name, ImageD image) {
+        this.id = id;
+        this.name = name;
+        this.image = image;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public ImageD getImage() {
+        return image;
+    }
+
+    public void setImage(ImageD image) {
+        this.image = image;
+    }
+
+    /*@SerializedName("id")
+    @Expose
+    private Integer id;
     @SerializedName("date")
     @Expose
     private String date;
@@ -163,5 +203,5 @@ public class Client {
 
     public void setEmbedded(Embedded embedded) {
         this.embedded = embedded;
-    }
+    }*/
 }

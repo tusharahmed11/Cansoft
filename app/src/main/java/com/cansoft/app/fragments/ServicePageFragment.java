@@ -29,9 +29,12 @@ public class ServicePageFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_service_page, container, false);
         header = (TextView) view.findViewById(R.id.service_page_header);
+        TextView details = (TextView) view.findViewById(R.id.service_page_details);
         Bundle bundle = getArguments();
         String headerText = bundle.getString("header");
+        String detailsText = bundle.getString("details");
         header.setText(headerText);
+        details.setText(detailsText);
 
         return view;
 

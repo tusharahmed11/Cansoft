@@ -34,9 +34,10 @@ public class ClientListAdapter extends RecyclerView.Adapter<ClientListAdapter.My
     @Override
     public void onBindViewHolder(@NonNull ClientListAdapter.MyViewHolder holder, int position) {
         Client client = clients.get(position);
-        if (!(client.getEmbedded().getWpFeaturedmedia() == null)){
+       /* if (!(client.getEmbedded().getWpFeaturedmedia() == null)){
             Picasso.get().load("https://cansoft.com" +client.getEmbedded().getWpFeaturedmedia().get(0).getSourceUrl()).into(holder.image);
-        }
+        }*/
+        Picasso.get().load(client.getImage().getData().getFullUrl()).into(holder.image);
 
     }
 

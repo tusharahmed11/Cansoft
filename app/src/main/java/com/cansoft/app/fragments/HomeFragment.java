@@ -36,12 +36,15 @@ import com.cansoft.app.adapter.HomeNewsAdapter;
 import com.cansoft.app.model.About;
 import com.cansoft.app.model.AboutD;
 import com.cansoft.app.model.Client;
+import com.cansoft.app.model.ClientD;
 import com.cansoft.app.model.Post;
 import com.cansoft.app.model.Video;
+import com.cansoft.app.model.VideoD;
 import com.cansoft.app.network.RestClient;
 import com.cansoft.app.network.RestClient2;
 import com.squareup.picasso.Picasso;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 import java.util.regex.Matcher;
@@ -102,7 +105,7 @@ public class HomeFragment extends Fragment {
         Toolbar toolbar = (Toolbar)getActivity().findViewById(R.id.app_bar);
         toolbar.setVisibility(View.VISIBLE);
 
-        RestClient.getInstance().callRetrofit(view.getContext()).getVideo().enqueue(new Callback<List<Video>>() {
+        /*RestClient.getInstance().callRetrofit(view.getContext()).getVideo().enqueue(new Callback<List<Video>>() {
             @Override
             public void onResponse(Call<List<Video>> call, Response<List<Video>> response) {
                 if (response.body() == null){
@@ -112,7 +115,7 @@ public class HomeFragment extends Fragment {
                     int length = videos.size();
                     Random rnd = new Random();
                     int n = rnd.nextInt(length);
-                    String you = getYoutubeId(videos.get(n).getExcerpt().getRendered());
+                    String you = getYoutubeId(videos.get(n).getLink());
                     youtubeId = android.text.Html.fromHtml(you).toString();
 
                     Picasso.get().load("https://img.youtube.com/vi/"+youtubeId+"/mqdefault.jpg" ).into(youtubeImage);
@@ -149,6 +152,52 @@ public class HomeFragment extends Fragment {
             public void onFailure(Call<List<Video>> call, Throwable t) {
 
             }
+        });*/
+        RestClient2.getInstance().callRetrofit(view.getContext()).getVideo().enqueue(new Callback<VideoD>() {
+            @Override
+            public void onResponse(Call<VideoD> call, Response<VideoD> response) {
+                if (response.body() == null) {
+                    showAlertDialog(view);
+                } else {
+                    List<Video> videos = response.body().getData();
+                    int length = videos.size();
+                    Random rnd = new Random();
+                    int n = rnd.nextInt(length);
+                    String you = getYoutubeId(videos.get(n).getLink());
+                    youtubeId = android.text.Html.fromHtml(you).toString();
+
+                    Picasso.get().load("https://img.youtube.com/vi/" + youtubeId + "/mqdefault.jpg").into(youtubeImage);
+                    Log.d(TAG, "onResponse: " + youtubeId);
+                    testimoniaLayout.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            String videoId = youtubeId;
+                            if (isAppInstalled("com.google.android.youtube")) {
+                                watchYoutubeVideo(videoId);
+                            } else {
+                                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.youtube.com/watch?v=" + videoId)));
+                            }
+                        }
+                    });
+
+                    youtubeBtn.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            String videoId = youtubeId;
+                            if (isAppInstalled("com.google.android.youtube")) {
+                                watchYoutubeVideo(videoId);
+                            } else {
+                                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.youtube.com/watch?v=" + videoId)));
+                            }
+                        }
+                    });
+                }
+            }
+
+            @Override
+            public void onFailure(Call<VideoD> call, Throwable t) {
+
+            }
         });
 
         RestClient2.getInstance().callRetrofit(view.getContext()).getAbout().enqueue(new Callback<AboutD>() {
@@ -177,43 +226,6 @@ public class HomeFragment extends Fragment {
 
 
 
-/*
-        final YouTubePlayerFragment youtubeFragment = (YouTubePlayerFragment)
-                getActivity().getFragmentManager().findFragmentById(R.id.youtubeFragment);
-        youtubeFragment.initialize(API_KEY,
-                new YouTubePlayer.OnInitializedListener() {
-                    @Override
-                    public void onInitializationSuccess(YouTubePlayer.Provider provider,
-                                                        final YouTubePlayer youTubePlayer, boolean b) {
-                        // do any work here to cue video, play video, etc.
-                        youTubePlayer.cueVideo(youtubeId);
-                        youTubePlayer.setFullscreenControlFlags(0);
-
-                        youTubePlayer.setOnFullscreenListener(new YouTubePlayer.OnFullscreenListener() {
-                            @Override
-                            public void onFullscreen(boolean b) {
-                                if (b){
-                                    String videoId = "Fee5vbFLYM4";
-                                    Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("vnd.youtube:"+videoId));
-                                    intent.putExtra("VIDEO_ID", videoId);
-                                    startActivity(intent);
-
-                                    *//*Intent intent = YouTubeStandalonePlayer.createVideoIntent(getActivity(), "AIzaSyBzXkD1FD42ZqOwi_BMhhgN27j2WNYt9X4", youtubeId,0,false,true);
-                                    startActivity(intent);*//*
-                                   *//* Intent intent = new Intent(getActivity(),YouActivity.class);
-                                    startActivity(intent);*//*
-                                }
-
-
-                            }
-                        });
-                    }
-                    @Override
-                    public void onInitializationFailure(YouTubePlayer.Provider provider,
-                                                        YouTubeInitializationResult youTubeInitializationResult) {
-
-                    }
-                });*/
 
         newsTitle.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -227,7 +239,6 @@ public class HomeFragment extends Fragment {
 
             }
         });
-
 
         clientsRecycler = (RecyclerView) view.findViewById(R.id.clients_recycler);
         clientManager = new LinearLayoutManager(view.getContext());
@@ -287,25 +298,27 @@ public class HomeFragment extends Fragment {
             }
         });
 
-        RestClient.getInstance().callRetrofit(view.getContext()).getClients().enqueue(new Callback<List<Client>>() {
+        RestClient2.getInstance().callRetrofit(view.getContext()).getClients().enqueue(new Callback<ClientD>() {
             @Override
-            public void onResponse(Call<List<Client>> call, Response<List<Client>> response) {
+            public void onResponse(Call<ClientD> call, Response<ClientD> response) {
                 if (response.body() == null){
                     showAlertDialog(view);
                 }else{
-                List<Client> clients = response.body();
-                clientListAdapter = new ClientListAdapter(view.getContext(),clients);
-                clientManager = new LinearLayoutManager(view.getContext(),LinearLayoutManager.HORIZONTAL,false);
-                clientsRecycler.setLayoutManager(clientManager);
-                clientsRecycler.setItemAnimator(new DefaultItemAnimator());
-                clientsRecycler.setAdapter(clientListAdapter);}
+                    List<Client> clients = response.body().getData();
+                    Collections.shuffle(clients);
+                    clientListAdapter = new ClientListAdapter(view.getContext(),clients);
+                    clientManager = new LinearLayoutManager(view.getContext(),LinearLayoutManager.HORIZONTAL,false);
+                    clientsRecycler.setLayoutManager(clientManager);
+                    clientsRecycler.setItemAnimator(new DefaultItemAnimator());
+                    clientsRecycler.setAdapter(clientListAdapter);}
             }
 
             @Override
-            public void onFailure(Call<List<Client>> call, Throwable t) {
+            public void onFailure(Call<ClientD> call, Throwable t) {
 
             }
         });
+
 
 
 

@@ -2,10 +2,12 @@ package com.cansoft.app.network;
 
 import com.cansoft.app.model.AboutD;
 import com.cansoft.app.model.Client;
+import com.cansoft.app.model.ClientD;
 import com.cansoft.app.model.Data;
 import com.cansoft.app.model.Post;
 import com.cansoft.app.model.ServiceD;
 import com.cansoft.app.model.Video;
+import com.cansoft.app.model.VideoD;
 
 import java.util.List;
 
@@ -30,11 +32,18 @@ public interface ApiService {
     @GET("posts/{id}?_embed")
     SmartCall<Post> getPostDetails(@Path("id") int id);
 
-    @GET("cimage?_embed")
-    SmartCall<List<Client>> getClients();
+    /*@GET("cimage?_embed")
+    SmartCall<List<Client>> getClients();*/
 
-    @GET("tvideo")
-    SmartCall<List<Video>> getVideo();
+    @GET("items/Client?fields=*,logo.data")
+    SmartCall<ClientD> getClients();
+
+    /*@GET("tvideo")
+    SmartCall<List<Video>> getVideo();*/
+
+    @GET("items/Testimonial")
+    SmartCall<VideoD> getVideo();
+
     @GET("items/member?fields=*,photo.data")
     SmartCall<Data> getMembers();
 
