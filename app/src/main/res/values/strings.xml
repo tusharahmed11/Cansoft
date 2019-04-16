@@ -121,5 +121,9 @@
     <string name="testimonial_title"><font color='#000000' size='23'><b>T</b></font>estimonial</string>
     <string name="clients_title"><font color='#000000' size='23'><b>C</b></font>lients</string>
     <string name="about_us">Cansoft Technologies Corporation started out as an IT company in Regina, Saskatchewan known for our unbeatable search engine optimization techniques and outstanding web design. Today, our team continues to expand globally, with partners in Canada, the United Kingdom, New Zealand, Sweden, and the US! We have also expanded our services from our industry leading web design to digital marketing, web applications, software development, website design, mobile applications development, search engine optimization (SEO), search engine marketing (SEM), social media marketing (SMM), and social media services. We take pride in our reputation of excellent customer service and strive to provide to our business partners with the best IT solutions and digital marketing strategies, helping them achieve their business goals. Our talented group of programmers, marketing experts, and customer service agents are dedicated to providing the best online and digital marketing services at an affordable cost. We believe in the art of technology. Let’s work on the big picture together.</string>
+    <string name="pref_title_notif" />
+    <string name="pref_title_ringtone" />
+    <string name="pref_title_vibrate" />
+    <string name="msg_token_fmt" translatable="false">InstanceID Token: %s</string>
 
 </resources>

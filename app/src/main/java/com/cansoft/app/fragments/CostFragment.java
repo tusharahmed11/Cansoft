@@ -12,6 +12,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.webkit.WebSettings;
+import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
@@ -37,7 +39,7 @@ import java.util.List;
 public class CostFragment extends Fragment {
 
 
-    private CheckBox checkBoxSeo;
+   /* private CheckBox checkBoxSeo;
     private CheckBox checkBoxWeb;
     private Button costBtn;
     private int seoPrice;
@@ -54,14 +56,15 @@ public class CostFragment extends Fragment {
     private List<RelativeLayout> step_view_list = new ArrayList<>();
     private int success_step = 0;
     private int current_step =1;
-
+*/
+   private WebView costWebView;
 
     public CostFragment() {
         // Required empty public constructor
     }
 
 
-    @SuppressLint("RestrictedApi")
+    @SuppressLint({"RestrictedApi", "SetJavaScriptEnabled"})
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -71,6 +74,12 @@ public class CostFragment extends Fragment {
         costBtn = (Button) view.findViewById(R.id.cost_btn);
         seoLayout = (LinearLayout) view.findViewById(R.id.seo_cost_layout);
         costContactBtn = (Button) view.findViewById(R.id.cost_contact_btn);*/
+
+        costWebView = (WebView) view.findViewById(R.id.costWebView);
+        costWebView.getSettings().setUserAgentString("cansoft-agent");
+        WebSettings webSettings = costWebView.getSettings();
+        webSettings.setJavaScriptEnabled(true);
+        costWebView.loadUrl("http://estimator.cansoft.com");
 
 
 
@@ -128,13 +137,13 @@ public class CostFragment extends Fragment {
             }
         });*/
         showBackButtonStatus(false);
-        initComponent(view);
+        /*initComponent(view);*/
 
 
         return view;
     }
 
-    private void initComponent(View view) {
+   /* private void initComponent(View view) {
         status = (TextView) view.findViewById(R.id.status);
 
         progressBar = (ProgressBar) view.findViewById(R.id.progress);
@@ -187,7 +196,7 @@ public class CostFragment extends Fragment {
         costBtn.setText(Integer.toString(finalresult) + " $");
         finalcost = finalresult;
 
-    }
+    }*/
 
 
 

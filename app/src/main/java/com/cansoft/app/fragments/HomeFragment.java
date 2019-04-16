@@ -76,7 +76,9 @@ public class HomeFragment extends Fragment {
     TextView newsTitle;
     ProgressBar progressBar;
     MainActivity activity;
-
+    private ProgressBar homeProgress;
+    private boolean loadStatus = true;
+    private ProgressBar homeAboutProgress;
 
     public HomeFragment() {
         // Required empty public constructor
@@ -100,59 +102,15 @@ public class HomeFragment extends Fragment {
         youtubeImage=(ImageView) view.findViewById(R.id.youtube_image);
         testimoniaLayout = (RelativeLayout) view.findViewById(R.id.testimonial_layout);
         aboutUsView = (TextView) view.findViewById(R.id.home_about_view);
+     /*   homeProgress = (ProgressBar) view.findViewById(R.id.homeProgress);*/
+        homeAboutProgress = (ProgressBar) view.findViewById(R.id.homeAboutProgress);
+        homeAboutProgress.setVisibility(View.VISIBLE);
 
         makeTransperantStatusBar(false);
         Toolbar toolbar = (Toolbar)getActivity().findViewById(R.id.app_bar);
         toolbar.setVisibility(View.VISIBLE);
 
-        /*RestClient.getInstance().callRetrofit(view.getContext()).getVideo().enqueue(new Callback<List<Video>>() {
-            @Override
-            public void onResponse(Call<List<Video>> call, Response<List<Video>> response) {
-                if (response.body() == null){
-                    showAlertDialog(view);
-                }else{
-                    List<Video> videos = response.body();
-                    int length = videos.size();
-                    Random rnd = new Random();
-                    int n = rnd.nextInt(length);
-                    String you = getYoutubeId(videos.get(n).getLink());
-                    youtubeId = android.text.Html.fromHtml(you).toString();
 
-                    Picasso.get().load("https://img.youtube.com/vi/"+youtubeId+"/mqdefault.jpg" ).into(youtubeImage);
-                    Log.d(TAG, "onResponse: "+youtubeId);
-                    testimoniaLayout.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            String videoId = youtubeId;
-                            if (isAppInstalled("com.google.android.youtube")){
-                                watchYoutubeVideo(videoId);
-                            }else {
-                                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.youtube.com/watch?v=" + videoId)));
-                            }
-                        }
-                    });
-
-                    youtubeBtn.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            String videoId = youtubeId;
-                            if (isAppInstalled("com.google.android.youtube")){
-                                watchYoutubeVideo(videoId);
-                            }else {
-                                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.youtube.com/watch?v=" + videoId)));
-                            }
-                        }
-                    });
-                }
-
-
-            }
-
-            @Override
-            public void onFailure(Call<List<Video>> call, Throwable t) {
-
-            }
-        });*/
         RestClient2.getInstance().callRetrofit(view.getContext()).getVideo().enqueue(new Callback<VideoD>() {
             @Override
             public void onResponse(Call<VideoD> call, Response<VideoD> response) {
@@ -160,6 +118,7 @@ public class HomeFragment extends Fragment {
                     showAlertDialog(view);
                 } else {
                     List<Video> videos = response.body().getData();
+                    loadStatus = false;
                     int length = videos.size();
                     Random rnd = new Random();
                     int n = rnd.nextInt(length);
@@ -203,8 +162,15 @@ public class HomeFragment extends Fragment {
         RestClient2.getInstance().callRetrofit(view.getContext()).getAbout().enqueue(new Callback<AboutD>() {
             @Override
             public void onResponse(Call<AboutD> call, Response<AboutD> response) {
-                List<About> about = response.body().getData();
-                aboutUsView.setText(about.get(0).getExcerpt());
+                if (response.body() == null) {
+                    showAlertDialog(view);
+                } else {
+                    List<About> about = response.body().getData();
+                    aboutUsView.setText(about.get(0).getExcerpt());
+                    aboutUsView.setVisibility(View.VISIBLE);
+                    homeAboutProgress.setVisibility(View.GONE);
+                }
+
             }
 
             @Override
@@ -289,6 +255,7 @@ public class HomeFragment extends Fragment {
                 recentRecycler.setItemAnimator(new DefaultItemAnimator());
                 recentRecycler.setAdapter(adapter);
                 progressBar.setVisibility(View.GONE);}
+                loadStatus = false;
 
             }
 
@@ -305,12 +272,15 @@ public class HomeFragment extends Fragment {
                     showAlertDialog(view);
                 }else{
                     List<Client> clients = response.body().getData();
+/*
                     Collections.shuffle(clients);
+*/
                     clientListAdapter = new ClientListAdapter(view.getContext(),clients);
                     clientManager = new LinearLayoutManager(view.getContext(),LinearLayoutManager.HORIZONTAL,false);
                     clientsRecycler.setLayoutManager(clientManager);
                     clientsRecycler.setItemAnimator(new DefaultItemAnimator());
                     clientsRecycler.setAdapter(clientListAdapter);}
+                    loadStatus = false;
             }
 
             @Override
@@ -403,5 +373,7 @@ public class HomeFragment extends Fragment {
 
         builder.show();
     }
+
+
 
 }

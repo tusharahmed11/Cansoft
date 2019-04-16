@@ -11,12 +11,22 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-        <ImageView
-            android:scaleType="fitXY"
-            android:src="@drawable/tushar"
-            android:id="@+id/profile_image"
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="300dp" />
+            android:layout_height="300dp">
+            <ProgressBar
+                android:layout_centerInParent="true"
+                android:id="@+id/teamListProgressbar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <ImageView
+                android:scaleType="fitXY"
+                android:src="@drawable/tushar"
+                android:id="@+id/profile_image"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </RelativeLayout>
+
 
         <LinearLayout
             android:layout_marginTop="10dp"
@@ -94,6 +104,7 @@
             android:layout_marginStart="20dp">
 
             <RelativeLayout
+                android:id="@+id/team_phone_layout"
                   android:layout_margin="8dp"
                   android:layout_width="wrap_content"
                   android:layout_height="wrap_content">
@@ -105,16 +116,6 @@
                     android:text="@string/icon_solid_phone"
                     android:textSize="28sp" />
 
-<!--
-                  <ImageView
-                      android:layout_centerVertical="true"
-                      android:layout_alignParentStart="true"
-                      android:id="@+id/team_phone_icon"
-                      android:layout_width="25dp"
-                      android:layout_height="30dp"
-                      android:scaleType="centerInside"
-                      android:src="@drawable/phone_icon"
-                      android:layout_alignParentLeft="true" />-->
                   <LinearLayout
                       android:layout_marginStart="20dp"
                       android:layout_marginLeft="20dp"
@@ -214,6 +215,7 @@
                     android:textSize="28sp" />
 
                     <TextView
+                        android:id="@+id/team_twitter"
                         android:layout_centerVertical="true"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -248,6 +250,7 @@
                         />-->
 
                     <TextView
+                        android:id="@+id/team_facebook"
                         android:layout_centerVertical="true"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"

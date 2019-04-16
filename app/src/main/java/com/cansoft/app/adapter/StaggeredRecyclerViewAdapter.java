@@ -2,6 +2,7 @@ package com.cansoft.app.adapter;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.support.constraint.ConstraintSet;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
@@ -22,6 +23,7 @@ import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 /**
  * Created by User on 1/17/2018.
@@ -36,7 +38,7 @@ public class StaggeredRecyclerViewAdapter extends RecyclerView.Adapter<Staggered
     /*private ArrayList<String> mNames = new ArrayList<>();
     private ArrayList<String> mImageUrls = new ArrayList<>();*/
     private Context mContext;
-
+    ConstraintSet mConstraintSet1 = new ConstraintSet();
     public StaggeredRecyclerViewAdapter(Context context, List<Service> services) {
         /*mNames = names;
         mImageUrls = imageUrls;*/
@@ -52,15 +54,23 @@ public class StaggeredRecyclerViewAdapter extends RecyclerView.Adapter<Staggered
 
     @Override
     public void onBindViewHolder(ViewHolder holder, final int position) {
-        Log.d(TAG, "onBindViewHolder: called.");
+
         final Service service = services.get(position);
-        Picasso.get().load(service.getImage().getData().getFullUrl()).into(holder.image);
+        /*Picasso.get().load(service.getImage().getData().getFullUrl()).into(holder.image);*/
         holder.name.setText(service.getName());
+
 
         /*Glide.with(mContext)
                 .load(mImageUrls.get(position))
                 .apply(requestOptions)
                 .into(holder.image);*/
+        Glide.with(mContext)
+                .load(service.getImage().getData().getFullUrl())
+                .into(holder.image);
+     /*   String ratio =String.format("%d:%d", service.getImage().getData(),service.height);
+        set.clone(holder.mConstraintLayout)
+        set.setDimensionRatio(holder.mImgPoster.id, ratio)
+        set.applyTo(holder.mConstraintLayout)*/
 
         /*holder.name.setText(mNames.get(position));*/
 
@@ -77,6 +87,7 @@ public class StaggeredRecyclerViewAdapter extends RecyclerView.Adapter<Staggered
                 FragmentManager fragmentManager = activity.getSupportFragmentManager();
                 fragmentManager.popBackStack(BACK_STACK_ROOT_TAG, FragmentManager.POP_BACK_STACK_INCLUSIVE);
                 fragmentManager.beginTransaction().replace(R.id.frame,detailsFragment,"detail").addToBackStack("detail").commit();
+
             }
         });
 

@@ -3,6 +3,7 @@ package com.cansoft.app.fragments;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.util.DiffUtil;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
@@ -10,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.widget.ProgressBar;
 
 import com.cansoft.app.activity.MainActivity;
 import com.cansoft.app.R;
@@ -35,6 +37,7 @@ public class TeamFragment extends Fragment {
     LinearLayoutManager manager;
     private RecyclerView recyclerView;
     private AdapterListExpand mAdapter;
+    private ProgressBar teamProgress;
 
     public TeamFragment() {
         // Required empty public constructor
@@ -51,9 +54,12 @@ public class TeamFragment extends Fragment {
         makeTransperantStatusBar(false);
         Toolbar toolbar = (Toolbar)getActivity().findViewById(R.id.app_bar);
         toolbar.setVisibility(View.VISIBLE);
+        teamProgress = (ProgressBar) view.findViewById(R.id.teamProgress);
+        teamProgress.setVisibility(View.VISIBLE);
 
 
         recyclerView = (RecyclerView) view.findViewById(R.id.recyclerView);
+
         /*recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
 
         recyclerView.setHasFixedSize(true);
@@ -98,10 +104,9 @@ public class TeamFragment extends Fragment {
                 mAdapter = new AdapterListExpand(view.getContext(), posts);
                 manager = new LinearLayoutManager(view.getContext());
                 recyclerView.setLayoutManager(manager);
-                recyclerView.setHasFixedSize(true);
                 recyclerView.setAdapter(mAdapter);
-
-
+                mAdapter.notifyDataSetChanged();
+                teamProgress.setVisibility(View.GONE);
 
                 /*adapter = new HomeNewsAdapter(view.getContext(),posts);
                 manager = new LinearLayoutManager(view.getContext(),LinearLayoutManager.HORIZONTAL,false);

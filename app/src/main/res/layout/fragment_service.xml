@@ -6,11 +6,11 @@
     tools:context="com.cansoft.app.fragments.ServiceFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <ProgressBar
+    <!--<ProgressBar
         android:id="@+id/service_progress"
         android:layout_gravity="center"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content" />-->
     <LinearLayout
         android:layout_margin="10dp"
         android:id="@+id/service_section"

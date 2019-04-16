@@ -1,9 +1,12 @@
 package com.cansoft.app.fragments;
 
 
+import android.app.ProgressDialog;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
@@ -55,11 +58,14 @@ public class ServiceFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         final View view =inflater.inflate(R.layout.fragment_service, container, false);
-        progressBar = (ProgressBar) view.findViewById(R.id.service_progress);
+        /*progressBar = (ProgressBar) view.findViewById(R.id.service_progress);*/
         serviceLayout = (LinearLayout) view.findViewById(R.id.service_section);
-        progressBar.setVisibility(View.VISIBLE);
+        /*progressBar.setVisibility(View.VISIBLE);*/
         recyclerView  = view.findViewById(R.id.serviceRecycler);
+        recyclerView.setHasFixedSize(true);
 
+        updateUI task = new updateUI(view);
+        task.execute();
 
         /*initImageBitmaps(view);*/
 
@@ -100,23 +106,7 @@ public class ServiceFragment extends Fragment {
             }
         }.start();*/
 
-        RestClient2.getInstance().callRetrofit(view.getContext()).getService().enqueue(new Callback<ServiceD>() {
-            @Override
-            public void onResponse(Call<ServiceD> call, Response<ServiceD> response) {
-                List<Service> services = response.body().getData();
-                StaggeredRecyclerViewAdapter staggeredRecyclerViewAdapter =
-                        new StaggeredRecyclerViewAdapter(view.getContext(),services);
-                StaggeredGridLayoutManager staggeredGridLayoutManager = new StaggeredGridLayoutManager(NUM_COLUMNS, LinearLayoutManager.VERTICAL);
-                recyclerView.setLayoutManager(staggeredGridLayoutManager);
-                recyclerView.setAdapter(staggeredRecyclerViewAdapter);
-                progressBar.setVisibility(View.GONE);
-            }
 
-            @Override
-            public void onFailure(Call<ServiceD> call, Throwable t) {
-
-            }
-        });
 
         makeTransperantStatusBar(false);
         Toolbar toolbar = (Toolbar)getActivity().findViewById(R.id.app_bar);
@@ -196,6 +186,74 @@ public class ServiceFragment extends Fragment {
         ((MainActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(status);
         ((MainActivity) getActivity()).getSupportActionBar().setDisplayShowHomeEnabled(status);
     }
+    private class updateUI extends AsyncTask<String, Void, String>{
 
 
+        ProgressDialog progressDialog;
+        View view;
+        public updateUI(View view) {
+            super();
+            this.view = view;
+        }
+
+        @Override
+        protected String doInBackground(String... params)
+        {
+            updateView(view);
+
+            return null;
+
+        }
+
+        @Override
+        protected void onPostExecute(String result)
+        {
+
+            progressDialog.cancel();
+
+
+            //Call your method that checks if the pictures were downloaded
+
+        }
+
+        @Override
+        protected void onPreExecute() {
+
+            progressDialog = new ProgressDialog(
+                    getContext());
+            progressDialog.setMessage("Downloading...");
+            progressDialog.setCancelable(false);
+            progressDialog.show();
+
+        }
+
+        @Override
+        protected void onProgressUpdate(Void... values) {
+            // Do nothing
+        }
+
+    }
+
+    private void updateView(final View v){
+        RestClient2.getInstance().callRetrofit(v.getContext()).getService().enqueue(new Callback<ServiceD>() {
+            @Override
+            public void onResponse(Call<ServiceD> call, Response<ServiceD> response) {
+                List<Service> services = response.body().getData();
+                StaggeredRecyclerViewAdapter staggeredRecyclerViewAdapter =
+                        new StaggeredRecyclerViewAdapter(v.getContext(),services);
+                StaggeredGridLayoutManager staggeredGridLayoutManager = new StaggeredGridLayoutManager(2, LinearLayoutManager.VERTICAL);
+                recyclerView.setLayoutManager(staggeredGridLayoutManager);
+
+                recyclerView.setAdapter(staggeredRecyclerViewAdapter);
+
+
+
+            }
+
+            @Override
+            public void onFailure(Call<ServiceD> call, Throwable t) {
+
+            }
+        });
+    }
 }

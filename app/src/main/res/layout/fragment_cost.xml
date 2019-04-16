@@ -6,7 +6,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="com.cansoft.app.fragments.CostFragment">
 
-    <!-- TODO: Update blank fragment layout -->
+    <WebView
+        android:id="@+id/costWebView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+
 <!--
     <LinearLayout
         android:orientation="vertical"
@@ -409,7 +414,7 @@
 
     </LinearLayout>
 -->
-    <RelativeLayout
+   <!-- <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         <TextView
@@ -503,7 +508,7 @@
 
         </LinearLayout>
 
-    </RelativeLayout>
+    </RelativeLayout>-->
 
 
 

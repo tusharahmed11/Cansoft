@@ -305,6 +305,19 @@ public class Tools {
             activity.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("http://play.google.com/store/apps/details?id=" + activity.getPackageName())));
         }
     }
+    public static String getDeviceName() {
+        String manufacturer = Build.MANUFACTURER;
+        String model = Build.MODEL;
+        if (model.startsWith(manufacturer)) {
+            return model;
+        } else {
+            return manufacturer + " " + model;
+        }
+    }
+
+    public static String getAndroidVersion() {
+        return Build.VERSION.RELEASE + "";
+    }
 
 }
 

@@ -1,19 +1,39 @@
 package com.cansoft.app.adapter;
 
+import android.Manifest;
 import android.content.Context;
+import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.graphics.drawable.Drawable;
+import android.net.Uri;
+import android.support.annotation.Nullable;
+import android.support.v4.app.ActivityCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.Priority;
+import com.bumptech.glide.load.DataSource;
+import com.bumptech.glide.load.engine.GlideException;
+import com.bumptech.glide.request.RequestListener;
+import com.bumptech.glide.request.RequestOptions;
+import com.bumptech.glide.request.target.Target;
 import com.cansoft.app.R;
+import com.cansoft.app.activity.MainActivity;
 import com.cansoft.app.model.Member;
 import com.cansoft.app.model.Social;
 import com.cansoft.app.util.Tools;
 import com.cansoft.app.util.ViewAnimation;
+import com.cansoft.app.widget.GlideImageLoader;
+import com.squareup.picasso.MemoryPolicy;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -41,19 +61,23 @@ public class AdapterListExpand extends RecyclerView.Adapter<RecyclerView.ViewHol
     }
 
     public class OriginalViewHolder extends RecyclerView.ViewHolder {
-        private ImageView image;
+
         private ImageView fullImage;
         private TextView name;
         private TextView designation;
         private TextView phone;
         private TextView emailAddress;
+        private TextView teamTwitter;
+        private TextView teamFacebook;
         private ImageButton bt_expand;
         private View lyt_expand;
         private View lyt_parent;
 
+        private ProgressBar teamListProgressbar;
+
         public OriginalViewHolder(View v) {
             super(v);
-            image = (ImageView) v.findViewById(R.id.image);
+
             fullImage = (ImageView) v.findViewById(R.id.profile_image);
             name = (TextView) v.findViewById(R.id.name);
             phone = (TextView) v.findViewById(R.id.team_phone_number);
@@ -62,6 +86,10 @@ public class AdapterListExpand extends RecyclerView.Adapter<RecyclerView.ViewHol
             bt_expand = (ImageButton) v.findViewById(R.id.bt_expand);
             lyt_expand = (View) v.findViewById(R.id.lyt_expand);
             lyt_parent = (View) v.findViewById(R.id.lyt_parent);
+            teamTwitter = (TextView) v.findViewById(R.id.team_twitter);
+            teamFacebook = (TextView) v.findViewById(R.id.team_facebook);
+
+            teamListProgressbar = (ProgressBar) v.findViewById(R.id.teamListProgressbar);
         }
     }
 
@@ -83,10 +111,84 @@ public class AdapterListExpand extends RecyclerView.Adapter<RecyclerView.ViewHol
             view.name.setText(p.getName());
             view.designation.setText(p.getDesignation());
             view.phone.setText(p.getPhoneNumber());
+            view.phone.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(Intent.ACTION_DIAL);
+                    intent.setData(Uri.parse("tel:"+p.getPhoneNumber()));
+                    ctx.startActivity(intent);
+
+                }
+            });
             view.emailAddress.setText(p.getEmail());
-            Picasso.get().load(p.getPhoto().getData().getFullUrl()).into(view.fullImage);
-            /*Tools.displayImageOriginal(ctx, view.image, p.getPhoto().getFullUrl());
-            Tools.displayImageOriginal(ctx, view.fullImage, p.getPhoto().getFullUrl());*/
+            view.emailAddress.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent=new Intent(Intent.ACTION_SEND);
+                    String[] recipients={p.getEmail()};
+                    intent.putExtra(Intent.EXTRA_EMAIL, recipients);
+                    intent.setType("text/html");
+                    intent.setPackage("com.google.android.gm");
+                    ctx.startActivity(Intent.createChooser(intent, "Send mail"));
+                }
+            });
+            view.teamTwitter.setText(p.getTwitter());
+            view.teamTwitter.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    String remove = "@";
+                    ctx.startActivity(new Intent(Intent.ACTION_VIEW,Uri.parse("https://twitter.com/"+p.getTwitter().replace(remove,""))));
+                }
+            });
+            view.teamFacebook.setText(p.getFacebook());
+            view.teamFacebook.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    ctx.startActivity(new Intent(Intent.ACTION_VIEW,Uri.parse("https://"+p.getFacebook())));
+                }
+            });
+
+            RequestOptions options = new RequestOptions()
+                    .error(R.drawable.ic_broken_image)
+                    .priority(Priority.HIGH);
+
+            new GlideImageLoader(view.fullImage,
+                    view.teamListProgressbar).load(p.getPhoto().getData().getFullUrl(),options);
+            /*Glide.with(ctx)
+                    .load(p.getPhoto().getData().getFullUrl())
+                    .listener(new RequestListener<Drawable>() {
+                        @Override
+                        public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<Drawable> target, boolean isFirstResource) {
+                            view.teamListProgressbar.setVisibility(View.GONE);
+                            return false;
+                        }
+
+                        @Override
+                        public boolean onResourceReady(Drawable resource, Object model, Target<Drawable> target, DataSource dataSource, boolean isFirstResource) {
+                            view.teamListProgressbar.setVisibility(View.GONE);
+                            return false;
+                        }
+                    })
+                    .into(view.fullImage);*/
+
+            /*Picasso.get().load(p.getPhoto().getData().getFullUrl()).into(view.fullImage, new com.squareup.picasso.Callback() {
+                @Override
+                public void onSuccess() {
+                    if (view.teamListProgressbar != null) {
+                        view.teamListProgressbar.setVisibility(View.GONE);
+                    }
+                }
+
+                @Override
+                public void onError(Exception e) {
+
+                }
+
+
+            });*/
+
+
+
             view.lyt_parent.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {

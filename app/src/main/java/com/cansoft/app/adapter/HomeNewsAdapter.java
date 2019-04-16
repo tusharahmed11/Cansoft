@@ -46,7 +46,12 @@ public class HomeNewsAdapter extends RecyclerView.Adapter<HomeNewsAdapter.MyView
         else{
 
         }
-        holder.postTitle.setText(posts.get(position).getTitle().getRendered());
+        String title = posts.get(position).getTitle().getRendered();
+        if (title.length() > 60){
+            holder.postTitle.setText(title.substring(0,60)+ " . . .");
+        }else{
+            holder.postTitle.setText(title);
+        }
         holder.newsLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

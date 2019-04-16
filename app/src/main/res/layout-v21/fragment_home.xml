@@ -9,7 +9,14 @@
     android:layout_marginRight="16dp"
     tools:context="com.cansoft.app.fragments.HomeFragment">
 
+<!--    <ProgressBar
+        android:id="@+id/homeProgress"
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />-->
+
    <android.support.v4.widget.NestedScrollView
+       android:id="@+id/homeScrollView"
        android:layout_width="match_parent"
        android:layout_height="wrap_content">
        <LinearLayout
@@ -60,7 +67,20 @@
                    android:layout_marginBottom="10dp"
                    android:layout_width="wrap_content"
                    android:layout_height="wrap_content" />
+           <RelativeLayout
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content">
+               <ProgressBar
+                   android:id="@+id/homeAboutProgress"
+                   android:layout_width="20dp"
+                   android:layout_height="20dp"
+                   android:layout_centerInParent="true"
+                   android:layout_gravity="center"
+                   android:indeterminate="true"
+                   android:indeterminateTint="@color/grey_800"
+                   android:indeterminateTintMode="src_atop" />
                <TextView
+                   android:visibility="gone"
                    android:id="@+id/home_about_view"
                    android:layout_margin="7dp"
                    android:padding="10dp"
@@ -70,6 +90,8 @@
                    android:fontFamily="@font/nexa_regular"
                    android:layout_width="match_parent"
                    android:layout_height="wrap_content" />
+           </RelativeLayout>
+
 
 
            <TextView

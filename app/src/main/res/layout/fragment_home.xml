@@ -9,7 +9,14 @@
     android:layout_marginRight="16dp"
     tools:context="com.cansoft.app.fragments.HomeFragment">
 
+<!--    <ProgressBar
+        android:id="@+id/homeProgress"
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />-->
+
     <android.support.v4.widget.NestedScrollView
+        android:id="@+id/homeScrollView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <LinearLayout

@@ -1,5 +1,6 @@
 package com.cansoft.app.network;
 
+
 import com.cansoft.app.model.AboutD;
 import com.cansoft.app.model.Client;
 import com.cansoft.app.model.ClientD;
@@ -52,4 +53,7 @@ public interface ApiService {
 
     @GET("items/Service?fields=*,image.data")
     SmartCall<ServiceD> getService();
+
+
+
 }
