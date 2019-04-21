@@ -40,13 +40,22 @@ import com.cansoft.app.fragments.CostFragment;
 import com.cansoft.app.fragments.SeoFragment;
 import com.cansoft.app.fragments.ServiceFragment;
 import com.cansoft.app.fragments.TeamFragment;
+import com.cansoft.app.model.DeviceInfo;
+import com.cansoft.app.model.NotStatus;
+import com.cansoft.app.network.NotificationClient;
+import com.cansoft.app.util.Tools;
 import com.cansoft.app.widget.Fab;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.firebase.iid.FirebaseInstanceIdService;
 import com.google.firebase.messaging.FirebaseMessaging;
 import com.gordonwong.materialsheetfab.MaterialSheetFab;
 import com.gordonwong.materialsheetfab.MaterialSheetFabEventListener;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 import shortbread.Shortbread;
 import shortbread.Shortcut;
 
@@ -84,6 +93,42 @@ public class MainActivity extends AppCompatActivity  {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
+        if(getIntent()!=null && getIntent().getExtras()!=null){
+            Bundle bundle = getIntent().getExtras();
+
+            String id = bundle.getString("id");
+            String notnews = bundle.getString("news");
+
+            if (notnews != null ){
+                Intent intent = new Intent(this, NotificationNewsActivity.class);
+                intent.putExtra("id",id);
+                startActivity(intent);
+                finish();
+            }
+        }
+
+
+
+
+        DeviceInfo deviceInfo = new DeviceInfo();
+
+        deviceInfo.regid = FirebaseInstanceId.getInstance().getToken();;
+        deviceInfo.device_name = getDeviceName();
+        deviceInfo.serial = Build.SERIAL;
+        deviceInfo.os_version = Tools.getAndroidVersion();
+
+        NotificationClient.getInstance().callRetrofit(this).registerDevice(deviceInfo).enqueue(new Callback<NotStatus>() {
+            @Override
+            public void onResponse(Call<NotStatus> call, Response<NotStatus> response) {
+                Log.d(TAG, "Notification: "+response.body());
+            }
+
+            @Override
+            public void onFailure(Call<NotStatus> call, Throwable t) {
+
+            }
+        });
 
         seoDialog = new Dialog(this);
         assessmentDialog = new Dialog(this);
@@ -562,9 +607,11 @@ public class MainActivity extends AppCompatActivity  {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
             NotificationChannel channel = new NotificationChannel("999","Default", NotificationManager.IMPORTANCE_DEFAULT);
             NotificationChannel channel1 = new NotificationChannel("111","News", NotificationManager.IMPORTANCE_DEFAULT);
+            NotificationChannel channel2 = new NotificationChannel("222","Others", NotificationManager.IMPORTANCE_DEFAULT);
             NotificationManager manager = getSystemService(NotificationManager.class);
             manager.createNotificationChannel(channel);
             manager.createNotificationChannel(channel1);
+            manager.createNotificationChannel(channel2);
         }
         FirebaseMessaging.getInstance().subscribeToTopic("general")
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
@@ -612,6 +659,27 @@ public class MainActivity extends AppCompatActivity  {
 
         return builder;
     }*/
+
+    public String getDeviceName() {
+        String manufacturer = Build.MANUFACTURER;
+        String model = Build.MODEL;
+        if (model.startsWith(manufacturer)) {
+            return capitalize(model);
+        } else {
+            return capitalize(manufacturer) + " " + model;
+        }
+    }
+    private String capitalize(String s) {
+        if (s == null || s.length() == 0) {
+            return "";
+        }
+        char first = s.charAt(0);
+        if (Character.isUpperCase(first)) {
+            return s;
+        } else {
+            return Character.toUpperCase(first) + s.substring(1);
+        }
+    }
 
 
 

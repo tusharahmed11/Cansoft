@@ -5,6 +5,8 @@ import com.cansoft.app.model.AboutD;
 import com.cansoft.app.model.Client;
 import com.cansoft.app.model.ClientD;
 import com.cansoft.app.model.Data;
+import com.cansoft.app.model.DeviceInfo;
+import com.cansoft.app.model.NotStatus;
 import com.cansoft.app.model.Post;
 import com.cansoft.app.model.ServiceD;
 import com.cansoft.app.model.Video;
@@ -14,7 +16,11 @@ import java.util.List;
 
 import dimitrovskif.smartcache.SmartCall;
 import retrofit2.Call;
+import retrofit2.http.Body;
+import retrofit2.http.Field;
 import retrofit2.http.GET;
+import retrofit2.http.Headers;
+import retrofit2.http.POST;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
 
@@ -53,6 +59,11 @@ public interface ApiService {
 
     @GET("items/Service?fields=*,image.data")
     SmartCall<ServiceD> getService();
+
+    @POST("?api-fcm=register")
+    @Headers("Content-Type: application/json")
+    Call<NotStatus> registerDevice(@Body DeviceInfo deviceInfo);
+
 
 
 
