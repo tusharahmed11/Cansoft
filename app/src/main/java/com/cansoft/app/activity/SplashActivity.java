@@ -19,7 +19,11 @@ public class SplashActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
 
+
+
         progressBar = (ProgressBar) findViewById(R.id.progressBar);
+        startNextActivity();
+
     }
 
 

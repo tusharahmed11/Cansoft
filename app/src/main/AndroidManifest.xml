@@ -13,10 +13,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".activity.NotificationNewsActivity"></activity>
-        <activity
-            android:name=".activity.YouActivity"
-            android:screenOrientation="landscape" />
+        <activity android:name=".activity.OffersActivity"></activity>
+        <activity android:name=".activity.NotificationNewsActivity" />
         <activity
             android:name=".activity.MainActivity"
             android:configChanges="orientation|screenSize"

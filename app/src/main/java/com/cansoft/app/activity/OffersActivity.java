@@ -1,20 +1,10 @@
 package com.cansoft.app.activity;
 
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.app.Dialog;
-import android.app.NotificationChannel;
-import android.app.NotificationManager;
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.Intent;
 import android.graphics.Rect;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
-import android.net.Uri;
 import android.os.Build;
 import android.support.annotation.NonNull;
-import android.support.annotation.RequiresApi;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -26,103 +16,47 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewTreeObserver;
+import android.view.WindowManager;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.Toast;
+import android.widget.TextView;
 
-import com.cansoft.app.adapter.ViewPagerAdapter;
 import com.cansoft.app.R;
-import com.cansoft.app.fragments.HomeFragment;
 import com.cansoft.app.fragments.AssessmentFragment;
 import com.cansoft.app.fragments.ContactFragment;
 import com.cansoft.app.fragments.CostFragment;
+import com.cansoft.app.fragments.HomeFragment;
 import com.cansoft.app.fragments.SeoFragment;
 import com.cansoft.app.fragments.ServiceFragment;
 import com.cansoft.app.fragments.TeamFragment;
-import com.cansoft.app.model.DeviceInfo;
-import com.cansoft.app.model.NotStatus;
-import com.cansoft.app.network.NotificationClient;
-import com.cansoft.app.util.Tools;
 import com.cansoft.app.widget.Fab;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.iid.FirebaseInstanceId;
-import com.google.firebase.iid.FirebaseInstanceIdService;
-import com.google.firebase.messaging.FirebaseMessaging;
 import com.gordonwong.materialsheetfab.MaterialSheetFab;
 import com.gordonwong.materialsheetfab.MaterialSheetFabEventListener;
 
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 import shortbread.Shortbread;
 import shortbread.Shortcut;
 
-public class MainActivity extends AppCompatActivity  {
-    private static final String TAG = "";
-    private BottomNavigationView navigationView;
-    private FragmentManager fragmentManager ;
-    public Toolbar toolbar;
-
-    private View parent_view;
-    private View back_drop;
-    private boolean rotate = false;
-    private LinearLayout lyt_mic;
-    private LinearLayout lyt_call;
-    private LinearLayout lyt_assessment;
-    private LinearLayout lyt_seo;
-    private LinearLayout contactfab;
-    private ViewPager viewPager;
-    MenuItem prevMenuItem;
+public class OffersActivity extends AppCompatActivity {
+    public static final String EXTRA_NOTIF1 = "key.EXTRA_NOTIF";
 
 
 
-
-
-    Dialog seoDialog;
-    Dialog assessmentDialog;
-
-    private MaterialSheetFab materialSheetFab;
-    private int statusBarColor;
-
-
-    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_offers);
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.app_bar);
+        setSupportActionBar(toolbar);
+        ImageView imageView = (ImageView) toolbar.findViewById(R.id.app_bar_logo);
+        imageView.setVisibility(View.GONE);
+        TextView textView = (TextView) toolbar.findViewById(R.id.app_bar_title);
+        textView.setText("Offers");
+        textView.setVisibility(View.VISIBLE);
 
 
-
-
-        DeviceInfo deviceInfo = new DeviceInfo();
-
-        deviceInfo.regid = FirebaseInstanceId.getInstance().getToken();
-        deviceInfo.device_name = getDeviceName();
-        deviceInfo.serial = Build.SERIAL;
-        deviceInfo.os_version = Tools.getAndroidVersion();
-
-        NotificationClient.getInstance().callRetrofit(this).registerDevice(deviceInfo).enqueue(new Callback<NotStatus>() {
-            @Override
-            public void onResponse(Call<NotStatus> call, Response<NotStatus> response) {
-                Log.d(TAG, "Notification: "+response.body());
-            }
-
-            @Override
-            public void onFailure(Call<NotStatus> call, Throwable t) {
-                Log.d(TAG, "onNotStatusFailure: something wrong" );
-
-            }
-        });
-
-        seoDialog = new Dialog(this);
-        assessmentDialog = new Dialog(this);
-        contactfab = (LinearLayout) findViewById(R.id.fab_sheet_item_note);
-        lyt_assessment = (LinearLayout) findViewById(R.id.fab_assessment_layout);
-        lyt_seo = (LinearLayout) findViewById(R.id.fab_seo_layout);
-
-        final FrameLayout frame = findViewById(R.id.frame);
+        /*final FrameLayout frame = findViewById(R.id.frame);
         frame.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
             @Override
             public void onGlobalLayout() {
@@ -148,44 +82,25 @@ public class MainActivity extends AppCompatActivity  {
 
                 }
             }
-        });
+        });*/
 
 
 
-
+/*
         toolbar = (Toolbar) findViewById(R.id.app_bar);
         setSupportActionBar(toolbar);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               onBackPressed();
+                onBackPressed();
             }
         });
         toolbar.setPadding(0, 0, 0, 0);
-        fragmentManager = getSupportFragmentManager();
-        Shortbread.create(this);
+        toolbar.setBackgroundColor(getResources().getColor(R.color.grey_900));*/
 
 
 
-        setupFab();
-        notificationSetup();
-
-        ImageView titleImage = (ImageView) findViewById(R.id.app_bar_logo);
-        titleImage.setVisibility(View.VISIBLE);
-
-        
-        HomeFragment homeFragment = new HomeFragment();
-        fragmentManager.popBackStackImmediate(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
-        fragmentManager.beginTransaction()
-                .replace(R.id.frame, homeFragment, "homeFragment").disallowAddToBackStack().commit();
-
-
-        navigationView = (BottomNavigationView) findViewById(R.id.navigation_view);
-
-
-
-
-        navigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+        /*navigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                 switch (menuItem.getItemId()) {
@@ -234,12 +149,12 @@ public class MainActivity extends AppCompatActivity  {
 
 
             }
-        });
+        });*/
 
 
 
 
-        getSupportFragmentManager().addOnBackStackChangedListener(new FragmentManager.OnBackStackChangedListener() {
+        /*getSupportFragmentManager().addOnBackStackChangedListener(new FragmentManager.OnBackStackChangedListener() {
             @Override
             public void onBackStackChanged() {
                 Fragment currentFragment = fragmentManager.findFragmentById(R.id.frame);
@@ -264,24 +179,15 @@ public class MainActivity extends AppCompatActivity  {
 
 
             }
-        });
+        });*/
 
 
     }
 
 
-    private void changeFragment(Fragment fragment) {
-
-        hideFab();
-
-        fragmentManager.beginTransaction().setCustomAnimations(R.anim.fade_in, R.anim.fade_out,
-                R.anim.fade_in, R.anim.fade_out)
-                .replace(R.id.frame,fragment, "fragment").addToBackStack(null).commit();
-
-    }
 
 
-    private void setupFab() {
+    /*private void setupFab() {
 
         Fab fab = (Fab) findViewById(R.id.fab);
         View sheetView = findViewById(R.id.fab_sheet);
@@ -334,19 +240,19 @@ public class MainActivity extends AppCompatActivity  {
 
             }
         });
-     /*   findViewById(R.id.fab_sheet_item_note).setOnClickListener(new View.OnClickListener() {
+     *//*   findViewById(R.id.fab_sheet_item_note).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Toast.makeText(MainActivity.this, "Contact", Toast.LENGTH_SHORT).show();
 
             }
-        });*/
+        });*//*
 
 
 
-    }
+    }*/
 
-    private int getStatusBarColor() {
+    /*private int getStatusBarColor() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             return getWindow().getStatusBarColor();
         }
@@ -363,29 +269,15 @@ public class MainActivity extends AppCompatActivity  {
             materialSheetFab.hideSheet();
         }
     }
-
+*//*
     public Fragment currentFragment(){
         Fragment currentFragment = getSupportFragmentManager()
                 .findFragmentById(R.id.frame);
         return currentFragment;
         // Log.d(TAG, "currentFragment: "+currentFragment().getId());
-    }
+    }*//*
 
-    @Shortcut(id = "favorite_books", icon = R.mipmap.ic_ln_mail, shortLabel = "Contact Us" ,rank = 1)
-    public void showFavoriteBooks() {
-        ContactFragment contactFragment = new ContactFragment();
-        changeFragment(contactFragment);
-    }
-    @Shortcut(id = "favorite_seo", icon = R.mipmap.ic_ln_spider, shortLabel = "Free Seo Audit",rank = 2)
-    public void showFavoriteSeo() {
-        SeoFragment seoFragment = new SeoFragment();
-        changeFragment(seoFragment);
-    }
-    @Shortcut(id = "favorite_assessment", icon = R.mipmap.ic_ln_star, shortLabel = "Free Assessment",rank = 3)
-    public void showFavoriteAssessment() {
-        AssessmentFragment assessmentFragment = new AssessmentFragment();
-        changeFragment(assessmentFragment);
-    }
+
     @Override public void onBackPressed() {
         if (materialSheetFab.isSheetVisible()) {
             materialSheetFab.hideSheet();
@@ -393,7 +285,7 @@ public class MainActivity extends AppCompatActivity  {
         BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.navigation_view);
         int seletedItemId = bottomNavigationView.getSelectedItemId();
         if (R.id.action_home != seletedItemId) {
-            setHomeItem(MainActivity.this);
+            setHomeItem(OffersActivity.this);
         } else {
             super.onBackPressed();
         }
@@ -403,65 +295,6 @@ public class MainActivity extends AppCompatActivity  {
         BottomNavigationView bottomNavigationView = (BottomNavigationView)
                 activity.findViewById(R.id.navigation_view);
         bottomNavigationView.setSelectedItemId(R.id.action_home);
-    }
-
-    private void notificationSetup(){
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
-            NotificationChannel channel = new NotificationChannel("999","General", NotificationManager.IMPORTANCE_DEFAULT);
-            NotificationChannel channel1 = new NotificationChannel("111","News", NotificationManager.IMPORTANCE_DEFAULT);
-            NotificationChannel channel2 = new NotificationChannel("222","Offers", NotificationManager.IMPORTANCE_DEFAULT);
-            NotificationManager manager = getSystemService(NotificationManager.class);
-            manager.createNotificationChannel(channel);
-            manager.createNotificationChannel(channel1);
-            manager.createNotificationChannel(channel2);
-        }
-        FirebaseMessaging.getInstance().subscribeToTopic("general")
-                .addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        String msg = "Successful";
-                        if (!task.isSuccessful()) {
-                            msg = "Failed";
-                        }
-
-                        /*Toast.makeText(MainActivity.this, msg, Toast.LENGTH_SHORT).show();*/
-                    }
-                });
-    }
-
-
-    public String getDeviceName() {
-        String manufacturer = Build.MANUFACTURER;
-        String model = Build.MODEL;
-        if (model.startsWith(manufacturer)) {
-            return capitalize(model);
-        } else {
-            return capitalize(manufacturer) + " " + model;
-        }
-    }
-    private String capitalize(String s) {
-        if (s == null || s.length() == 0) {
-            return "";
-        }
-        char first = s.charAt(0);
-        if (Character.isUpperCase(first)) {
-            return s;
-        } else {
-            return Character.toUpperCase(first) + s.substring(1);
-        }
-    }
-    public static boolean active = false;
-    @Override
-    public void onStart() {
-        super.onStart();
-        active = true;
-    }
-    @Override
-    public void onStop() {
-        super.onStop();
-        active = false;
-    }
-
-
+    }*/
 
 }
