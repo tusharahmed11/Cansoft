@@ -185,7 +185,7 @@
                                 <PersistentState>
                                   <option name="values">
                                     <map>
-                                      <entry key="url" value="jar:file:/C:/Program%20Files/Android/Android%20Studio/plugins/android/lib/android.jar!/images/material_design_icons/navigation/ic_chevron_left_black_24dp.xml" />
+                                      <entry key="url" value="jar:file:/Applications/Android%20Studio.app/Contents/plugins/android/lib/android.jar!/images/material_design_icons/navigation/ic_close_black_24dp.xml" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -196,11 +196,12 @@
                         <option name="values">
                           <map>
                             <entry key="assetSourceType" value="FILE" />
+                            <entry key="autoMirrored" value="true" />
                             <entry key="height" value="512" />
-                            <entry key="outputName" value="ic_shortcut_star" />
+                            <entry key="outputName" value="ic_info_square" />
                             <entry key="overrideSize" value="true" />
-                            <entry key="sourceFile" value="C:\Users\CansoftPC2\Downloads\Compressed\fontawesome-pro-5.5.0-desktop\fontawesome-pro-5.5.0-desktop\svgs\light\star-of-life.svg" />
-                            <entry key="width" value="480" />
+                            <entry key="sourceFile" value="$USER_HOME$/Downloads/fontawesome-pro-5.5.0-web/svgs/light/info-square.svg" />
+                            <entry key="width" value="448" />
                           </map>
                         </option>
                       </PersistentState>

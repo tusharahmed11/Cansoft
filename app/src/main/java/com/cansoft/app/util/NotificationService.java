@@ -62,7 +62,7 @@ public class NotificationService extends FirebaseMessagingService {
     public void showNotification(String title, String message){
         NotificationCompat.Builder builder = new NotificationCompat.Builder(this,"999")
                 .setContentTitle(title)
-                .setSmallIcon(R.drawable.ic_warning)
+                .setSmallIcon(R.drawable.ic_general)
                 .setAutoCancel(true)
                 .setContentText(message);
         NotificationManagerCompat manager = NotificationManagerCompat.from(this);
@@ -74,7 +74,7 @@ public class NotificationService extends FirebaseMessagingService {
     public void showNotification2(String title, String message){
         NotificationCompat.Builder builder = new NotificationCompat.Builder(this,"111")
                 .setContentTitle(title)
-                .setSmallIcon(R.drawable.ic_check)
+                .setSmallIcon(R.drawable.ic_general)
                 .setAutoCancel(true)
                 .setContentText(message);
         NotificationManagerCompat manager = NotificationManagerCompat.from(this);
@@ -97,7 +97,7 @@ public class NotificationService extends FirebaseMessagingService {
             intent.putExtra(NotificationNewsActivity.EXTRA_NOTIF, from_notif);
             NotificationCompat.Builder builder = new NotificationCompat.Builder(this,"111")
                     .setContentTitle(fcmNotif.getTitle())
-                    .setSmallIcon(R.drawable.ic_arrow_down)
+                    .setSmallIcon(R.drawable.ic_news)
                     .setAutoCancel(true)
                     .setContentText(fcmNotif.getContent());
             NotificationManagerCompat manager = NotificationManagerCompat.from(this);
@@ -113,7 +113,7 @@ public class NotificationService extends FirebaseMessagingService {
             intent.putExtra(OffersActivity.EXTRA_NOTIF1, from_notif1);
             NotificationCompat.Builder builder = new NotificationCompat.Builder(this,"222")
                     .setContentTitle(fcmNotif.getTitle())
-                    .setSmallIcon(R.drawable.ic_create_black)
+                    .setSmallIcon(R.drawable.ic_offer)
                     .setAutoCancel(true)
                     .setContentText(fcmNotif.getContent());
             NotificationManagerCompat manager = NotificationManagerCompat.from(this);

@@ -33,6 +33,7 @@ import android.widget.Toast;
 
 import com.cansoft.app.adapter.ViewPagerAdapter;
 import com.cansoft.app.R;
+import com.cansoft.app.fragments.AboutFragment;
 import com.cansoft.app.fragments.HomeFragment;
 import com.cansoft.app.fragments.AssessmentFragment;
 import com.cansoft.app.fragments.ContactFragment;
@@ -87,11 +88,12 @@ public class MainActivity extends AppCompatActivity  {
     private int statusBarColor;
 
 
-    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
 
 
 
@@ -165,7 +167,39 @@ public class MainActivity extends AppCompatActivity  {
         fragmentManager = getSupportFragmentManager();
         Shortbread.create(this);
 
-
+        if (getIntent().getExtras()!=null){
+            if(getIntent().getIntExtra("fragmentNumber",0)==0){
+                HomeFragment homeFragment = new HomeFragment();
+                fragmentManager.popBackStackImmediate(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
+                fragmentManager.beginTransaction()
+                        .replace(R.id.frame, homeFragment, "currentFragment").disallowAddToBackStack().commit();
+            }else if (getIntent().getIntExtra("fragmentNumber",0)==1){
+                CostFragment costFragment = new CostFragment();
+                fragmentManager.popBackStackImmediate(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
+                fragmentManager.beginTransaction()
+                        .replace(R.id.frame, costFragment, "currentFragment").disallowAddToBackStack().commit();
+            }else if (getIntent().getIntExtra("fragmentNumber",0)==2){
+                ServiceFragment service = new ServiceFragment();
+                fragmentManager.popBackStackImmediate(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
+                fragmentManager.beginTransaction()
+                        .replace(R.id.frame, service, "currentFragment").disallowAddToBackStack().commit();
+            }else if (getIntent().getIntExtra("fragmentNumber",0)==3){
+                TeamFragment team = new TeamFragment();
+                fragmentManager.popBackStackImmediate(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
+                fragmentManager.beginTransaction()
+                        .replace(R.id.frame, team, "currentFragment").disallowAddToBackStack().commit();
+            }else if (getIntent().getIntExtra("fragmentNumber",0)==4){
+                ContactFragment contact = new ContactFragment();
+                fragmentManager.popBackStackImmediate(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
+                fragmentManager.beginTransaction()
+                        .replace(R.id.frame, contact, "currentFragment").disallowAddToBackStack().commit();
+            }
+        }else{
+            HomeFragment homeFragment = new HomeFragment();
+            fragmentManager.popBackStackImmediate(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
+            fragmentManager.beginTransaction()
+                    .replace(R.id.frame, homeFragment, "homeFragment").disallowAddToBackStack().commit();
+        }
 
         setupFab();
         notificationSetup();
@@ -173,11 +207,12 @@ public class MainActivity extends AppCompatActivity  {
         ImageView titleImage = (ImageView) findViewById(R.id.app_bar_logo);
         titleImage.setVisibility(View.VISIBLE);
 
+
+
+
+
         
-        HomeFragment homeFragment = new HomeFragment();
-        fragmentManager.popBackStackImmediate(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
-        fragmentManager.beginTransaction()
-                .replace(R.id.frame, homeFragment, "homeFragment").disallowAddToBackStack().commit();
+
 
 
         navigationView = (BottomNavigationView) findViewById(R.id.navigation_view);
@@ -462,6 +497,26 @@ public class MainActivity extends AppCompatActivity  {
         active = false;
     }
 
-
+    public boolean netCheckin() {
+        try {
+            ConnectivityManager nInfo = (ConnectivityManager) getSystemService(
+                    Context.CONNECTIVITY_SERVICE);
+            nInfo.getActiveNetworkInfo().isConnectedOrConnecting();
+            Log.d(TAG, "Net avail:"
+                    + nInfo.getActiveNetworkInfo().isConnectedOrConnecting());
+            ConnectivityManager cm = (ConnectivityManager) getSystemService(
+                    Context.CONNECTIVITY_SERVICE);
+            NetworkInfo netInfo = cm.getActiveNetworkInfo();
+            if (netInfo != null && netInfo.isConnectedOrConnecting()) {
+                Log.d(TAG, "Network available:true");
+                return true;
+            } else {
+                Log.d(TAG, "Network available:false");
+                return false;
+            }
+        } catch (Exception e) {
+            return false;
+        }
+    }
 
 }

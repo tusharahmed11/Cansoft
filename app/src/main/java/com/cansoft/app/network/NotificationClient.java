@@ -52,7 +52,7 @@ public class NotificationClient {
      */
     @NonNull
     private static String getBaseURL() {
-        return "https://kkdev.xyz/?api-fcm=register";
+        return "https://cansoft.com/?api-fcm=register";
     }
 
     /**

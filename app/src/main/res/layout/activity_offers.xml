@@ -11,12 +11,19 @@
         android:id="@+id/app_bar"
         />
 
+    <WebView
+        android:id="@+id/offer_view"
+        android:layout_below="@+id/app_bar"
+        android:layout_above="@+id/navigation_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </WebView>
 
 
-
-
-
-
-
+    <include
+        layout="@layout/bottom_navigation"
+        android:id="@+id/navigation_view"
+        />
 
 </RelativeLayout>

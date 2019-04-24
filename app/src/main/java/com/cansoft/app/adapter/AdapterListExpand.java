@@ -72,6 +72,10 @@ public class AdapterListExpand extends RecyclerView.Adapter<RecyclerView.ViewHol
         private ImageButton bt_expand;
         private View lyt_expand;
         private View lyt_parent;
+        private RelativeLayout teamTwitterL;
+        private RelativeLayout teamFacebookL;
+        private RelativeLayout teamPhoneL;
+        private RelativeLayout teamEmailL;
 
         private ProgressBar teamListProgressbar;
 
@@ -87,6 +91,11 @@ public class AdapterListExpand extends RecyclerView.Adapter<RecyclerView.ViewHol
             lyt_expand = (View) v.findViewById(R.id.lyt_expand);
             lyt_parent = (View) v.findViewById(R.id.lyt_parent);
             teamTwitter = (TextView) v.findViewById(R.id.team_twitter);
+            teamTwitterL= (RelativeLayout) v.findViewById(R.id.twitter_layout);
+            teamFacebookL= (RelativeLayout) v.findViewById(R.id.facebook_layout);
+            teamPhoneL= (RelativeLayout) v.findViewById(R.id.team_phone_layout);
+            teamEmailL= (RelativeLayout) v.findViewById(R.id.team_email_Layout);
+            teamFacebook = (TextView) v.findViewById(R.id.team_facebook);
             teamFacebook = (TextView) v.findViewById(R.id.team_facebook);
 
             teamListProgressbar = (ProgressBar) v.findViewById(R.id.teamListProgressbar);
@@ -108,6 +117,19 @@ public class AdapterListExpand extends RecyclerView.Adapter<RecyclerView.ViewHol
             final OriginalViewHolder view = (OriginalViewHolder) holder;
 
             final Member p = items.get(position);
+            if (p.getTwitter().isEmpty()){
+                view.teamTwitterL.setVisibility(View.GONE);
+            }
+            if (p.getFacebook().isEmpty()){
+                view.teamFacebookL.setVisibility(View.GONE);
+            }
+            if (p.getEmail().isEmpty()){
+                view.teamEmailL.setVisibility(View.GONE);
+            }
+            if (p.getPhoneNumber().isEmpty()){
+                view.teamPhoneL.setVisibility(View.GONE);
+            }
+
             view.name.setText(p.getName());
             view.designation.setText(p.getDesignation());
             view.phone.setText(p.getPhoneNumber());

@@ -353,8 +353,12 @@
             app:srcCompat="@drawable/paper_plane" />
 
     </LinearLayout>-->
+    <include
+        layout="@layout/bottom_navigation"
+        android:id="@+id/navigation_view"
+        />
 
-    <android.support.design.widget.BottomNavigationView
+   <!-- <android.support.design.widget.BottomNavigationView
         android:background="@color/white"
         android:id="@+id/navigation_view"
         android:layout_width="match_parent"
@@ -363,5 +367,5 @@
         app:itemIconTint="@drawable/nav_item_background"
         app:itemTextColor="@drawable/nav_item_background"
         app:labelVisibilityMode="labeled"
-        app:menu="@menu/navigation_menu"/>
+        app:menu="@menu/navigation_menu"/>-->
 </RelativeLayout>

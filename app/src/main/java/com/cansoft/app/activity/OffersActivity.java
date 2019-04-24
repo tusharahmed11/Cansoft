@@ -1,47 +1,34 @@
 package com.cansoft.app.activity;
 
-import android.app.Activity;
-import android.app.Dialog;
-import android.graphics.Rect;
-import android.os.Build;
+
+import android.annotation.SuppressLint;
+import android.content.Intent;
+
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.view.ViewPager;
+
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
+
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewTreeObserver;
-import android.view.WindowManager;
-import android.widget.FrameLayout;
+
+import android.webkit.WebSettings;
+import android.webkit.WebView;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
+
 import android.widget.TextView;
 
 import com.cansoft.app.R;
-import com.cansoft.app.fragments.AssessmentFragment;
-import com.cansoft.app.fragments.ContactFragment;
-import com.cansoft.app.fragments.CostFragment;
-import com.cansoft.app.fragments.HomeFragment;
-import com.cansoft.app.fragments.SeoFragment;
-import com.cansoft.app.fragments.ServiceFragment;
-import com.cansoft.app.fragments.TeamFragment;
-import com.cansoft.app.widget.Fab;
-import com.gordonwong.materialsheetfab.MaterialSheetFab;
-import com.gordonwong.materialsheetfab.MaterialSheetFabEventListener;
 
-import shortbread.Shortbread;
-import shortbread.Shortcut;
 
 public class OffersActivity extends AppCompatActivity {
     public static final String EXTRA_NOTIF1 = "key.EXTRA_NOTIF";
+    private BottomNavigationView navigationView;
 
 
-
+    @SuppressLint("SetJavaScriptEnabled")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,91 +43,38 @@ public class OffersActivity extends AppCompatActivity {
         textView.setVisibility(View.VISIBLE);
 
 
-        /*final FrameLayout frame = findViewById(R.id.frame);
-        frame.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
-            @Override
-            public void onGlobalLayout() {
+        navigationView = (BottomNavigationView) findViewById(R.id.navigation_view);
 
-                Rect r = new Rect();
-                frame.getWindowVisibleDisplayFrame(r);
-                int screenHeight = frame.getRootView().getHeight();
-
-                // r.bottom is the position above soft keypad or device button.
-                // if keypad is shown, the r.bottom is smaller than that before.
-                int keypadHeight = screenHeight - r.bottom;
-
-                Log.d(TAG, "keypadHeight = " + keypadHeight);
-
-                if (keypadHeight > screenHeight * 0.15) { // 0.15 ratio is perhaps enough to determine keypad height.
-                    // keyboard is opened
-                    Log.d(TAG, "onGlobalLayout: keyboard is on");
-                    materialSheetFab.hideSheetThenFab();
-
-                }
-                else {
-                    materialSheetFab.showFab();
-
-                }
-            }
-        });*/
-
-
-
-/*
-        toolbar = (Toolbar) findViewById(R.id.app_bar);
-        setSupportActionBar(toolbar);
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onBackPressed();
-            }
-        });
-        toolbar.setPadding(0, 0, 0, 0);
-        toolbar.setBackgroundColor(getResources().getColor(R.color.grey_900));*/
-
-
-
-        /*navigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+        navigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                 switch (menuItem.getItemId()) {
                     case R.id.action_home:
-                        if (!(currentFragment() instanceof HomeFragment)){
-                            HomeFragment home = new HomeFragment();
-                            changeFragment(home);
-                        }
-
+                        Intent i = new Intent(OffersActivity.this, MainActivity.class);
+                        i.putExtra("fragmentNumber",0);
+                        startActivity(i);
 
                         return true;
                     case R.id.action_cost:
-                        if (!(currentFragment() instanceof CostFragment)){
-                            CostFragment cost = new CostFragment();
-                            changeFragment(cost);
-                        }
+                        Intent i1 = new Intent(OffersActivity.this, MainActivity.class);
+                        i1.putExtra("fragmentNumber",1);
+                        startActivity(i1);
                         return true;
                     case R.id.action_service:
-                        if (!(currentFragment() instanceof ServiceFragment)){
-                            ServiceFragment service = new ServiceFragment();
-                            changeFragment(service);
-                        }
+                        Intent i2 = new Intent(OffersActivity.this, MainActivity.class);
+                        i2.putExtra("fragmentNumber",2);
+                        startActivity(i2);
 
                         return true;
                     case R.id.action_team:
-                        if(!(currentFragment() instanceof TeamFragment)){
-                            TeamFragment team = new TeamFragment();
-                            changeFragment(team);
-                        }
+                        Intent i3 = new Intent(OffersActivity.this, MainActivity.class);
+                        i3.putExtra("fragmentNumber",3);
+                        startActivity(i3);
                         return true;
                     case R.id.action_contact:
-                        if(!(currentFragment() instanceof ContactFragment)){
-                            ContactFragment contact = new ContactFragment();
-                            changeFragment(contact);
-                            FragmentManager fragmentManager = getSupportFragmentManager();
-                            Fragment currentFragment = fragmentManager.findFragmentById(R.id.frame);
-                            if (currentFragment == contact) {
-                                contactfab.setVisibility(View.GONE);
-                            }
-                        }
+                        Intent i4 = new Intent(OffersActivity.this, MainActivity.class);
+                        i4.putExtra("fragmentNumber",4);
+                        startActivity(i4);
                         return true;
                     default:
                         return true;
@@ -149,8 +83,12 @@ public class OffersActivity extends AppCompatActivity {
 
 
             }
-        });*/
+        });
 
+        WebView myWebView = (WebView) findViewById(R.id.offer_view);
+        myWebView.loadUrl("https://cansoft.com/offers.html");
+        WebSettings webSettings = myWebView.getSettings();
+        webSettings.setJavaScriptEnabled(true);
 
 
 

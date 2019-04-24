@@ -20,5 +20,6 @@
     <string name="icon_twitter">&#xf081;</string>
     <string name="icon_solid_mail">&#xf0e0;</string>
     <string name="icon_solid_phone">&#xf098;</string>
+    <string name="icon_info">&#xf30f;</string>
 
 </resources>

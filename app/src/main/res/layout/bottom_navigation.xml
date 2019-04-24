@@ -1,0 +1,11 @@
+<android.support.design.widget.BottomNavigationView android:background="@color/white"
+    android:id="@+id/navigation_view"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_alignParentBottom="true"
+    app:itemIconTint="@drawable/nav_item_background"
+    app:itemTextColor="@drawable/nav_item_background"
+    app:labelVisibilityMode="labeled"
+    app:menu="@menu/navigation_menu"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android" />

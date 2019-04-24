@@ -238,6 +238,8 @@ public class ServiceFragment extends Fragment {
         RestClient2.getInstance().callRetrofit(v.getContext()).getService().enqueue(new Callback<ServiceD>() {
             @Override
             public void onResponse(Call<ServiceD> call, Response<ServiceD> response) {
+
+                assert response.body() != null;
                 List<Service> services = response.body().getData();
                 StaggeredRecyclerViewAdapter staggeredRecyclerViewAdapter =
                         new StaggeredRecyclerViewAdapter(v.getContext(),services);

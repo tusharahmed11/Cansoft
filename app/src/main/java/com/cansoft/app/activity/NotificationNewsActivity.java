@@ -1,8 +1,10 @@
 package com.cansoft.app.activity;
 
-import android.app.FragmentTransaction;
+
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.support.annotation.NonNull;
+import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.v4.app.FragmentManager;
@@ -11,27 +13,22 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.webkit.WebView;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-
 import com.cansoft.app.R;
 import com.cansoft.app.fragments.HomeFragment;
 import com.cansoft.app.model.Post;
 import com.cansoft.app.network.RestClient;
 import com.squareup.picasso.Picasso;
-
 import org.sufficientlysecure.htmltextview.HtmlTextView;
-
-import java.util.Objects;
-
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-import static android.support.constraint.Constraints.TAG;
 
 public class NotificationNewsActivity extends AppCompatActivity {
 
@@ -47,7 +44,7 @@ public class NotificationNewsActivity extends AppCompatActivity {
     private Toolbar detailsToolbar;
     private FragmentManager fragmentManager ;
     public static final String EXTRA_NOTIF = "key.EXTRA_NOTIF";
-
+    private BottomNavigationView navigationView;
 
 
     @Override
@@ -140,11 +137,54 @@ public class NotificationNewsActivity extends AppCompatActivity {
                     progressBar.setVisibility(View.GONE);
                     coordinatorLayout.setVisibility(View.VISIBLE);
                 }
-
             }
 
             @Override
             public void onFailure(Call<Post> call, Throwable t) {
+
+            }
+        });
+
+        navigationView = (BottomNavigationView) findViewById(R.id.navigation_view);
+
+
+
+
+        navigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+                switch (menuItem.getItemId()) {
+                    case R.id.action_home:
+                        Intent i = new Intent(NotificationNewsActivity.this, MainActivity.class);
+                        i.putExtra("fragmentNumber",0);
+                        startActivity(i);
+
+                        return true;
+                    case R.id.action_cost:
+                        Intent i1 = new Intent(NotificationNewsActivity.this, MainActivity.class);
+                        i1.putExtra("fragmentNumber",1);
+                        startActivity(i1);
+                        return true;
+                    case R.id.action_service:
+                        Intent i2 = new Intent(NotificationNewsActivity.this, MainActivity.class);
+                        i2.putExtra("fragmentNumber",2);
+                        startActivity(i2);
+
+                        return true;
+                    case R.id.action_team:
+                        Intent i3 = new Intent(NotificationNewsActivity.this, MainActivity.class);
+                        i3.putExtra("fragmentNumber",3);
+                        startActivity(i3);
+                        return true;
+                    case R.id.action_contact:
+                        Intent i4 = new Intent(NotificationNewsActivity.this, MainActivity.class);
+                        i4.putExtra("fragmentNumber",4);
+                        startActivity(i4);
+                        return true;
+                    default:
+                        return true;
+
+                }
 
             }
         });

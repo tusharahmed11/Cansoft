@@ -6,6 +6,7 @@ import com.cansoft.app.model.Client;
 import com.cansoft.app.model.ClientD;
 import com.cansoft.app.model.Data;
 import com.cansoft.app.model.DeviceInfo;
+import com.cansoft.app.model.InfoD;
 import com.cansoft.app.model.NotStatus;
 import com.cansoft.app.model.Post;
 import com.cansoft.app.model.ServiceD;
@@ -56,6 +57,10 @@ public interface ApiService {
 
     @GET("items/About?fields=*")
     SmartCall<AboutD> getAbout();
+
+
+    @GET("items/app_info")
+    SmartCall<InfoD> getAppInfo();
 
     @GET("items/Service?fields=*,image.data")
     SmartCall<ServiceD> getService();

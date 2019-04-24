@@ -3,9 +3,12 @@ package com.cansoft.app.fragments;
 
 import android.annotation.SuppressLint;
 import android.content.ActivityNotFoundException;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Rect;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -69,6 +72,7 @@ public class HomeFragment extends Fragment {
     RelativeLayout testimoniaLayout;
     private TextView aboutUsView;
 
+
     String youtubeId;
 
     HomeNewsAdapter adapter;
@@ -110,11 +114,14 @@ public class HomeFragment extends Fragment {
         Toolbar toolbar = (Toolbar)getActivity().findViewById(R.id.app_bar);
         toolbar.setVisibility(View.VISIBLE);
 
+        final MainActivity mainActivity = new MainActivity();
+
+
 
         RestClient2.getInstance().callRetrofit(view.getContext()).getVideo().enqueue(new Callback<VideoD>() {
             @Override
             public void onResponse(Call<VideoD> call, Response<VideoD> response) {
-                if (response.body() == null) {
+                if (response.body() == null && !mainActivity.netCheckin()) {
                     showAlertDialog(view);
                 } else {
                     List<Video> videos = response.body().getData();
@@ -162,7 +169,7 @@ public class HomeFragment extends Fragment {
         RestClient2.getInstance().callRetrofit(view.getContext()).getAbout().enqueue(new Callback<AboutD>() {
             @Override
             public void onResponse(Call<AboutD> call, Response<AboutD> response) {
-                if (response.body() == null) {
+                if (response.body() == null && !mainActivity.netCheckin()) {
                     showAlertDialog(view);
                 } else {
                     List<About> about = response.body().getData();
@@ -241,11 +248,13 @@ public class HomeFragment extends Fragment {
     }
 
     private void updateView(final View view){
+        final MainActivity mainActivity = new MainActivity();
         RestClient.getInstance().callRetrofit(view.getContext()).getPosts().enqueue(new Callback<List<Post>>() {
             @Override
             public void onResponse(Call<List<Post>> call, Response<List<Post>> response) {
+
                 Log.d(TAG, "onResponse: " + response.body());
-                if (response.body() == null){
+                if (response.body() == null && !mainActivity.netCheckin()){
                     showAlertDialog(view);
                 }else{
                 List<Post> posts = response.body();
@@ -268,7 +277,7 @@ public class HomeFragment extends Fragment {
         RestClient2.getInstance().callRetrofit(view.getContext()).getClients().enqueue(new Callback<ClientD>() {
             @Override
             public void onResponse(Call<ClientD> call, Response<ClientD> response) {
-                if (response.body() == null){
+                if (response.body() == null && !mainActivity.netCheckin()){
                     showAlertDialog(view);
                 }else{
                     List<Client> clients = response.body().getData();
@@ -373,6 +382,8 @@ public class HomeFragment extends Fragment {
 
         builder.show();
     }
+
+
 
 
 
