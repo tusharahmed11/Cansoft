@@ -5,11 +5,9 @@ import android.app.Dialog;
 import android.content.DialogInterface;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.design.widget.Snackbar;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -17,7 +15,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebView;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -68,7 +65,7 @@ public class AboutFragment extends Fragment {
 
         RestClient2.getInstance().callRetrofit(view.getContext()).getAbout().enqueue(new Callback<AboutD>() {
             @Override
-            public void onResponse(Call<AboutD> call, Response<AboutD> response) {
+            public void onResponse(@NonNull Call<AboutD> call, @NonNull Response<AboutD> response) {
                 List<About> about = response.body().getData();
                 aboutDetails.setText(about.get(0).getDetails());
             }

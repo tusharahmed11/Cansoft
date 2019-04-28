@@ -2,6 +2,7 @@ package com.cansoft.app.adapter;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.support.constraint.ConstraintLayout;
 import android.support.constraint.ConstraintSet;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
@@ -11,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -59,6 +61,16 @@ public class StaggeredRecyclerViewAdapter extends RecyclerView.Adapter<Staggered
         /*Picasso.get().load(service.getImage().getData().getFullUrl()).into(holder.image);*/
         holder.name.setText(service.getName());
 
+        Integer height = service.getImageHeight();
+        if (height == null){
+            ConstraintLayout.LayoutParams parms = new ConstraintLayout.LayoutParams(600,250);
+            holder.image.setLayoutParams(parms);
+        }else{
+            ConstraintLayout.LayoutParams parms = new ConstraintLayout.LayoutParams(600,height);
+            holder.image.setScaleType(ImageView.ScaleType.FIT_XY);
+            holder.image.setLayoutParams(parms);
+        }
+
 
         /*Glide.with(mContext)
                 .load(mImageUrls.get(position))
@@ -73,6 +85,7 @@ public class StaggeredRecyclerViewAdapter extends RecyclerView.Adapter<Staggered
         set.applyTo(holder.mConstraintLayout)*/
 
         /*holder.name.setText(mNames.get(position));*/
+
 
         holder.image.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -106,8 +119,8 @@ public class StaggeredRecyclerViewAdapter extends RecyclerView.Adapter<Staggered
 
         public ViewHolder(View itemView) {
             super(itemView);
-            this.image = itemView.findViewById(R.id.imageview_widget);
-            this.name = itemView.findViewById(R.id.name_widget);
+            image = itemView.findViewById(R.id.imageview_widget);
+            name = itemView.findViewById(R.id.name_widget);
         }
     }
 }

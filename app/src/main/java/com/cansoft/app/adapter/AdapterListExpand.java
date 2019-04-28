@@ -1,13 +1,9 @@
 package com.cansoft.app.adapter;
 
-import android.Manifest;
+
 import android.content.Context;
 import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.graphics.drawable.Drawable;
 import android.net.Uri;
-import android.support.annotation.Nullable;
-import android.support.v4.app.ActivityCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,25 +13,13 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
-
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.Priority;
-import com.bumptech.glide.load.DataSource;
-import com.bumptech.glide.load.engine.GlideException;
-import com.bumptech.glide.request.RequestListener;
+import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
 import com.bumptech.glide.request.RequestOptions;
-import com.bumptech.glide.request.target.Target;
 import com.cansoft.app.R;
-import com.cansoft.app.activity.MainActivity;
 import com.cansoft.app.model.Member;
-import com.cansoft.app.model.Social;
 import com.cansoft.app.util.Tools;
 import com.cansoft.app.util.ViewAnimation;
-import com.cansoft.app.widget.GlideImageLoader;
-import com.squareup.picasso.MemoryPolicy;
-import com.squareup.picasso.Picasso;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -98,7 +82,7 @@ public class AdapterListExpand extends RecyclerView.Adapter<RecyclerView.ViewHol
             teamFacebook = (TextView) v.findViewById(R.id.team_facebook);
             teamFacebook = (TextView) v.findViewById(R.id.team_facebook);
 
-            teamListProgressbar = (ProgressBar) v.findViewById(R.id.teamListProgressbar);
+            /*teamListProgressbar = (ProgressBar) v.findViewById(R.id.teamListProgressbar);*/
         }
     }
 
@@ -170,12 +154,20 @@ public class AdapterListExpand extends RecyclerView.Adapter<RecyclerView.ViewHol
                 }
             });
 
-            RequestOptions options = new RequestOptions()
+           /* RequestOptions options = new RequestOptions()
                     .error(R.drawable.ic_broken_image)
                     .priority(Priority.HIGH);
 
             new GlideImageLoader(view.fullImage,
-                    view.teamListProgressbar).load(p.getPhoto().getData().getFullUrl(),options);
+                    view.teamListProgressbar).load(p.getPhoto().getData().getFullUrl(),options);*/
+            RequestOptions requestOption = new RequestOptions()
+                    .placeholder(R.drawable.ic_team_place).centerCrop();
+            Glide.with(ctx)
+                    .load(p.getPhoto().getData().getFullUrl())   //passing your url to load image.
+                    .transition(DrawableTransitionOptions.withCrossFade())
+                    .apply(requestOption)
+                    .into(view.fullImage);
+
             /*Glide.with(ctx)
                     .load(p.getPhoto().getData().getFullUrl())
                     .listener(new RequestListener<Drawable>() {

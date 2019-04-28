@@ -67,44 +67,6 @@ public class ServiceFragment extends Fragment {
         updateUI task = new updateUI(view);
         task.execute();
 
-        /*initImageBitmaps(view);*/
-
-
-
-      /* new Handler().postDelayed(new Runnable() {
-
-            @Override
-            public void run() {
-                progressBar.setVisibility(View.GONE);
-                serviceLayout.setVisibility(View.VISIBLE);
-            }
-
-        }, 2000);
-*/
-        /*  initImageBitmaps(view);*/
-
-
-
-        /*new Thread()
-        {
-            public void run()
-            {
-                try
-                {
-                    sleep(1500);
-                    // do the background process or any work that takes time to see progress dialog
-                    initImageBitmaps(view);
-
-                }
-                catch (Exception e)
-                {
-                    Log.e("tag",e.getMessage());
-                }
-                // dismiss the progress dialog
-                progressBar.setVisibility(View.GONE);
-
-            }
-        }.start();*/
 
 
 
@@ -240,7 +202,7 @@ public class ServiceFragment extends Fragment {
             public void onResponse(Call<ServiceD> call, Response<ServiceD> response) {
 
                 assert response.body() != null;
-                List<Service> services = response.body().getData();
+               List<Service> services = response.body().getData();
                 StaggeredRecyclerViewAdapter staggeredRecyclerViewAdapter =
                         new StaggeredRecyclerViewAdapter(v.getContext(),services);
                 StaggeredGridLayoutManager staggeredGridLayoutManager = new StaggeredGridLayoutManager(2, LinearLayoutManager.VERTICAL);

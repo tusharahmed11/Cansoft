@@ -11,6 +11,7 @@ public class Image {
     @Expose
     private String url;
 
+
     public String getFullUrl() {
         return fullUrl;
     }
@@ -26,4 +27,5 @@ public class Image {
     public void setUrl(String url) {
         this.url = url;
     }
+
 }

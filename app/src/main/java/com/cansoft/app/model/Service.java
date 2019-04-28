@@ -17,6 +17,10 @@ public class Service {
     @SerializedName("service_details")
     @Expose
     private String serviceDetails;
+    @SerializedName("image_height")
+    @Expose
+    private Integer imageHeight;
+
 
     public Integer getId() {
         return id;
@@ -48,5 +52,13 @@ public class Service {
 
     public void setServiceDetails(String serviceDetails) {
         this.serviceDetails = serviceDetails;
+    }
+
+    public Integer getImageHeight() {
+        return imageHeight;
+    }
+
+    public void setImageHeight(Integer imageHeight) {
+        this.imageHeight = imageHeight;
     }
 }
